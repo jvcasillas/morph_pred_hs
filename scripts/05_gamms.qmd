@@ -119,7 +119,7 @@ test_mod %>%
     geom_rect(data = tibble(xmin = 0.49, xmax = 0.51), 
       inherit.aes = F, fill = "lightblue", color = "white", alpha = 0.2,
       aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf)) +
-    geom_vline(xintercept = 0.5, lty = 3) + 
+    geom_vline(xintercept = 0.5, lty = 3, size = 0.5) + 
     stat_dotsinterval(quantiles = 100) + 
     geom_text(aes(label = label), hjust = 0, 
       data = tibble(stress = 0.5, prop = 0.51, 
@@ -350,8 +350,8 @@ gamm_log_group_stress_draws %>%
   ggplot() + 
     aes(x = time_zero, y = .value / 50, color = group) + 
     facet_grid(. ~ stress) + 
-    geom_hline(yintercept = 0.5, lty = 3, size = 0.7) + 
-    geom_vline(xintercept = 0 + 4, lty = 3, size = 0.7) + 
+    geom_hline(yintercept = 0.5, lty = 3, size = 0.5) + 
+    geom_vline(xintercept = 0 + 4, lty = 3, size = 0.5) + 
     stat_lineribbon(show.legend = F) + 
     stat_summary(fun = median, geom = "line") + 
     scale_fill_brewer(palette = "Greys") +
@@ -414,7 +414,7 @@ gamm_log_group_stress %>%
     geom_rect(data = tibble(x = c(0.49, 0.51), y = NULL), 
       aes(xmin = min(x), xmax = max(x), ymin = -Inf, ymax = Inf),
       fill = "lightblue", alpha = 0.2, inherit.aes = FALSE) +
-    geom_vline(xintercept = 0.5, lty = 3) + 
+    geom_vline(xintercept = 0.5, lty = 3, size = 0.5) + 
     stat_slab(alpha = 0.7, color = "white", show.legend = F) +
     stat_pointinterval(pch = 21, point_fill = "white", show.legend = F) +
     scale_fill_manual(name = NULL, values = my_colors[2:3], labels = NULL) + 
@@ -572,11 +572,54 @@ beta_reg_group_stress <- brm(
 ```{r}
 #| label: bi-prof-use-plot
 #| out.width: "100%"
-#| fig.height: 3.5
+#| fig.height: 6
 #| fig.cap: "Probability of target fixations 200ms after critical syllable offset for bilingual groups. The left panel plots target fixations as a function of normalized *use* scores while holding proficiency constant at the mean (0) and marginalizing over stress. The right panel plots target fixations as a function of normalized *proficiency* scores while holding use constant at the mean (0) and marginalizing over stress. Individual lines represent 200 draws from the posterior. The thick lines are the most plausible lines of best fit."
 #| cache: true
 # plot
-beta_reg_use <- bi_4_prop %>% 
+beta_reg_use_parox <- bi_4_prop %>% 
+  expand(id = "new", group_sum, stress_sum = -1, 
+    prof_z = 0, use_z = seq(-2.1, 2.1, length.out = 5)) %>%
+  add_epred_draws(beta_reg_group_stress, 
+    allow_new_levels = T, 
+    re_formula = NULL, 
+    sample_new_levels = "uncertainty", 
+    ndraws = 200) %>% 
+  mutate(group = if_else(group_sum == -1, "HL", "L2")) %>% 
+  ggplot() + 
+    aes(x = use_z, y = .epred, color = group) + 
+    geom_path(aes(group = interaction(group, .draw)), alpha = 0.05) + 
+    stat_summary(fun = median, geom = "line", size = 2) + 
+    scale_color_manual(name = NULL, values = my_colors[3:2]) + 
+    coord_cartesian(ylim = c(-0.05, 1.05), xlim = c(-2.1, 2.1), 
+      expand = F) + 
+    labs(y = "P(Target fixation)", x = NULL) + 
+    theme(legend.position = c(0.15, 0.85), 
+      axis.ticks.x = element_blank(), axis.text.x = element_blank())
+
+beta_reg_prof_parox <- bi_4_prop %>% 
+  expand(id = "new", group_sum, stress_sum = -1, 
+    prof_z = seq(-2.1, 2.1, length.out = 5), use_z = 0) %>%
+  add_epred_draws(beta_reg_group_stress, 
+    allow_new_levels = T, 
+    re_formula = NULL, 
+    sample_new_levels = "uncertainty", 
+    ndraws = 200) %>% 
+  mutate(group = if_else(group_sum == -1, "HL", "L2"), 
+    stress = "Paroxytone") %>% 
+  ggplot() + 
+    aes(x = prof_z, y = .epred, color = group) + 
+    facet_grid(stress ~ .) + 
+    geom_path(aes(group = interaction(group, .draw)), alpha = 0.05, 
+      show.legend = F) + 
+    stat_summary(fun = median, geom = "line", size = 2, show.legend = F) + 
+    scale_color_manual(name = NULL, values = my_colors[3:2]) + 
+    coord_cartesian(ylim = c(-0.05, 1.05), xlim = c(-2.1, 2.1), 
+      expand = F) + 
+    labs(y = NULL, x = NULL) + 
+    theme(axis.ticks.y = element_blank(), axis.text.y = element_blank(),
+      axis.ticks.x = element_blank(), axis.text.x = element_blank())
+
+beta_reg_use_avg <- bi_4_prop %>% 
   expand(id = "new", group_sum, stress_sum = 0, 
     prof_z = 0, use_z = seq(-2.1, 2.1, length.out = 5)) %>%
   add_epred_draws(beta_reg_group_stress, 
@@ -593,9 +636,10 @@ beta_reg_use <- bi_4_prop %>%
     scale_color_manual(name = NULL, values = my_colors[3:2]) + 
     coord_cartesian(ylim = c(-0.05, 1.05), xlim = c(-2.1, 2.1), 
       expand = F) + 
-    labs(y = "P(Target fixation)", x = "z-Use")
+    labs(y = NULL, x = NULL) + 
+    theme(axis.ticks.x = element_blank(), axis.text.x = element_blank())
 
-beta_reg_prof <- bi_4_prop %>% 
+beta_reg_prof_avg <- bi_4_prop %>% 
   expand(id = "new", group_sum, stress_sum = 0, 
     prof_z = seq(-2.1, 2.1, length.out = 5), use_z = 0) %>%
   add_epred_draws(beta_reg_group_stress, 
@@ -603,30 +647,81 @@ beta_reg_prof <- bi_4_prop %>%
     re_formula = NULL, 
     sample_new_levels = "uncertainty", 
     ndraws = 200) %>% 
-  mutate(group = if_else(group_sum == -1, "HL", "L2")) %>% 
+  mutate(group = if_else(group_sum == -1, "HL", "L2"), 
+    stress = "Avg. stress") %>% 
   ggplot() + 
     aes(x = prof_z, y = .epred, color = group) + 
-    geom_path(aes(group = interaction(group, .draw)), alpha = 0.05) + 
-    stat_summary(fun = median, geom = "line", size = 2) + 
+    facet_grid(stress ~ .) + 
+    geom_path(aes(group = interaction(group, .draw)), alpha = 0.05, 
+      show.legend = F) + 
+    stat_summary(fun = median, geom = "line", size = 2, show.legend = F) + 
+    scale_color_manual(name = NULL, values = my_colors[3:2]) + 
+    coord_cartesian(ylim = c(-0.05, 1.05), xlim = c(-2.1, 2.1), 
+      expand = F) + 
+    labs(y = NULL, x = NULL) + 
+    theme(legend.position = c(0.85, 0.85), 
+      axis.ticks.y = element_blank(), axis.text.y = element_blank(), 
+      axis.ticks.x = element_blank(), axis.text.x = element_blank())
+
+beta_reg_use_ox <- bi_4_prop %>% 
+  expand(id = "new", group_sum, stress_sum = 1, 
+    prof_z = 0, use_z = seq(-2.1, 2.1, length.out = 5)) %>%
+  add_epred_draws(beta_reg_group_stress, 
+    allow_new_levels = T, 
+    re_formula = NULL, 
+    sample_new_levels = "uncertainty", 
+    ndraws = 200) %>% 
+  mutate(group = if_else(group_sum == -1, "HL", "L2")) %>% 
+  ggplot() + 
+    aes(x = use_z, y = .epred, color = group) + 
+    geom_path(aes(group = interaction(group, .draw)), alpha = 0.05, 
+      show.legend = F) + 
+    stat_summary(fun = median, geom = "line", size = 2, show.legend = F) + 
+    scale_color_manual(name = NULL, values = my_colors[3:2]) + 
+    coord_cartesian(ylim = c(-0.05, 1.05), xlim = c(-2.1, 2.1), 
+      expand = F) + 
+    labs(y = NULL, x = "z-Use")
+
+beta_reg_prof_ox <- bi_4_prop %>% 
+  expand(id = "new", group_sum, stress_sum = 1, 
+    prof_z = seq(-2.1, 2.1, length.out = 5), use_z = 0) %>%
+  add_epred_draws(beta_reg_group_stress, 
+    allow_new_levels = T, 
+    re_formula = NULL, 
+    sample_new_levels = "uncertainty", 
+    ndraws = 200) %>% 
+  mutate(group = if_else(group_sum == -1, "HL", "L2"), 
+    stress = "Oxytone") %>% 
+  ggplot() + 
+    aes(x = prof_z, y = .epred, color = group) + 
+    facet_grid(stress ~ .) + 
+    geom_path(aes(group = interaction(group, .draw)), alpha = 0.05, 
+      show.legend = F) + 
+    stat_summary(fun = median, geom = "line", size = 2, show.legend = F) + 
     scale_color_manual(name = NULL, values = my_colors[3:2]) + 
     coord_cartesian(ylim = c(-0.05, 1.05), xlim = c(-2.1, 2.1), 
       expand = F) + 
     scale_y_continuous(position = "right") + 
     labs(y = NULL, x = "z-Proficiency") + 
-    theme(legend.position = c(0.85, 0.85))
+    theme(legend.position = c(0.85, 0.85), 
+      axis.ticks.y = element_blank(), axis.text.y = element_blank())
 
-beta_reg_use + beta_reg_prof
+(beta_reg_use_parox + beta_reg_prof_parox) /
+(beta_reg_use_avg + beta_reg_prof_avg) /
+(beta_reg_use_ox + beta_reg_prof_ox)
 ```
 
 ```{r}
 #| label: bi-prof-use-heatmap
 #| out.width: "100%"
-#| fig.height: 3.5
+#| fig.height: 6
 #| fig.cap: "Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores marginalizing over lexical stress for the bilingual groups."
 #| cache: true
 # plot
-bi_4_prop %>% 
-  expand(id = "new", group_sum, stress_sum = 0, 
+bi_heat_map <- bi_4_prop %>% 
+  expand(id = "new", 
+    group_sum, 
+    stress_sum = c(-1, 0, 1), 
     prof_z = seq(-2, 2, length.out = 20),
     use_z = seq(-2, 2, length.out = 20)) %>% 
   add_epred_draws(beta_reg_group_stress, 
@@ -634,15 +729,24 @@ bi_4_prop %>%
     re_formula = NULL, 
     sample_new_levels = "uncertainty", 
     ndraws = 200
-    ) %>% 
+    ) 
+
+bi_heat_map %>% 
   mutate(group = if_else(group_sum == -1, "HL", "L2"), 
-    stress = if_else(stress_sum == -1, "Paroxytone", "Oxytone")) %>% 
+    stress = case_when(
+      stress_sum == -1 ~ "Paroxytone", 
+      stress_sum ==  0 ~ "Avg. stress", 
+      TRUE ~ "Oxytone"
+      ), 
+    stress = as.factor(stress), 
+    stress = fct_relevel(stress, "Paroxytone", "Avg. stress")) %>% 
   ggplot() + 
     aes(x = prof_z, y = use_z, fill = .epred) + 
-    facet_grid(. ~ group) + 
+    facet_grid(stress ~ group) + 
     geom_tile() + 
     scale_fill_viridis_c(name = NULL, option = "B") + 
     coord_cartesian(expand = F) + 
-    labs(y = "z-Use", x = "z-Proficiency")
+    labs(y = "z-Use", x = "z-Proficiency") + 
+    clean_guide("bottom", "P(Target fixation)")
 ```
 

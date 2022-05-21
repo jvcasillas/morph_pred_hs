@@ -9,3 +9,17 @@ format:
   gfm: default
 ---
 
+- The two bilingual groups are essentially equivalent regarding proficiency and use
+- Stress matters: Monolinguals always predict, bilinguals do to some degree, but depends on stress (holding use and proficiency constant)
+  - HL: 
+    - 👍🏽Paroxytone (CANta) (most common)
+    - 👎🏽Oxytone (canTA) (less common)
+  - L2: 
+    - 👎🏻Paroxytone (CANta) (most common)
+    - 👍🏻Oxytone (canTA) (less common)
+- Group differences
+  - Monolingual time course different from both bilingual groups (they predict sooner) regardless of stress
+  - HL and L2ers are essentially the same with paroxytonic stress
+  - L2ers predict more than HL with (less common) oxytonic stress pattern (but still not a lot)
+- Proficiency, use, and prediction
+  - Marginalizing over stress, 
