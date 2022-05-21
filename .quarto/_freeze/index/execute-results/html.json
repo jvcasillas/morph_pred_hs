@@ -1,7 +1,7 @@
 {
-  "hash": "111b155fc8acc2adc9d649cc506cd9b0",
+  "hash": "9fb59e20af0de329c40e2d89934f76e7",
   "result": {
-    "markdown": "---\ntitle: \"{{< var title >}}: {{< var version >}}\"\nsubtitle: \"TOC\"\nauthor: \"{{< var author.name >}}\"\ndate: \"2022-05-21\"\nformat:\n  html: default\n  pdf: default\n---\n\n1. Proficiency/use clean up\n2. Tidy eye-tracking data\n3. Analyses\n4. Take-aways",
+    "markdown": "---\ntitle: \"{{< var title >}}: {{< var version >}}\"\nsubtitle: \"TOC\"\nauthor: \"{{< var author.name >}}\"\ndate: \"2022-05-21\"\nformat:\n  html: default\n  pdf: default\n  gfm: default\n---\n\n1. Proficiency/use clean up\n2. Tidy eye-tracking data\n3. Analyses\n4. Take-aways",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
