@@ -1,0 +1,11 @@
+---
+title: "{{< var title >}}: {{< var version >}}"
+subtitle: "Take-aways"
+author: "{{< var author.name >}}"
+date: "`r Sys.Date()`"
+format:
+  html: default
+  pdf: default
+  gfm: default
+---
+

@@ -9,7 +9,27 @@ format:
   gfm: default
 ---
 
-1. Proficiency/use clean up
-2. Tidy eye-tracking data
-3. Analyses
-4. Take-aways
+```{r}
+#| label: setup
+#| echo: false
+#| results: 'asis'
+
+library("fs")
+library("here")
+
+url_root <- "https://www.jvcasillas.com/morph_pred_hs"
+
+dir_ls(path = here("docs", "scripts"), regexp = "\\.html$") |> 
+  tibble::as_tibble() |> 
+  dplyr::mutate(
+    names = c(
+      "1. [Proficiency/use clean up and EDA]",
+      "2. [Tidy eye-tracking data]",
+      "3. [Analyses]",
+      "4. [Take-aways]"
+    ), 
+    value = stringr::str_remove(value, here()), 
+    path = glue::glue("({url_root}{value})"), 
+    link = glue::glue("{names}{path}")) |> 
+  dplyr::pull(link)
+```
