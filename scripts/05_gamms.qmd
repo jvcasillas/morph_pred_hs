@@ -337,7 +337,7 @@ gamm_log_bi_stress <- brm(
 #| label: group-comparison-plot
 #| out.width: "100%"
 #| fig.height: 3.5
-#| fig.cap: "Probability of fixating on target as a function of stress for all three groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent paroxytone ('CANta', green) and oxytone ('canTO', orange) conditions plus 95%, 80%, and 50% credible intervals."
+#| fig.cap: "Probability of fixating on target as a function of stress for all three groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent group trajectories plus 95%, 80%, and 50% credible intervals."
 #| cache: true
 # Full model
 gamm_log_group_stress_draws <- gamm_log_group_stress %>% 
@@ -715,7 +715,7 @@ beta_reg_prof_ox <- bi_4_prop %>%
 #| label: bi-prof-use-heatmap
 #| out.width: "100%"
 #| fig.height: 6
-#| fig.cap: "Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores marginalizing over lexical stress for the bilingual groups."
+#| fig.cap: "Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores for the bilingual groups. The top rows illustrate model estimate for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition."
 #| cache: true
 # plot
 bi_heat_map <- bi_4_prop %>% 

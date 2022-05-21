@@ -31,24 +31,36 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
-<body class="fullcontent">
+<body>
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a href="#take-aways" id="toc-take-aways" class="nav-link active" data-scroll-target="#take-aways"> <span class="header-section-number">1</span> Take-aways</a></li>
+<li><a href="#key-plots" id="toc-key-plots" class="nav-link" data-scroll-target="#key-plots"> <span class="header-section-number">2</span> Key plots</a>
+<ul class="collapse">
+<li><a href="#group-model-no-profuse" id="toc-group-model-no-profuse" class="nav-link" data-scroll-target="#group-model-no-profuse"> <span class="header-section-number">2.1</span> Group model (no prof/use)</a></li>
+<li><a href="#bilinguals-only-profuse" id="toc-bilinguals-only-profuse" class="nav-link" data-scroll-target="#bilinguals-only-profuse"> <span class="header-section-number">2.2</span> Bilinguals only (prof/use)</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 <header id="title-block-header" class="quarto-title-block default">
 
 
 
 
-<div class="quarto-title"><h1 class="title display-7">Morphological predictability - HS: 1.1</h1><p class="subtitle lead">Take-aways</p></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><div>
+<div class="quarto-title"><h1 class="title display-7">Morphological predictability - HS: 1.1</h1><p class="subtitle lead">Summary</p></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><div>
 <p>Joseph V. Casillas</p>
 </div></div></div></div></div><div><div class="quarto-title-meta-heading">Last updated:</div><div class="quarto-title-meta-contents"><p class="date">May 21, 2022</p></div></div></div></header>
+
+<section id="take-aways" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Take-aways</h1>
 <ul>
-<li>The two bilingual groups are essentially equivalent regarding proficiency and use</li>
-</ul>
-<p><img src=".png" class="img-fluid"></p>
-<ul>
-<li>Stress matters: Monolinguals always predict (green line), bilinguals do to some degree, but depends on stress
+<li>The two bilingual groups are essentially equivalent regarding proficiency and use.</li>
+<li>Stress matters: Monolinguals always predict, bilinguals do to some degree, but depends on stress (holding use and proficiency constant)
 <ul>
 <li>HL:
 <ul>
@@ -57,12 +69,115 @@
 </ul></li>
 <li>L2:
 <ul>
-<li>👎🏻Paroxytone (CANta) (most common)</li>
+<li>👍🏻Paroxytone (CANta) (most common)</li>
 <li>👍🏻Oxytone (canTA) (less common)</li>
 </ul></li>
 </ul></li>
+<li>Group differences
+<ul>
+<li>Monolingual time course different from both bilingual groups (they predict sooner) regardless of stress</li>
+<li>HL and L2ers have essentially the same time course with paroxytonic stress, but L2 course is slightly delayed in comparison, the opposite is true for oxytonic stress, i.e., the HL time course is slightly delayed</li>
+<li>L2ers predict more than HL with (less common) oxytonic stress pattern (but still not a lot)</li>
+</ul></li>
+<li>Proficiency, use, and prediction
+<ul>
+<li>HL
+<ul>
+<li>High use individuals always predict in paroxytone condition.</li>
+<li>As use decreases, so does prediction</li>
+<li>Marginalizing over stress, prediction is pretty good across the board</li>
+<li>For oxytonic stress condition, only high use/high prof individuals predict</li>
+<li>Unexplained weirdness… in oxytone condition low prof/low use predicts higher (not sure about this)</li>
+</ul></li>
+<li>L2
+<ul>
+<li>Generally use is less important</li>
+<li>Higher proficiency associated with higher prediction</li>
+<li>Lowest overall prediction in paroxytone condition</li>
+</ul></li>
+</ul></li>
 </ul>
+</section>
+<section id="key-plots" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Key plots</h1>
+<section id="group-model-no-profuse" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="group-model-no-profuse"><span class="header-section-number">2.1</span> Group model (no prof/use)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../docs/scripts/02_eda_prof_use_files/figure-html/eda-prof-use-models-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Estimated marginal mean difference between HL and L2 groups for standardized <em>use</em> and <em>proficiency</em>. The blue vertical bar represents a region of practical equivalence (ROPE) of ±0.1.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../docs/scripts/03_tidy_eyetracking_data_files/figure-html/checks-fixes-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Time course of raw arget fixation data as a function of stress condition (paroxytone, oxytone) for monolingual, HL, and L2 groups. Transparent ribbons represent 99% bootstrapped condifence intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../docs/scripts/05_gamms_files/figure-html/group-comparison-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Probability of fixating on target as a function of stress for all three groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent group trajectories plus 95%, 80%, and 50% credible intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../docs/scripts/05_gamms_files/figure-html/group-diff-smooths-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../docs/scripts/05_gamms_files/figure-html/group-prediction-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Proportion of target fixations 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. The vertical dotted line marks chance (50%) surrounded by a ±1% region of practical equivalence (ROPE). Density mass of the posterior distribution that falls within the ROPE is discolored (pinkish).</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bilinguals-only-profuse" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="bilinguals-only-profuse"><span class="header-section-number">2.2</span> Bilinguals only (prof/use)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../docs/scripts/05_gamms_files/figure-html/bi-comparison-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Probability of fixating on target as a function of stress for the bilingual groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent paroxytone (‘CANta’, green) and oxytone (‘canTO’, orange) conditions plus 95%, 80%, and 50% credible intervals. Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../docs/scripts/05_gamms_files/figure-html/bi-prof-use-heatmap-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores for the bilingual groups. The top rows illustrate model estimate for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 
+</section>
+</section>
 </main>
 <!-- /main column -->
 <script type="application/javascript">

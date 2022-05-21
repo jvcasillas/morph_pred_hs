@@ -1,25 +1,129 @@
 ---
 title: "{{< var title >}}: {{< var version >}}"
-subtitle: "Take-aways"
+subtitle: "Summary"
 author: "{{< var author.name >}}"
 date: "`r Sys.Date()`"
 format:
   html: default
   pdf: default
   gfm: default
+execute:
+  echo: false
 ---
 
-- The two bilingual groups are essentially equivalent regarding proficiency and use
+```{r}
+#| label: libs
+#| include: false
+library("knitr")
+library("here")
+```
+
+
+# Take-aways
+
+- The two bilingual groups are essentially equivalent regarding proficiency and use.
 - Stress matters: Monolinguals always predict, bilinguals do to some degree, but depends on stress (holding use and proficiency constant)
   - HL: 
     - 👍🏽Paroxytone (CANta) (most common)
     - 👎🏽Oxytone (canTA) (less common)
   - L2: 
-    - 👎🏻Paroxytone (CANta) (most common)
+    - 👍🏻Paroxytone (CANta) (most common)
     - 👍🏻Oxytone (canTA) (less common)
 - Group differences
   - Monolingual time course different from both bilingual groups (they predict sooner) regardless of stress
-  - HL and L2ers are essentially the same with paroxytonic stress
+  - HL and L2ers have essentially the same time course with paroxytonic stress, but L2 course is slightly delayed in comparison, the opposite is true for oxytonic stress, i.e., the HL time course is slightly delayed
   - L2ers predict more than HL with (less common) oxytonic stress pattern (but still not a lot)
 - Proficiency, use, and prediction
-  - Marginalizing over stress, 
+  - HL
+    - High use individuals always predict in paroxytone condition. 
+    - As use decreases, so does prediction
+    - Marginalizing over stress, prediction is pretty good across the board
+    - For oxytonic stress condition, only high use/high prof individuals predict
+    - Unexplained weirdness... in oxytone condition low prof/low use predicts higher (not sure about this)
+  - L2
+    - Generally use is less important
+    - Higher proficiency associated with higher prediction
+    - Lowest overall prediction in paroxytone condition
+
+# Key plots
+
+## Group model (no prof/use)
+
+```{r}
+#| label: prof-use-eda
+#| out.width: "100%"
+#| fig.height: 3.5
+#| fig.cap: "Estimated marginal mean difference between HL and L2 groups for standardized *use* and *proficiency*. The blue vertical bar represents a region of practical equivalence (ROPE) of &pm;0.1."
+include_graphics(
+  here("docs", "scripts", "02_eda_prof_use_files", "figure-html", 
+    "eda-prof-use-models-1.png")
+)
+```
+
+```{r}
+#| label: raw-et-data
+#| out.width: "100%"
+#| fig.height: 3.5
+#| fig.cap: "Time course of raw arget fixation data as a function of stress condition (paroxytone, oxytone) for monolingual, HL, and L2 groups. Transparent ribbons represent 99% bootstrapped condifence intervals."
+include_graphics(
+  here("docs", "scripts", "03_tidy_eyetracking_data_files", "figure-html", 
+    "checks-fixes-1.png")
+)
+```
+
+```{r}
+#| label: group-comparison-plot
+#| out.width: "100%"
+#| fig.height: 3.5
+#| fig.cap: "Probability of fixating on target as a function of stress for all three groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent group trajectories plus 95%, 80%, and 50% credible intervals."
+include_graphics(
+  here("docs", "scripts", "05_gamms_files", "figure-html", 
+    "group-comparison-plot-1.png")
+)
+```
+
+```{r}
+#| label: group-diff-smooths-plot
+#| out.width: "100%"
+#| fig.height: 6
+#| fig.cap: "Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals."
+include_graphics(
+  here("docs", "scripts", "05_gamms_files", "figure-html", 
+    "group-diff-smooths-plot-1.png")
+)
+```
+
+```{r}
+#| label: group-prediction-plot
+#| out.width: "100%"
+#| fig.height: 3.5
+#| fig.cap: "Proportion of target fixations 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions. The vertical dotted line marks chance (50%) surrounded by a &pm;1% region of practical equivalence (ROPE). Density mass of the posterior distribution that falls within the ROPE is discolored (pinkish)."
+include_graphics(
+  here("docs", "scripts", "05_gamms_files", "figure-html", 
+    "group-prediction-plot-1.png")
+)
+```
+
+## Bilinguals only (prof/use)
+
+```{r}
+#| label: bi-comparison-plot
+#| out.width: "100%"
+#| fig.height: 6
+#| fig.cap: "Probability of fixating on target as a function of stress for the bilingual groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent paroxytone ('CANta', green) and oxytone ('canTO', orange) conditions plus 95%, 80%, and 50% credible intervals. Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals."
+include_graphics(
+  here("docs", "scripts", "05_gamms_files", "figure-html", 
+    "bi-comparison-plot-1.png")
+)
+```
+
+```{r}
+#| label: bi-prof-use-heatmap
+#| out.width: "100%"
+#| fig.height: 6
+#| fig.cap: "Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores for the bilingual groups. The top rows illustrate model estimate for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition."
+include_graphics(
+  here("docs", "scripts", "05_gamms_files", "figure-html", 
+    "bi-prof-use-heatmap-1.png")
+)
+```
