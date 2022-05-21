@@ -4,6 +4,7 @@ subtitle: "TOC"
 author: "{{< var author.name >}}"
 date: "`r Sys.Date()`"
 format:
+  gfm: default
   html: default
   pdf: default
 ---
