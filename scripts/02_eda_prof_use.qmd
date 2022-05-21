@@ -1,0 +1,260 @@
+---
+title: "{{< var title >}}: {{< var version >}}"
+subtitle: "EDA - proficiency/use"
+author: "{{< var author.name >}}"
+date: "`r Sys.Date()`"
+format:
+  html: default
+  pdf: default
+---
+
+```{r}
+#| label: load-packages
+source(here::here("scripts", "00_libraries.R"))
+source(here::here("scripts", "01_helpers.R"))
+```
+
+```{r}
+#| label: load-prof-use-data
+prof_use_temp <- read_xlsx(
+  here("data", "raw",  "HS_L2_used_blc_V2.xlsx")
+  ) %>% 
+  rename(id = Participant, prof = dele, use = `span_week_%`)
+```
+
+
+```{r}
+#| label: tidy-clean-up
+# Create heritage and L2 groups 
+# Standardize proficiency
+prof_use <- prof_use_temp %>% 
+  mutate(group = case_when(
+    Type == "advanced_heritage" ~ "hl", 
+    Type == "intermediate_heritage" ~ "hl", 
+    TRUE ~ "l2"), 
+    prof_p = prof / 56, 
+    use_p = use / 100, 
+    prof_perc = prof_p * 100, 
+    use_perc = use_p * 100, 
+    prof_z = (prof_perc - mean(prof_perc)) / sd(prof_perc), 
+    use_z = (use_perc - mean(use_perc)) / sd(use_perc)
+  )
+  
+```
+
+```{r}
+#| label: eda-prof-use-plots
+
+prof_use %>% 
+  ggplot(., aes(x = use_p, y = prof_p, color = group)) + 
+    geom_point() + 
+    coord_cartesian(ylim = c(0,1), xlim = c(0, 1))
+
+```
+
+It looks pretty evenly distributed, though perhaps there is more variability in the L2 group. 
+
+```{r}
+#| label: prof-use-descriptives
+# Check mean (SD) for each TYPE
+prof_use %>% 
+  group_by(Type) %>% 
+  summarize(across(c("prof_p", "use_p"), 
+    list(mean = mean, sd = sd)))
+
+# Might be able to balance groups by removing intermediate 
+# heritage with high use
+prof_use %>% 
+  filter(Type == "intermediate_heritage") %>% 
+  arrange(desc(use_p))
+
+# There are three in the 70+ % range
+# We'll start there
+prof_use %>% 
+  filter(!(id %in% c("ihs24", "ihs13", "ihs18"))) %>% 
+  group_by(Type) %>% 
+  summarize(across(c("prof_p", "use_p"), 
+    list(mean = mean, sd = sd)))
+
+# They are closer now. We can also take out a few of the lower L2 use
+prof_use %>% 
+  filter(Type == "intermediate_l2") %>% 
+  arrange(use_p)
+
+# There are three in the 15% range
+# We'll start there
+prof_use %>% 
+  filter(!(id %in% c("ihs24", "ihs13", "ihs18")), 
+         !(id %in% c("ies09", "ies26", "ies29"))) %>% 
+  group_by(Type) %>% 
+  summarize(across(c("prof_p", "use_p"), 
+    list(mean = mean, sd = sd)))
+
+prof_use %>% 
+  filter(Type == "advanced_heritage") %>% 
+  arrange(desc(use_p))
+
+prof_use %>% 
+  filter(!(id %in% c("ihs24", "ihs13", "ihs18")), 
+         !(id %in% c("ahs12", "ahs03")), 
+         !(id %in% c("ies09", "ies26", "ies29"))) %>% 
+  group_by(group) %>% 
+  summarize(across(c("prof_p", "use_p"), 
+    list(mean = mean, sd = sd)))
+
+# IDs to drop
+remove <- c(
+  "ihs24", "ihs13", "ihs18", 
+  "ahs12", "ahs03", 
+  "ies09", "ies26", "ies29"
+  )
+
+prof_use_final <- prof_use %>% 
+  filter(!(id %in% remove)) %>% 
+  mutate(prof_z = (prof_perc - mean(prof_perc)) / sd(prof_perc), 
+    use_z = (use_perc - mean(use_perc)) / sd(use_perc))
+
+```
+
+We now have candidates to remove. 
+We will do a few formal tests to look at equivalence in proficiency and use with and without them. 
+
+```{r}
+#| label: eda-prof-use-models
+# Fit models will all participants
+
+model_formula <- bf(
+  prop ~ group, 
+  phi  ~ group 
+  )
+
+prof_with <- brm(
+  formula = model_formula, 
+  family = Beta(), 
+  data = mutate(prof_use, prop = prof / 56), 
+  file = here("models", "eda_prof_use", "prof_with")
+  )
+
+use_with <- brm(
+  formula = model_formula, 
+  family = Beta(), 
+  data = mutate(prof_use, prop = use / 100), 
+  file = here("models", "eda_prof_use", "use_with")
+  )
+
+prof_wo <- brm(
+  formula = model_formula, 
+  family = Beta(), 
+  data = mutate(prof_use_final, prop = prof / 56), 
+  file = here("models", "eda_prof_use", "prof_wo")
+  )
+
+use_wo <- brm(
+  formula = model_formula, 
+  family = Beta(), 
+  data = mutate(prof_use_final, prop = use / 100), 
+  file = here("models", "eda_prof_use", "use_wo")
+  )
+
+prof_contrast <- prof_wo %>% 
+  emmeans(spec = ~ group, 
+    at = list(group = c("l2", "hl")), 
+    epred = TRUE) %>% 
+  contrast(method = "pairwise") %>% 
+  gather_emmeans_draws() %>% 
+  mutate(metric = "prof")
+
+use_contrast <- use_wo %>% 
+  emmeans(spec = ~ group, 
+    at = list(group = c("l2", "hl")), 
+    epred = TRUE) %>% 
+  contrast(method = "pairwise") %>% 
+  gather_emmeans_draws() %>% 
+  mutate(metric = "use")
+
+use_prof_desc <- bind_rows(
+  bind_cols(x = 0.15, y = 1.2, 
+    metric = "Proficiency", 
+    median_hdi(prof_contrast, .value), 
+    ROPE = rope(prof_contrast$.value, ci_method = "HDI")$ROPE_Percentage,
+    PD = p_direction(prof_contrast$.value)[[1]]
+    ), 
+  bind_cols(x = -0.3, y = 2.2, 
+    metric = "Use", 
+    median_hdi(use_contrast, .value), 
+    ROPE = rope(use_contrast$.value, ci_method = "HDI")$ROPE_Percentage,
+    PD = p_direction(use_contrast$.value)[[1]]
+    )
+  ) %>% 
+  mutate(across(c(".value", ".lower", ".upper", "PD"), 
+    ~ round(.x, digits = 2))) %>% 
+  transmute(x, y, metric, contrast, 
+    out = glue("β = {.value} [{.lower}, {.upper}]\nPD = {PD}, ROPE = {ROPE}"))
+
+bind_rows(prof_contrast, use_contrast) %>% 
+  mutate(ylab = if_else(metric == "use", "Use", "Proficiency")) %>% 
+  ggplot(., aes(x = .value, y = ylab, fill = stat(abs(x) > 0.1))) + 
+    geom_tile(data = tibble(
+      ylab = "Proficiency", value = 0, lower = -0.1, upper = 0.1
+      ),
+      aes(x = value, width = lower - upper),
+      alpha = 0.1, height = Inf, fill = "#31688EFF") +
+    stat_dotsinterval(quantiles = 100, point_interval = "median_hdi", 
+      show.legend = F, pch = 21, point_fill = "white") +
+    scale_fill_manual(values = c("grey", "#cc0033")) + 
+    coord_cartesian(xlim = c(-0.3, 0.3)) + 
+    geom_text(data = use_prof_desc, aes(x = x, y = y, label = out), 
+      hjust = 0, size = 3) +
+    labs(y = NULL, x = "Marginal mean difference\n(L2 - HL)") + 
+    theme(axis.text.y = element_text(angle = 90, hjust = 0.5))
+```
+
+```{r}
+#| label: eda-prof-use-final-descriptives
+n_groups <- prof_use_final %>% 
+  group_by(group) %>% 
+  summarize(n = n_distinct(id))
+
+tab_prof_use_desc <- prof_use_final %>% 
+  group_by(group) %>% 
+  summarize(across(c("prof_p", "use_p"), 
+    list(mean = mean, sd = sd))) %>% 
+  mutate_if(is.numeric, specify_decimal, k = 2) %>% 
+  left_join(., n_groups, by = "group") %>% 
+  mutate(Proficiency = glue("{prof_p_mean} [{prof_p_sd}]"), 
+    Use = glue("{use_p_mean} [{use_p_sd}]")) %>% 
+  transmute(Group = group, n, Proficiency, Use) %>% 
+  mutate(Group = str_to_upper(Group)) %>% 
+  write_csv(here("tables", "tab_prof_use_desc.csv"))
+
+tab_prof_use_desc %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "r", "r", "r"), 
+    caption = "Average use and proficiency for L2 and heritage learners.")
+
+tab_use_prof_desc_mod <- use_prof_desc %>% 
+  select(metric:out) %>% 
+  separate(out, into = c("HDI", "PD"), sep = "\n") %>% 
+  separate(PD, into = c("PD", "ROPE"), sep = ",") %>% 
+  mutate(contrast = str_to_upper(contrast), 
+    HDI = str_remove(HDI, "β = "), 
+    HDI = str_replace_all(HDI, "-", "\U2212"), 
+    PD = str_remove(PD, "PD = "), 
+    ROPE = str_remove(ROPE, "ROPE = "), 
+    ROPE = str_remove(ROPE, " ")) %>% 
+  select(Metric = metric, Contrast = contrast, HDI:ROPE) %>% 
+  write_csv(here("tables", "tab_prof_use_mod.csv"))
+
+tab_use_prof_desc_mod %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r"), 
+    caption = "Marginal mean difference beween L2 and heritage leareners for use and proficiency.")
+```
+
+```{r}
+#| label: save-final-use-prof-dataframe
+prof_use %>% 
+  mutate(remove = if_else(id %in% remove, 1, 0)) %>% 
+  write_csv(here("data", "tidy", "prof_use.csv"))
+```
+

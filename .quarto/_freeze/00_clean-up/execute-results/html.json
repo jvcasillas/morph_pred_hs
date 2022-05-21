@@ -1,0 +1,16 @@
+{
+  "hash": "ea999d2068a9ace291468cc11290f4f8",
+  "result": {
+    "markdown": "---\ntitle: \"Morphological predictability - HS\"\nsubtitle: \"Data file clean-up\"\nauthor: \"Joseph V. Casillas\"\ndate: \"2022-05-08\"\nformat: html\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(\"here\")\nlibrary(\"dplyr\")\nlibrary(\"tidyr\")\nlibrary(\"purrr\")\nlibrary(\"ggplot2\")\nlibrary(\"readr\")\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# Load data\ndat_10ms <- read_csv(here(\"data\", \"det_10ms_onset_2syllable.csv\")) \ndat_50ms <- read_csv(here(\"data\", \"det_50ms_onset_syllable.csv\"))  \n\n# Check number of participants\nids_10ms <- dat_10ms %>% pull(participant) %>% unique()\nids_50ms <- dat_50ms %>% pull(participant) %>% unique()\n\nlength(ids_10ms) == length(ids_50ms)\n```\n\n::: {.cell-output-stdout}\n```\n[1] FALSE\n```\n:::\n\n```{.r .cell-code}\nlength(ids_50ms) - length(ids_10ms)  \n```\n\n::: {.cell-output-stdout}\n```\n[1] 2\n```\n:::\n\n```{.r .cell-code}\n# The 50ms df has 2 more participants, so we need to find out who is \n# missing from the 10ms data\ndat_50ms %>% \n  filter(!(participant %in% ids_10ms)) %>% \n  pull(participant) %>% \n  unique\n```\n\n::: {.cell-output-stdout}\n```\n[1] \"ies15\" \"mon01\"\n```\n:::\n\n```{.r .cell-code}\n# dat_10ms doesn't include ies15 or mon01\ndat_10ms %>% filter(participant %in% c(\"ies15\", \"mon01\"))\n```\n\n::: {.cell-output-stdout}\n```\n# A tibble: 0 × 21\n# … with 21 variables: participant <chr>, target <chr>, bin <dbl>,\n#   noun_transparency <chr>, structure <chr>, gender <chr>, target_count <dbl>,\n#   target_prop <dbl>, eLog <dbl>, wts <dbl>, landmark <chr>, lm_bin <dbl>,\n#   t_onset <lgl>, time_zero <dbl>, group <chr>, DELE <dbl>, es_pc_week <dbl>,\n#   ospan_en_val <dbl>, ospan_en_sd <dbl>, ospan_es_val <dbl>,\n#   ospan_es_sd <dbl>\n```\n:::\n\n```{.r .cell-code}\n# So we will filter them out of dat_50ms to have the same number of \n# participants in each dataframe\n```\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndat_10ms %>% \n  group_by(participant) %>% \n  group_walk(~ write_csv(.x, \n    here(\"data\", \"by_id_10ms\", \n      paste0(.y$participant, \"_10ms_onset_2syllable.csv\"))))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ndat_50ms %>% \n  filter(!(participant %in% c(\"ies15\", \"mon01\"))) %>% \n  group_by(participant) %>% \n  group_walk(~ write_csv(.x, \n    here(\"data\", \"by_id_50ms\", \n      paste0(.y$participant, \"_50ms_onset_syllable.csv\"))))\n```\n:::",
+    "supporting": [
+      "00_clean-up_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

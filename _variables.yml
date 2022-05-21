@@ -1,0 +1,14 @@
+version: 1.1
+
+title: Morphological predictability - HS
+
+author:
+  name: Joseph V. Casillas
+  url: https://www.jvcasillas.com
+  affiliation: Rutgers University
+
+email:
+  info: joseph.casillas@rutgers.edu
+
+engine:
+  knitr: "[Knitr](<https://yihui.name/knitr>)"

@@ -1,0 +1,30 @@
+project:
+  output-dir: _output
+
+toc: true
+number-sections: true
+bibliography: references.bib  
+language: 
+  title-block-published: "Last updated:"
+
+format:
+  html:
+    html-math-method: katex
+    page-layout: article
+    code-fold: show
+  pdf:
+    documentclass: report
+    margin-left: 30mm
+    margin-right: 30mm
+
+theme:
+  light: flatly
+  dark: darkly
+
+execute:
+  fig.retina: 2 
+  echo: true
+  message: false
+  warning: false
+
+editor: source

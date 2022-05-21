@@ -1,0 +1,16 @@
+{
+  "hash": "76c3bb41f75f943521b5600c018c6aea",
+  "result": {
+    "markdown": "---\ntitle: \"Morphological predictability - HS\"\nsubtitle: \"Load data\"\nauthor: \"Joseph V. Casillas\"\ndate: \"2022-05-08\"\nformat: html\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsource(here::here(\"scripts\", \"00_libraries.R\"))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ndat_10ms <- dir_ls(path = here(\"data\", \"by_id_10ms\"), regexp = \"\\\\.csv$\") %>%\n  as_tibble() %>% \n  pull() %>% \n  map_dfr(read_csv, id = \"source\") %>% \n  separate(source, into = c(\"path\", \"id\", \"trash\"), \n    sep = c(nchar(here(\"data\", \"by_id_10ms\")) + 1, \n            nchar(here(\"data\", \"by_id_10ms\")) + 6)) %>% \n  select(-path, -trash)\n\ndat_50ms <- dir_ls(path = here(\"data\", \"by_id_50ms\"), regexp = \"\\\\.csv$\") %>%\n  as_tibble() %>% \n  pull() %>% \n  map_dfr(read_csv, id = \"source\") %>% \n  separate(source, into = c(\"path\", \"id\", \"trash\"), \n    sep = c(nchar(here(\"data\", \"by_id_10ms\")) + 1, \n            nchar(here(\"data\", \"by_id_10ms\")) + 6)) %>% \n  select(-path, -trash)\n```\n:::",
+    "supporting": [
+      "02_load_data_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

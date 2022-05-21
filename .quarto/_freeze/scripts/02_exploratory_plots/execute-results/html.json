@@ -1,0 +1,14 @@
+{
+  "hash": "81bae00f727e35775e2a8723a36b347f",
+  "result": {
+    "markdown": "---\ntitle: \"Morphological predictability - HS\"\nsubtitle: \"Exploratory plots\"\nauthor: \"Joseph V. Casillas\"\ndate: \"2022-05-08\"\nformat: html\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nsource(here::here(\"scripts\", \"00_libraries.R\"))\n```\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

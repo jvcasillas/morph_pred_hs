@@ -1,0 +1,14 @@
+{
+  "hash": "7fd32359bba2fe635b07f514d3157cf2",
+  "result": {
+    "markdown": "---\ntitle: \"{{< var title >}}: {{< var version >}}\"\nsubtitle: \"Load data\"\nauthor: \"{{< var author.name >}}\"\ndate: \"2022-05-15\"\nformat:\n  html: default\n  pdf: default\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Load libraries and helpers\nsource(here::here(\"scripts\", \"00_libraries.R\"))\nsource(here::here(\"scripts\", \"01_helpers.R\"))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# Load individual data frames\nstress_50 <- dir_ls(path = here(\"data\", \"tidy\", \"by_id_50ms\"), \n  regexp = \"\\\\.csv$\") %>%\n  as_tibble() %>% \n  pull() %>% \n  map_dfr(read_csv, id = \"id\") %>% \n  separate(id, into = c(\"trash\", \"id\"), \n    sep = here(\"data\", \"tidy\", \"by_id_50ms/\")) %>% \n  mutate(id = str_remove(id, \"_stress_50ms.csv\")) %>% \n  select(-trash)\n```\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}
