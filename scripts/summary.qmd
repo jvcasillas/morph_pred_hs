@@ -18,8 +18,9 @@ library("knitr")
 library("here")
 ```
 
+\clearpage
 
-# Take-aways
+## Take-aways
 
 - The two bilingual groups are essentially equivalent regarding proficiency and use.
 - Stress matters: Monolinguals always predict, bilinguals do to some degree, but depends on stress (holding use and proficiency constant)
