@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.194">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Joseph V. Casillas">
+  <meta name="dcterms.date" content="2022-05-22">
+  <title>Morphological predictability - HS: 1.1</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="06_beta_reg_files/libs/clipboard/clipboard.min.js"></script>
+  <script src="06_beta_reg_files/libs/quarto-html/quarto.js"></script>
+  <script src="06_beta_reg_files/libs/quarto-html/popper.min.js"></script>
+  <script src="06_beta_reg_files/libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="06_beta_reg_files/libs/quarto-html/anchor.min.js"></script>
+  <link href="06_beta_reg_files/libs/quarto-html/tippy.css" rel="stylesheet">
+  <link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="06_beta_reg_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="06_beta_reg_files/libs/quarto-html/quarto-syntax-highlighting-dark.css">
+  <script src="06_beta_reg_files/libs/bootstrap/bootstrap.min.js"></script>
+  <link href="06_beta_reg_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="06_beta_reg_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="06_beta_reg_files/libs/bootstrap/bootstrap-dark.min.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"> <span class="header-section-number">1</span> Setup</a>
+<ul class="collapse">
+<li><a href="#load-libraries-helpers-and-data" id="toc-load-libraries-helpers-and-data" class="nav-link" data-scroll-target="#load-libraries-helpers-and-data"> <span class="header-section-number">1.1</span> Load libraries, helpers, and data</a></li>
+</ul></li>
+<li><a href="#bilingual-model" id="toc-bilingual-model" class="nav-link" data-scroll-target="#bilingual-model"> <span class="header-section-number">2</span> Bilingual model</a></li>
+</ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block default">
+
+
+
+
+<div class="quarto-title"><h1 class="title display-7">Morphological predictability - HS: 1.1</h1><p class="subtitle lead">Beta regression</p></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><div>
+<p>Joseph V. Casillas</p>
+</div></div></div></div></div><div><div class="quarto-title-meta-heading">Last updated:</div><div class="quarto-title-meta-contents"><p class="date">May 22, 2022</p></div></div></div></header>
+
+<section id="setup" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Setup</h1>
+<section id="load-libraries-helpers-and-data" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="load-libraries-helpers-and-data"><span class="header-section-number">1.1</span> Load libraries, helpers, and data</h2>
+<p>Load everything we need for the analyses.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and helpers</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"scripts"</span>, <span class="st">"00_libraries.R"</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"scripts"</span>, <span class="st">"01_helpers.R"</span>))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"scripts"</span>, <span class="st">"04_load_data.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="bilingual-model" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Bilingual model</h1>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create subset of data at target syllable offset (time_zero == 4)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and calculate mean/se of target fixations for each group in each </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># stress condition</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>bi_4_prop <span class="ot">&lt;-</span> stress_50 <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">!=</span> <span class="st">"Monolingual"</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    time_zero <span class="sc">==</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id, group, stress, use_z, prof_z) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg =</span> <span class="fu">mean</span>(target_prop), <span class="at">se =</span> <span class="fu">std_err</span>(target_prop), </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">test_max =</span> avg <span class="sc">+</span> se, <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group_sum =</span> <span class="fu">if_else</span>(group <span class="sc">==</span> <span class="st">"HL"</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">stress_sum =</span> <span class="fu">if_else</span>(stress <span class="sc">==</span> <span class="st">"Paroxytone"</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model formula</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>beta_reg_formula <span class="ot">&lt;-</span> <span class="fu">bf</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">zero_inflated_beta</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">link =</span> <span class="st">"logit"</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">link_phi =</span> <span class="st">"log"</span>, </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">link_zi =</span> <span class="st">"logit"</span>), </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  avg <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    group_sum <span class="sc">*</span> stress_sum <span class="sc">*</span> use_z <span class="sc">*</span> prof_z <span class="sc">+</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span> <span class="sc">+</span> stress_sum <span class="sc">|</span> id), </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  phi <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> id), </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  zi <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> id)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Get model default priors</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">get_prior</span>(</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> beta_reg_formula, </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> bi_4_prop</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(prior, class, coef) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"pandoc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">prior</th>
+<th style="text-align: left;">class</th>
+<th style="text-align: left;">coef</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">group_sum</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">group_sum:prof_z</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">group_sum:stress_sum</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">group_sum:stress_sum:prof_z</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">group_sum:stress_sum:use_z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">group_sum:stress_sum:use_z:prof_z</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">group_sum:use_z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">group_sum:use_z:prof_z</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">prof_z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">stress_sum</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">stress_sum:prof_z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">stress_sum:use_z</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">stress_sum:use_z:prof_z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">use_z</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">use_z:prof_z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">lkj(1)</td>
+<td style="text-align: left;">cor</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">cor</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">student_t(3, 0, 2.5)</td>
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">student_t(3, 0, 2.5)</td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;">Intercept</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;">stress_sum</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">student_t(3, 0, 2.5)</td>
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">student_t(3, 0, 2.5)</td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;">Intercept</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">logistic(0, 1)</td>
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">student_t(3, 0, 2.5)</td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;">Intercept</td>
+</tr>
+</tbody>
+</table>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set priors</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>beta_reg_prior <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">class =</span> <span class="st">"Intercept"</span>), </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">class =</span> <span class="st">"Intercept"</span>, <span class="at">dpar =</span> <span class="st">"phi"</span>), </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prior</span>(<span class="fu">logistic</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">class =</span> <span class="st">"Intercept"</span>, <span class="at">dpar =</span> <span class="st">"zi"</span>), </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>, <span class="fl">0.2</span>), <span class="at">class =</span> <span class="st">"b"</span>), </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prior</span>(<span class="fu">student_t</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="fl">2.5</span>), <span class="at">class =</span> <span class="st">"sd"</span>), </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prior</span>(<span class="fu">lkj</span>(<span class="dv">1</span>), <span class="at">class =</span> <span class="st">"cor"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample priors</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>beta_reg_prior_predictive_check <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> beta_reg_formula, </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">prior =</span> beta_reg_prior, </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> bi_4_prop, </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">4</span>, <span class="at">backend =</span> <span class="st">"cmdstanr"</span>, </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_prior =</span> <span class="st">"only"</span>, </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"models"</span>, <span class="st">"beta_reg"</span>, <span class="st">"beta_reg_prior_predictive_check"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate from priors and plot</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>prior_pred_heatmap <span class="ot">&lt;-</span> bi_4_prop <span class="sc">%&gt;%</span> </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand</span>(<span class="at">id =</span> <span class="st">"new"</span>, group_sum, stress_sum, </span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">prof_z =</span> <span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">use_z =</span> <span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(beta_reg_prior_predictive_check, </span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow_new_levels =</span> T, <span class="at">ndraws =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> prof_z, <span class="at">y =</span> use_z, <span class="at">fill =</span> .epred) <span class="sc">+</span> </span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(stress_sum <span class="sc">~</span> group_sum) <span class="sc">+</span> </span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span> </span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">expand =</span> F)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>beta_reg_group_stress <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> beta_reg_formula, </span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">prior =</span> beta_reg_prior, </span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> bi_4_prop, </span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">4</span>, <span class="at">backend =</span> <span class="st">"cmdstanr"</span>, <span class="at">threads =</span> <span class="fu">threading</span>(<span class="dv">2</span>), </span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter =</span> <span class="dv">12000</span>, <span class="at">warmup =</span> <span class="dv">2000</span>, <span class="at">thin =</span> <span class="dv">10</span>, </span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">list</span>(<span class="at">adapt_delta =</span> <span class="fl">0.9999</span>, <span class="at">max_treedepth =</span> <span class="dv">15</span>), </span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">here</span>(<span class="st">"models"</span>, <span class="st">"beta_reg"</span>, <span class="st">"beta_reg_group_stress"</span>)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-hash="06_beta_reg_cache/html/bi-prof-use-plot_4e93541d2eed0153857a25a96e031ca6">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>beta_reg_use_parox <span class="ot">&lt;-</span> bi_4_prop <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand</span>(<span class="at">id =</span> <span class="st">"new"</span>, group_sum, <span class="at">stress_sum =</span> <span class="sc">-</span><span class="dv">1</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">prof_z =</span> <span class="dv">0</span>, <span class="at">use_z =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>, <span class="at">length.out =</span> <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(beta_reg_group_stress, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow_new_levels =</span> T, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">re_formula =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_new_levels =</span> <span class="st">"uncertainty"</span>, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ndraws =</span> <span class="dv">200</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(group_sum <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"HL"</span>, <span class="st">"L2"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> use_z, <span class="at">y =</span> .epred, <span class="at">color =</span> group) <span class="sc">+</span> </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="fu">interaction</span>(group, .draw)), <span class="at">alpha =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> median, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors[<span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"P(Target fixation)"</span>, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.85</span>), </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>beta_reg_prof_parox <span class="ot">&lt;-</span> bi_4_prop <span class="sc">%&gt;%</span> </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand</span>(<span class="at">id =</span> <span class="st">"new"</span>, group_sum, <span class="at">stress_sum =</span> <span class="sc">-</span><span class="dv">1</span>, </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">prof_z =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>, <span class="at">length.out =</span> <span class="dv">5</span>), <span class="at">use_z =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(beta_reg_group_stress, </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow_new_levels =</span> T, </span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">re_formula =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_new_levels =</span> <span class="st">"uncertainty"</span>, </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">ndraws =</span> <span class="dv">200</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(group_sum <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"HL"</span>, <span class="st">"L2"</span>), </span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">stress =</span> <span class="st">"Paroxytone"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> prof_z, <span class="at">y =</span> .epred, <span class="at">color =</span> group) <span class="sc">+</span> </span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(stress <span class="sc">~</span> .) <span class="sc">+</span> </span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="fu">interaction</span>(group, .draw)), <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> median, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors[<span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(), <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>beta_reg_use_avg <span class="ot">&lt;-</span> bi_4_prop <span class="sc">%&gt;%</span> </span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand</span>(<span class="at">id =</span> <span class="st">"new"</span>, group_sum, <span class="at">stress_sum =</span> <span class="dv">0</span>, </span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">prof_z =</span> <span class="dv">0</span>, <span class="at">use_z =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>, <span class="at">length.out =</span> <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(beta_reg_group_stress, </span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow_new_levels =</span> T, </span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">re_formula =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_new_levels =</span> <span class="st">"uncertainty"</span>, </span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">ndraws =</span> <span class="dv">200</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(group_sum <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"HL"</span>, <span class="st">"L2"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> use_z, <span class="at">y =</span> .epred, <span class="at">color =</span> group) <span class="sc">+</span> </span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="fu">interaction</span>(group, .draw)), <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> median, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors[<span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>beta_reg_prof_avg <span class="ot">&lt;-</span> bi_4_prop <span class="sc">%&gt;%</span> </span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand</span>(<span class="at">id =</span> <span class="st">"new"</span>, group_sum, <span class="at">stress_sum =</span> <span class="dv">0</span>, </span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">prof_z =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>, <span class="at">length.out =</span> <span class="dv">5</span>), <span class="at">use_z =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(beta_reg_group_stress, </span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow_new_levels =</span> T, </span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">re_formula =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_new_levels =</span> <span class="st">"uncertainty"</span>, </span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">ndraws =</span> <span class="dv">200</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(group_sum <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"HL"</span>, <span class="st">"L2"</span>), </span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">stress =</span> <span class="st">"Avg. stress"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> prof_z, <span class="at">y =</span> .epred, <span class="at">color =</span> group) <span class="sc">+</span> </span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(stress <span class="sc">~</span> .) <span class="sc">+</span> </span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="fu">interaction</span>(group, .draw)), <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>      <span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> median, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors[<span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.85</span>), </span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(), <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>beta_reg_use_ox <span class="ot">&lt;-</span> bi_4_prop <span class="sc">%&gt;%</span> </span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand</span>(<span class="at">id =</span> <span class="st">"new"</span>, group_sum, <span class="at">stress_sum =</span> <span class="dv">1</span>, </span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>    <span class="at">prof_z =</span> <span class="dv">0</span>, <span class="at">use_z =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>, <span class="at">length.out =</span> <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(beta_reg_group_stress, </span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow_new_levels =</span> T, </span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>    <span class="at">re_formula =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_new_levels =</span> <span class="st">"uncertainty"</span>, </span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>    <span class="at">ndraws =</span> <span class="dv">200</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(group_sum <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"HL"</span>, <span class="st">"L2"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> use_z, <span class="at">y =</span> .epred, <span class="at">color =</span> group) <span class="sc">+</span> </span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="fu">interaction</span>(group, .draw)), <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>      <span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> median, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors[<span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="st">"z-Use"</span>)</span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>beta_reg_prof_ox <span class="ot">&lt;-</span> bi_4_prop <span class="sc">%&gt;%</span> </span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand</span>(<span class="at">id =</span> <span class="st">"new"</span>, group_sum, <span class="at">stress_sum =</span> <span class="dv">1</span>, </span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">prof_z =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>, <span class="at">length.out =</span> <span class="dv">5</span>), <span class="at">use_z =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(beta_reg_group_stress, </span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow_new_levels =</span> T, </span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>    <span class="at">re_formula =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_new_levels =</span> <span class="st">"uncertainty"</span>, </span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>    <span class="at">ndraws =</span> <span class="dv">200</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(group_sum <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"HL"</span>, <span class="st">"L2"</span>), </span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">stress =</span> <span class="st">"Oxytone"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> prof_z, <span class="at">y =</span> .epred, <span class="at">color =</span> group) <span class="sc">+</span> </span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(stress <span class="sc">~</span> .) <span class="sc">+</span> </span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="fu">interaction</span>(group, .draw)), <span class="at">alpha =</span> <span class="fl">0.05</span>, </span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>      <span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> median, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors[<span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> F) <span class="sc">+</span> </span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">position =</span> <span class="st">"right"</span>) <span class="sc">+</span> </span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="st">"z-Proficiency"</span>) <span class="sc">+</span> </span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.85</span>), </span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(), <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>(beta_reg_use_parox <span class="sc">+</span> beta_reg_prof_parox) <span class="sc">/</span></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>(beta_reg_use_avg <span class="sc">+</span> beta_reg_prof_avg) <span class="sc">/</span></span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>(beta_reg_use_ox <span class="sc">+</span> beta_reg_prof_ox)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06_beta_reg_files/figure-html/bi-prof-use-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Probability of target fixations 200ms after critical syllable offset for bilingual groups. The left panel plots target fixations as a function of normalized <em>use</em> scores while holding proficiency constant at the mean (0) and marginalizing over stress. The right panel plots target fixations as a function of normalized <em>proficiency</em> scores while holding use constant at the mean (0) and marginalizing over stress. Individual lines represent 200 draws from the posterior. The thick lines are the most plausible lines of best fit.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-hash="06_beta_reg_cache/html/bi-prof-use-heatmap_cc8e4dc894b34712f9234125b31a34e0">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>bi_heat_map <span class="ot">&lt;-</span> bi_4_prop <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand</span>(<span class="at">id =</span> <span class="st">"new"</span>, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    group_sum, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">stress_sum =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>), </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">prof_z =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">length.out =</span> <span class="dv">20</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">use_z =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">length.out =</span> <span class="dv">20</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(beta_reg_group_stress, </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow_new_levels =</span> T, </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">re_formula =</span> <span class="cn">NULL</span>, </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_new_levels =</span> <span class="st">"uncertainty"</span>, </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">ndraws =</span> <span class="dv">200</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>bi_heat_map <span class="sc">%&gt;%</span> </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(group_sum <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"HL"</span>, <span class="st">"L2"</span>), </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">stress =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>      stress_sum <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">~</span> <span class="st">"Paroxytone"</span>, </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>      stress_sum <span class="sc">==</span>  <span class="dv">0</span> <span class="sc">~</span> <span class="st">"Avg. stress"</span>, </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Oxytone"</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>      ), </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">stress =</span> <span class="fu">as.factor</span>(stress), </span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">stress =</span> <span class="fu">fct_relevel</span>(stress, <span class="st">"Paroxytone"</span>, <span class="st">"Avg. stress"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> prof_z, <span class="at">y =</span> use_z, <span class="at">fill =</span> .epred) <span class="sc">+</span> </span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(stress <span class="sc">~</span> group) <span class="sc">+</span> </span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">option =</span> <span class="st">"B"</span>) <span class="sc">+</span> </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">expand =</span> F) <span class="sc">+</span> </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"z-Use"</span>, <span class="at">x =</span> <span class="st">"z-Proficiency"</span>) <span class="sc">+</span> </span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_guide</span>(<span class="st">"bottom"</span>, <span class="st">"P(Target fixation)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06_beta_reg_files/figure-html/bi-prof-use-heatmap-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores for the bilingual groups. The top rows illustrate model estimate for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+
+</section>
+</main>
+<!-- /main column -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>

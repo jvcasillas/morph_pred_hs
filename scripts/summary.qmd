@@ -47,7 +47,7 @@ library("here")
 
 # Key plots
 
-## Group model (no prof/use)
+## Prof/use check
 
 ```{r}
 #| label: prof-use-eda
@@ -60,6 +60,8 @@ include_graphics(
 )
 ```
 
+## Raw data
+
 ```{r}
 #| label: raw-et-data
 #| out.width: "100%"
@@ -70,6 +72,8 @@ include_graphics(
     "checks-fixes-1.png")
 )
 ```
+
+## Group model (no prof/use)
 
 ```{r}
 #| label: group-comparison-plot

@@ -1,7 +1,7 @@
 {
-  "hash": "04c60a466884405e36fc6ab51904b195",
+  "hash": "56e06aeb615bd208b323734460a1d172",
   "result": {
-    "markdown": "---\ntitle: \"{{< var title >}}: {{< var version >}}\"\nsubtitle: \"TOC\"\nauthor: \"{{< var author.name >}}\"\ndate: \"2022-05-21\"\nformat:\n  html: default\n  pdf: default\n  gfm: default\n---\n\n1. [Proficiency/use clean up and EDA](https://www.jvcasillas.com/morph_pred_hs/scripts/02_eda_prof_use.html)\n2. [Tidy eye-tracking data](https://www.jvcasillas.com/morph_pred_hs/scripts/03_tidy_eyetracking_data.html)\n3. [Analyses](https://www.jvcasillas.com/morph_pred_hs/scripts/05_gamms.html)\n4. [Take-aways](https://www.jvcasillas.com/morph_pred_hs/scripts/summary.html)",
+    "markdown": "---\ntitle: \"{{< var title >}}: {{< var version >}}\"\nsubtitle: \"TOC\"\nauthor: \"{{< var author.name >}}\"\ndate: \"2022-05-22\"\nformat:\n  html: default\n  pdf: default\n  gfm: default\n---\n\n1. [Proficiency/use clean up and EDA](https://www.jvcasillas.com/morph_pred_hs/scripts/02_eda_prof_use.html)\n2. [Tidy eye-tracking data](https://www.jvcasillas.com/morph_pred_hs/scripts/03_tidy_eyetracking_data.html)\n3. [GAMMs](https://www.jvcasillas.com/morph_pred_hs/scripts/05_gamms.html)\n4. [Beta regression](https://www.jvcasillas.com/morph_pred_hs/scripts/06_beta_reg.html)\n4. [Summary](https://www.jvcasillas.com/morph_pred_hs/scripts/summary.html)\n\nA PDF version of the summary is available [here](https://www.jvcasillas.com/morph_pred_hs/sripts/summary.pdf)",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
