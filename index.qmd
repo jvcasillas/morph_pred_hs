@@ -35,4 +35,4 @@ dir_ls(path = here("docs", "scripts"), regexp = "\\.html$") |>
   dplyr::pull(link)
 ```
 
-A PDF version of the summary is available [here](https://www.jvcasillas.com/morph_pred_hs/sripts/summary.pdf)
+A PDF version of the summary is available [here](https://www.jvcasillas.com/morph_pred_hs/scripts/summary.pdf)
