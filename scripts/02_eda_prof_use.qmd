@@ -189,7 +189,7 @@ use_prof_desc <- bind_rows(
   mutate(across(c(".value", ".lower", ".upper", "PD"), 
     ~ round(.x, digits = 2))) %>% 
   transmute(x, y, metric, contrast, 
-    out = glue("β = {.value} [{.lower}, {.upper}]\nPD = {PD}, ROPE = {ROPE}"))
+    out = glue("β = {.value} [{.lower}, {.upper}]\nROPE = {ROPE}, PD = {PD}"))
 
 bind_rows(prof_contrast, use_contrast) %>% 
   mutate(ylab = if_else(metric == "use", "Use", "Proficiency")) %>% 
@@ -235,15 +235,15 @@ tab_prof_use_desc %>%
 
 tab_use_prof_desc_mod <- use_prof_desc %>% 
   select(metric:out) %>% 
-  separate(out, into = c("HDI", "PD"), sep = "\n") %>% 
-  separate(PD, into = c("PD", "ROPE"), sep = ",") %>% 
+  separate(out, into = c("Estimate", "ROPE"), sep = "\n") %>% 
+  separate(ROPE, into = c("ROPE", "PD"), sep = ",") %>% 
   mutate(contrast = str_to_upper(contrast), 
-    HDI = str_remove(HDI, "β = "), 
-    HDI = str_replace_all(HDI, "-", "\U2212"), 
+    Estimate = str_remove(Estimate, "β = "), 
+    Estimate = str_replace_all(Estimate, "-", "\U2212"), 
     PD = str_remove(PD, "PD = "), 
     ROPE = str_remove(ROPE, "ROPE = "), 
-    ROPE = str_remove(ROPE, " ")) %>% 
-  select(Metric = metric, Contrast = contrast, HDI:ROPE) %>% 
+    PD = str_remove(PD, " ")) %>% 
+  select(Metric = metric, Contrast = contrast, Estimate, ROPE, PD) %>% 
   write_csv(here("tables", "tab_prof_use_mod.csv"))
 
 tab_use_prof_desc_mod %>% 

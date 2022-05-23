@@ -31,6 +31,10 @@ my_colors <- c("#f98e09", "#bc3754", "#57106e")
 # -----------------------------------------------------------------------------
 
 
+
+
+# Writing helpers -------------------------------------------------------------
+
 # Round and format numbers to exactly N digits
 specify_decimal <- function(x, k) {
   out <- trimws(format(round(x, k), nsmall = k))
@@ -59,4 +63,43 @@ center_timecourse <- function(time, marker, event) {
 
 std_err <- function(x) { 
   sd(x) / sqrt(length(x))
+}
+
+# Print values from tibble for article
+pull_from_tib <- function(df, col, row, val) {
+  col <- enquo(col)
+  row <- enquo(row)
+  val <- enquo(val)
+  val <- filter(df, !!col == !!row) %>% pull(!!val)
+  return(val)
+}
+
+# Report estimate from posterior distribution summary
+report_posterior <- function(df, param, is_exp = TRUE, mod = NULL) {
+  
+  if (is_exp == TRUE) {
+    
+    # Extract wanted value from model output
+    est  <- df[df$Parameter == param, "Median"]
+    cis  <- df[df$Parameter == param, "HDI"]
+    rope <- df[df$Parameter == param, "% in ROPE"]
+    mpe  <- df[df$Parameter == param, "MPE"]
+
+    capture.output(
+      paste0("(&beta; = ", est, ", HDI = ", cis, ", ROPE = ", rope, 
+             ", MPE = ", mpe, ")", "\n") %>% 
+        cat()) %>% 
+        paste()
+  } else {
+    # Extract wanted value from model output
+    est  <- df[df$Parameter == param & df$Model == mod, "Median"]
+    cis  <- df[df$Parameter == param & df$Model == mod, "HDI"]
+    mpe  <- df[df$Parameter == param & df$Model == mod, "MPE"]
+
+    capture.output(
+      paste0("(&beta; = ", est, ", HDI = ", cis, ", MPE = ", mpe, ")", 
+             "\n") %>% 
+        cat()) %>% 
+        paste()
+  }
 }

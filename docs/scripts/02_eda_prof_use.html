@@ -4,7 +4,7 @@
   <meta name="generator" content="quarto-0.9.194">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Joseph V. Casillas">
-  <meta name="dcterms.date" content="2022-05-21">
+  <meta name="dcterms.date" content="2022-05-22">
   <title>Morphological predictability - HS: 1.1</title>
   <style>
     code{white-space: pre-wrap;}
@@ -105,7 +105,7 @@
 
 <div class="quarto-title"><h1 class="title display-7">Morphological predictability - HS: 1.1</h1><p class="subtitle lead">EDA - proficiency/use</p></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><div>
 <p>Joseph V. Casillas</p>
-</div></div></div></div></div><div><div class="quarto-title-meta-heading">Last updated:</div><div class="quarto-title-meta-contents"><p class="date">May 21, 2022</p></div></div></div></header>
+</div></div></div></div></div><div><div class="quarto-title-meta-heading">Last updated:</div><div class="quarto-title-meta-contents"><p class="date">May 22, 2022</p></div></div></div></header>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -384,7 +384,7 @@
 <span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">".lower"</span>, <span class="st">".upper"</span>, <span class="st">"PD"</span>), </span>
 <span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(x, y, metric, contrast, </span>
-<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">out =</span> <span class="fu">glue</span>(<span class="st">"β = {.value} [{.lower}, {.upper}]</span><span class="sc">\n</span><span class="st">PD = {PD}, ROPE = {ROPE}"</span>))</span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">out =</span> <span class="fu">glue</span>(<span class="st">"β = {.value} [{.lower}, {.upper}]</span><span class="sc">\n</span><span class="st">ROPE = {ROPE}, PD = {PD}"</span>))</span>
 <span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(prof_contrast, use_contrast) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ylab =</span> <span class="fu">if_else</span>(metric <span class="sc">==</span> <span class="st">"use"</span>, <span class="st">"Use"</span>, <span class="st">"Proficiency"</span>)) <span class="sc">%&gt;%</span> </span>
@@ -463,15 +463,15 @@
 <summary>Code</summary>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>tab_use_prof_desc_mod <span class="ot">&lt;-</span> use_prof_desc <span class="sc">%&gt;%</span> </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(metric<span class="sc">:</span>out) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(out, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"HDI"</span>, <span class="st">"PD"</span>), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(PD, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"PD"</span>, <span class="st">"ROPE"</span>), <span class="at">sep =</span> <span class="st">","</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(out, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"Estimate"</span>, <span class="st">"ROPE"</span>), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(ROPE, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"ROPE"</span>, <span class="st">"PD"</span>), <span class="at">sep =</span> <span class="st">","</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">contrast =</span> <span class="fu">str_to_upper</span>(contrast), </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">HDI =</span> <span class="fu">str_remove</span>(HDI, <span class="st">"β = "</span>), </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">HDI =</span> <span class="fu">str_replace_all</span>(HDI, <span class="st">"-"</span>, <span class="st">"\U2212"</span>), </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Estimate =</span> <span class="fu">str_remove</span>(Estimate, <span class="st">"β = "</span>), </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Estimate =</span> <span class="fu">str_replace_all</span>(Estimate, <span class="st">"-"</span>, <span class="st">"\U2212"</span>), </span>
 <span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">PD =</span> <span class="fu">str_remove</span>(PD, <span class="st">"PD = "</span>), </span>
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ROPE =</span> <span class="fu">str_remove</span>(ROPE, <span class="st">"ROPE = "</span>), </span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ROPE =</span> <span class="fu">str_remove</span>(ROPE, <span class="st">" "</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Metric =</span> metric, <span class="at">Contrast =</span> contrast, HDI<span class="sc">:</span>ROPE) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">PD =</span> <span class="fu">str_remove</span>(PD, <span class="st">" "</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Metric =</span> metric, <span class="at">Contrast =</span> contrast, Estimate, ROPE, PD) <span class="sc">%&gt;%</span> </span>
 <span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="fu">here</span>(<span class="st">"tables"</span>, <span class="st">"tab_prof_use_mod.csv"</span>))</span>
 <span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>tab_use_prof_desc_mod <span class="sc">%&gt;%</span> </span>
@@ -486,9 +486,9 @@
 <tr class="header">
 <th style="text-align: left;">Metric</th>
 <th style="text-align: left;">Contrast</th>
-<th style="text-align: right;">HDI</th>
-<th style="text-align: right;">PD</th>
+<th style="text-align: right;">Estimate</th>
 <th style="text-align: right;">ROPE</th>
+<th style="text-align: right;">PD</th>
 </tr>
 </thead>
 <tbody>
@@ -496,15 +496,15 @@
 <td style="text-align: left;">Proficiency</td>
 <td style="text-align: left;">L2 - HL</td>
 <td style="text-align: right;">0.02 [−0.03, 0.07]</td>
-<td style="text-align: right;">0.77</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">0.77</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Use</td>
 <td style="text-align: left;">L2 - HL</td>
 <td style="text-align: right;">−0.02 [−0.09, 0.05]</td>
-<td style="text-align: right;">0.72</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">0.72</td>
 </tr>
 </tbody>
 </table>

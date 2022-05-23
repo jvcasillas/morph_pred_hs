@@ -5,18 +5,49 @@ author: "{{< var author.name >}}"
 date: "`r Sys.Date()`"
 format:
   html: default
-  pdf: default
-  gfm: default
+  pdf: 
+    documentclass: article
+    fontfamily: libertinus
+    include-in-header:
+       - packages.tex
+tbl-cap-location: bottom
 execute:
   echo: false
 ---
 
 ```{r}
-#| label: libs
+#| label: setup
 #| include: false
+
+# Load libs
 library("knitr")
 library("here")
+
+# Load small data
+source(here::here("scripts", "99_small_data.R"))
+
+# Determine output
+yes_no <- function(affirm = TRUE) {
+  is_tex <- knitr::is_latex_output()
+  if (is_tex == FALSE) { 
+    if (affirm == TRUE) {
+      out <- emojifont::emoji("thumbsup")
+      return(out)
+    } else {
+      out <- emojifont::emoji("thumbsdown")
+      return(out)
+    }
+  } else {
+    if (affirm == TRUE) {
+      return("\\ding{51}")
+    } else {
+      return("\\ding{55}")
+    }
+  }
+}
+
 ```
+
 
 \clearpage
 
@@ -25,11 +56,11 @@ library("here")
 - The two bilingual groups are essentially equivalent regarding proficiency and use.
 - Stress matters: Monolinguals always predict, bilinguals do to some degree, but depends on stress (holding use and proficiency constant)
   - HL: 
-    - 👍🏽Paroxytone (CANta) (most common)
-    - 👎🏽Oxytone (canTA) (less common)
+    - Paroxytone (CANta) (most common): `r yes_no(T)`
+    - Oxytone (canTA) (less common): `r yes_no(F)`
   - L2: 
-    - 👍🏻Paroxytone (CANta) (most common)
-    - 👍🏻Oxytone (canTA) (less common)
+    - Paroxytone (CANta) (most common): `r yes_no(T)`
+    - Oxytone (canTA) (less common): `r yes_no(T)`
 - Group differences
   - Monolingual time course different from both bilingual groups (they predict sooner) regardless of stress
   - HL and L2ers have essentially the same time course with paroxytonic stress, but L2 course is slightly delayed in comparison, the opposite is true for oxytonic stress, i.e., the HL time course is slightly delayed
@@ -46,9 +77,14 @@ library("here")
     - Higher proficiency associated with higher prediction
     - Lowest overall prediction in paroxytone condition
 
-# Key plots
+\clearpage
 
-## Prof/use check
+## Key plots
+
+### Prof/use check
+
+See [Proficiency/use cleaup and EDA](https://www.jvcasillas.com/morph_pred_hs/scripts/02_eda_prof_use.html) for full details. 
+`r xfun::numbers_to_words(subject_stuff$n_removed, cap = T)` of `r subject_stuff$n_total` participants removed to make *use* more comparable between groups. 
 
 ```{r}
 #| label: prof-use-eda
@@ -61,20 +97,22 @@ include_graphics(
 )
 ```
 
-## Raw data
+### Eye-tracking: Raw data
 
 ```{r}
 #| label: raw-et-data
 #| out.width: "100%"
 #| fig.height: 3.5
-#| fig.cap: "Time course of raw arget fixation data as a function of stress condition (paroxytone, oxytone) for monolingual, HL, and L2 groups. Transparent ribbons represent 99% bootstrapped condifence intervals."
+#| fig.cap: "Time course of raw target fixation data as a function of stress condition (paroxytone, oxytone) for monolingual, HL, and L2 groups. Transparent ribbons represent 99% bootstrapped confidence intervals."
 include_graphics(
   here("docs", "scripts", "03_tidy_eyetracking_data_files", "figure-html", 
     "checks-fixes-1.png")
 )
 ```
 
-## Group model (no prof/use)
+### Eye-tracking: Group model (no prof/use)
+
+#### Time course: GAMMs
 
 ```{r}
 #| label: group-comparison-plot
@@ -98,6 +136,8 @@ include_graphics(
 )
 ```
 
+#### Prediction at target offset
+
 ```{r}
 #| label: group-prediction-plot
 #| out.width: "100%"
@@ -109,7 +149,9 @@ include_graphics(
 )
 ```
 
-## Bilinguals only (prof/use)
+### Bilinguals only (prof/use)
+
+#### Time course: GAMMs
 
 ```{r}
 #| label: bi-comparison-plot
@@ -122,6 +164,8 @@ include_graphics(
 )
 ```
 
+#### Prediction at target offset: ZOIDBERG
+
 ```{r}
 #| label: bi-prof-use-heatmap
 #| out.width: "100%"
@@ -132,3 +176,47 @@ include_graphics(
     "bi-prof-use-heatmap-1.png")
 )
 ```
+
+\clearpage
+
+## Write-up
+
+### Method
+
+#### Participants
+
+We included data from `r subject_stuff$n_final` individuals for analysis. 
+There were `r pull_from_tib(subject_stuff$n_group, group, "Monolingual", n)` monolingual participants, `r pull_from_tib(subject_stuff$n_group, group, "HL", n)` heritage speakers, and `r pull_from_tib(subject_stuff$n_group, group, "L2", n)` adult L2 learners. 
+
+The bilingual participants completed language *use* and *proficiency* assessments. 
+We fit the *use* and *proficiency* data to separate Bayesian linear models to assess potential group differences. 
+In both cases, the response variable, use or proficiency score, was a proportion. 
+Thus, we used the beta distribution for the model likelihood with a logit linking function. 
+The models included regularizing, weakly informative priors.^[See [Proficiency/use cleaup and EDA](https://www.jvcasillas.com/morph_pred_hs/scripts/02_eda_prof_use.html) for full details.] 
+We compare the posterior marginal mean difference between groups on both response variables. 
+We established a region of practical equivalence (ROPE) of ±0.1. 
+If, for a given measure, the full range of the 95% highest density interval of the difference estimate falls within the ROPE, we consider there to be compelling evidence that the groups are equivalent. 
+The HL group had an average proficiency score of `r pull_from_tib(prof_use_desc, Group, "HL", Proficiency)` compared to the L2 groups' score of `r pull_from_tib(prof_use_desc, Group, "L2", Proficiency)`. 
+The marginal mean difference was `r pull_from_tib(prof_use_mod, Metric, "Proficiency", Estimate)` and all of the HDI fell within the ROPE. 
+The probability that the effect was positive was `r pull_from_tib(prof_use_mod, Metric, "Proficiency", PD)`. 
+Regarding language use, the HL group had an average score of `r pull_from_tib(prof_use_desc, Group, "HL", Use)` compared to the L2 groups' score of `r pull_from_tib(prof_use_desc, Group, "L2", Use)`. 
+The marginal mean difference was `r pull_from_tib(prof_use_mod, Metric, "Use", Estimate)` and, again, all of the HDI fell within the ROPE. 
+The probability that the effect was negative was `r pull_from_tib(prof_use_mod, Metric, "Use", PD)`. 
+Taken together, we are confident that the groups do not differ in any meaningful way with regard to use of/proficiency in Spanish.
+@tbl-prof-use-desc provides descriptive statistics and @tbl-prof-use-mod  summarizes the models. 
+
+
+```{r}
+#| label: tbl-prof-use-desc
+#| tbl-cap: "Language use and proficiency assessments for the bilingual groups. Descriptive summary. Mean plus standard deviation of use and proficiency."
+prof_use_desc %>% 
+  knitr::kable(format = "pandoc", align = c("l", "r", "r", "r"))
+```
+
+```{r}
+#| label: tbl-prof-use-mod
+#| tbl-cap: "Language use and proficiency assessments for the bilingual groups. Model summary. Posterior estimates of the marginal mean difference (L2 - HL) for use and proficiency values. The proportion of the posterior density falling within the region of practical equivalence is reported in the ROPE column. The probability that the effect is of the medians sign is reported in the PD column."
+prof_use_mod %>% 
+  knitr::kable(format = "markdown", align = c("l", "l", "r", "r", "r"))
+```
+
