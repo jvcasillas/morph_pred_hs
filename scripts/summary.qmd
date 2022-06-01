@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 format:
   html: default
   pdf: 
-    documentclass: article
+    documentclass: scrreprt
     fontfamily: libertinus
     include-in-header:
        - packages.tex
@@ -97,6 +97,8 @@ include_graphics(
 )
 ```
 
+\clearpage
+
 ### Eye-tracking: Raw data
 
 ```{r}
@@ -109,6 +111,8 @@ include_graphics(
     "checks-fixes-1.png")
 )
 ```
+
+\clearpage
 
 ### Eye-tracking: Group model (no prof/use)
 
@@ -125,6 +129,8 @@ include_graphics(
 )
 ```
 
+\clearpage
+
 ```{r}
 #| label: group-diff-smooths-plot
 #| out.width: "100%"
@@ -135,6 +141,8 @@ include_graphics(
     "group-diff-smooths-plot-1.png")
 )
 ```
+
+\clearpage
 
 #### Prediction at target offset
 
@@ -148,6 +156,8 @@ include_graphics(
     "group-prediction-plot-1.png")
 )
 ```
+
+\clearpage
 
 ### Bilinguals only (prof/use)
 
@@ -163,6 +173,8 @@ include_graphics(
     "bi-comparison-plot-1.png")
 )
 ```
+
+\clearpage
 
 #### Prediction at target offset: ZOIDBERG
 

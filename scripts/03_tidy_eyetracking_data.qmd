@@ -141,6 +141,7 @@ stress_50 %>%
     scale_color_viridis_d(name = NULL, end = 0.8) + 
     scale_fill_viridis_d(name = NULL, end = 0.9) + 
     coord_cartesian(xlim = c(NA, 10), ylim = c(-0.05, 1.05), expand = F) + 
+    scale_x_continuous(breaks = seq(-4, 12, 4), labels = seq(-200, 600, 200)) + 
     labs(y = "P(target fixation)", x = "Time course") + 
     theme(legend.position = c(0.1, 0.86)) + 
     NULL
