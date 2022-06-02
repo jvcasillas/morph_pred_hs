@@ -3,14 +3,22 @@ title: "{{< var title >}}: {{< var version >}}"
 subtitle: "Summary"
 author: "{{< var author.name >}}"
 date: "`r Sys.Date()`"
+abstract: "Summary of analyses for morphosyntactic predictability project."
 format:
   html: default
   pdf: 
     documentclass: scrreprt
     fontfamily: libertinus
     include-in-header:
-       - packages.tex
-tbl-cap-location: bottom
+      - packages.tex
+    geometry: 
+      - top=20mm
+      - left=30mm
+      - right=30mm
+cap-location: bottom
+toc-depth: 2
+lof: true
+lot: true
 execute:
   echo: false
 ---
@@ -159,6 +167,22 @@ include_graphics(
 
 \clearpage
 
+#### Estimated marginal slopes at target offset
+
+```{r}
+#| label: marginal-slopes-plot
+#| out.width: "100%"
+#| fig.height: 5.5
+#| fig.cap: "Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions."
+include_graphics(
+  here("docs", "scripts", "05_gamms_files", "figure-html", 
+    "marginal-slopes-plot-1.png")
+)
+```
+
+
+\clearpage
+
 ### Bilinguals only (prof/use)
 
 #### Time course: GAMMs
@@ -166,7 +190,7 @@ include_graphics(
 ```{r}
 #| label: bi-comparison-plot
 #| out.width: "100%"
-#| fig.height: 6
+#| fig.height: 5.5
 #| fig.cap: "Probability of fixating on target as a function of stress for the bilingual groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent paroxytone ('CANta', green) and oxytone ('canTO', orange) conditions plus 95%, 80%, and 50% credible intervals. Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals."
 include_graphics(
   here("docs", "scripts", "05_gamms_files", "figure-html", 

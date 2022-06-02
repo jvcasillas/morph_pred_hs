@@ -424,6 +424,65 @@ gamm_log_group_stress %>%
 
 ```
 
+```{r}
+#| label: marginal-slopes-plot
+#| out.width: "100%"
+#| fig.height: 5.5
+#| fig.cap: "Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions."
+#| cache: true
+
+# Get marginal slope when time_zero = 4 as an estimate of rate of 
+# fixation on targets
+# This can be used in a plot (if necessary) by estimating the y value 
+# at the desired x (time_zero == 4, for example) and then calculating 
+# the intercept using `find_intercept` (see example below)
+if(F) {
+  lines <- bind_rows(
+    gamm_log_group_stress %>% 
+      emmeans(specs = ~ time_zero + stress + group, 
+        at = list(time_zero = 4), 
+        epred = T) %>% 
+      gather_emmeans_draws() %>% 
+      mutate(.value = .value / 50) %>% 
+      median_hdi() %>% 
+      transmute(stress, group, .value, term = "y"), 
+
+     gamm_log_group_stress %>% 
+       emtrends(spec = ~ time_zero + stress + group, 
+         var = "time_zero", 
+         at = list(time_zero = 4), 
+         delta.var = 0.001, 
+         epred = T) %>% 
+       gather_emmeans_draws() %>% 
+       mutate(.value = .value / 50) %>% 
+       median_hdi() %>% 
+       transmute(stress, group, .value, term = "slope")) %>% 
+    pivot_wider(names_from = term, values_from = .value) %>% 
+    mutate(intercept = find_intercept(x1 = 4, y1 = y, slope = slope))
+}
+
+# Get posterior estimates of marginal slopes
+gamm_log_group_stress %>% 
+  emtrends(
+    spec = ~ time_zero + stress + group, 
+    var = "time_zero", 
+    at = list(time_zero = 4), 
+    delta.var = 0.001, 
+    epred = T) %>% 
+  gather_emmeans_draws() %>% 
+  ggplot() + 
+    aes(x = .value / 50, y = group, fill = group) + 
+    facet_grid(stress ~ .) + 
+    stat_slab(alpha = 0.7, color = "white", show.legend = F) +
+    stat_pointinterval(pch = 21, point_fill = "white", show.legend = F) +
+    scale_fill_manual(name = NULL, values = my_colors, labels = NULL) + 
+    coord_cartesian(xlim = c(NA, NA)) + 
+    labs(y = NULL, x = "Marginal slope estimate")
+```
+
+
+
+
 ## Bilingual model
 
 ```{r}

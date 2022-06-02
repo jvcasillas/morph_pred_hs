@@ -28,6 +28,12 @@ clean_guide <- function(position, title) {
 
 my_colors <- c("#f98e09", "#bc3754", "#57106e")
 
+# Point-slope formula: (y - y1) = m(x - x1)
+find_intercept <- function(x1, y1, slope) {
+  intercept <- slope * (-x1) + y1
+  return(intercept)
+}
+
 # -----------------------------------------------------------------------------
 
 
