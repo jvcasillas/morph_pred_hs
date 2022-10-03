@@ -3,9 +3,7 @@ title: "{{< var title >}}: {{< var version >}}"
 subtitle: "EDA - proficiency/use"
 author: "{{< var author.name >}}"
 date: "`r Sys.Date()`"
-format:
-  html: default
-  pdf: default
+format: html
 ---
 
 ```{r}

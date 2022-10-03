@@ -109,3 +109,5 @@ report_posterior <- function(df, param, is_exp = TRUE, mod = NULL) {
         paste()
   }
 }
+
+# -----------------------------------------------------------------------------

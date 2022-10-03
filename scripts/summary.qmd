@@ -99,10 +99,7 @@ See [Proficiency/use cleaup and EDA](https://www.jvcasillas.com/morph_pred_hs/sc
 #| out.width: "100%"
 #| fig.height: 3.5
 #| fig.cap: "Estimated marginal mean difference between HL and L2 groups for standardized *use* and *proficiency*. The blue vertical bar represents a region of practical equivalence (ROPE) of &pm;0.1."
-include_graphics(
-  here("docs", "scripts", "02_eda_prof_use_files", "figure-html", 
-    "eda-prof-use-models-1.png")
-)
+include_graphics(here("figs", "eda-prof-use-models-1.png"))
 ```
 
 \clearpage
@@ -114,10 +111,7 @@ include_graphics(
 #| out.width: "100%"
 #| fig.height: 3.5
 #| fig.cap: "Time course of raw target fixation data as a function of stress condition (paroxytone, oxytone) for monolingual, HL, and L2 groups. Transparent ribbons represent 99% bootstrapped confidence intervals."
-include_graphics(
-  here("docs", "scripts", "03_tidy_eyetracking_data_files", "figure-html", 
-    "checks-fixes-1.png")
-)
+include_graphics(here("figs", "checks-fixes-1.png"))
 ```
 
 \clearpage
@@ -131,10 +125,7 @@ include_graphics(
 #| out.width: "100%"
 #| fig.height: 3.5
 #| fig.cap: "Probability of fixating on target as a function of stress for all three groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent group trajectories plus 95%, 80%, and 50% credible intervals."
-include_graphics(
-  here("docs", "scripts", "05_gamms_files", "figure-html", 
-    "group-comparison-plot-1.png")
-)
+include_graphics(here("figs", "group-comparison-plot-1.png"))
 ```
 
 \clearpage
@@ -144,10 +135,7 @@ include_graphics(
 #| out.width: "100%"
 #| fig.height: 6
 #| fig.cap: "Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals."
-include_graphics(
-  here("docs", "scripts", "05_gamms_files", "figure-html", 
-    "group-diff-smooths-plot-1.png")
-)
+include_graphics(here("figs", "group-diff-smooths-plot-1.png"))
 ```
 
 \clearpage
@@ -159,10 +147,7 @@ include_graphics(
 #| out.width: "100%"
 #| fig.height: 3.5
 #| fig.cap: "Proportion of target fixations 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions. The vertical dotted line marks chance (50%) surrounded by a &pm;1% region of practical equivalence (ROPE). Density mass of the posterior distribution that falls within the ROPE is discolored (pinkish)."
-include_graphics(
-  here("docs", "scripts", "05_gamms_files", "figure-html", 
-    "group-prediction-plot-1.png")
-)
+include_graphics(here("figs", "group-prediction-plot-1.png"))
 ```
 
 \clearpage
@@ -174,10 +159,7 @@ include_graphics(
 #| out.width: "100%"
 #| fig.height: 5.5
 #| fig.cap: "Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions."
-include_graphics(
-  here("docs", "scripts", "05_gamms_files", "figure-html", 
-    "marginal-slopes-plot-1.png")
-)
+include_graphics(here("figs", "marginal-slopes-plot-1.png"))
 ```
 
 
@@ -192,10 +174,7 @@ include_graphics(
 #| out.width: "100%"
 #| fig.height: 5.5
 #| fig.cap: "Probability of fixating on target as a function of stress for the bilingual groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent paroxytone ('CANta', green) and oxytone ('canTO', orange) conditions plus 95%, 80%, and 50% credible intervals. Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals."
-include_graphics(
-  here("docs", "scripts", "05_gamms_files", "figure-html", 
-    "bi-comparison-plot-1.png")
-)
+include_graphics(here("figs", "bi-comparison-plot-1.png"))
 ```
 
 \clearpage
@@ -207,10 +186,7 @@ include_graphics(
 #| out.width: "100%"
 #| fig.height: 6
 #| fig.cap: "Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores for the bilingual groups. The top rows illustrate model estimate for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition."
-include_graphics(
-  here("docs", "scripts", "05_gamms_files", "figure-html", 
-    "bi-prof-use-heatmap-1.png")
-)
+include_graphics(here("figs", "bi-prof-use-heatmap-1.png"))
 ```
 
 \clearpage
@@ -218,6 +194,22 @@ include_graphics(
 ## Write-up
 
 ### Method
+
+#### Lexical stress
+
+Lexical stress (henceforth stress) refers to the relative prominence of one syllable with regard to the others in a given word. 
+Stress is lexically encoded and contrastive in Spanish ('término' [ˈteɾ.mi.no], Eng. *term*; 'termino' [teɾ.ˈmi.no], Eng. *I finish*; 'terminó' [teɾ.mi.ˈno], Eng. *(s)he finished*) and in English ('produce' [ˈpɹo.duːs] noun, 'produce' [pɹə.ˈduːs] verb), though it is more productive in the former than in the latter. 
+To wit, few stress minimal pairs exist in English that are not semantically related [See @cutler2012native]. 
+The primary acoustic correlates of stress are F0, duration, and intensity, though their relative cue-weighting is language-specific [See @gordon2017acoustic; @chrabaszcz2014acoustic; @holt2006cue, among many others]. 
+Despite native English speakers' familiarity with stress, they typically have trouble producing [@bullock2003analogy; @lord2007role] and perceiving [@face2000role; @face2005syllable; @face2006cognitive; @ortega2013english; @saalfeld2012teaching] stress differences in L2 Spanish. 
+A possible explanation might be found in language-specific isochrony [@pike1945intonation]. 
+Whereas English is often described as a 'stress-timed' language, i.e., one with relatively constant intervals between stressed syllables, Spanish is typically described as 'syllable-timed', i.e., each syllable is perceived as having the same duration. 
+Differences such as these may shape how stress is perceived in each language. 
+In English, for example, unstressed vowel reduction---often present in stress-timed languages---may be sufficient for indicating stress [@cutler2012native; @tremblay2018functional], rendering other cues relatively less important for speech perception. 
+As a consequence, native English speakers may have to adjust their cue-weighting strategies when learning Spanish, a language that does not have vowel reduction. 
+Evidence from cross-modal priming studies indeed suggests that stress is processed differently by native listeners in both languages during lexical access [See @soto2001segmental; @cooper2002constraints]. 
+The extant literature suggests that native listeners are tuned in to the relevant acoustic cues of their language and take advantage of them to increase processing efficiency. 
+Unsurprisingly, they use the same cue-weighting strategies when learning an L2, often resulting in difficulties during the early stages of acquisition [@ingvalson2012can; @iverson2003perceptual]. 
 
 #### Participants
 
@@ -255,4 +247,14 @@ prof_use_desc %>%
 prof_use_mod %>% 
   knitr::kable(format = "markdown", align = c("l", "l", "r", "r", "r"))
 ```
+
+#### Statistical analyses
+
+##### GAMMS
+
+##### ZOIDBERG
+
+### Results
+
+### References
 

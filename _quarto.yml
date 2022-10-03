@@ -1,5 +1,9 @@
-project:
-  output-dir: docs
+#project:
+  #execute-dir: project
+#  render:
+ #   - "*.qmd"
+  #  - "!index.qmd"
+
 
 toc: true
 number-sections: true
@@ -26,5 +30,10 @@ execute:
   echo: true
   message: false
   warning: false
+  freeze: auto
 
 editor: source
+
+knitr:
+  opts_chunk: 
+    fig.path: "figs/"
