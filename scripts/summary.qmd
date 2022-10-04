@@ -254,6 +254,15 @@ prof_use_desc %>%
 
 ### Statistical analyses
 
+As alluded to above, we use Bayesian Data Analysis for all statistical inferences.^[See supplementary materials for more information.] 
+In what follows, we present three primary analyses. 
+First, we analyze the time course data focusing on group differences in varying stress environments. 
+Next, we examine target fixations at the onset of the target syllable. 
+The purpose of this analysis is to determine (1) whether participants predict target suffixes before they are presented auditorily, (2) the rate at which prediction occurs, and (3) how prediction is modulated by proficiency and use. 
+
+
+
+
 #### GAMMS
 
 #### ZOIDBERG
