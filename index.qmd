@@ -29,10 +29,11 @@ dir_ls(path = here("scripts"), regexp = "\\.html$") |>
       "4. [Beta regression]", 
       "5. [Summary]"
     ), 
-    value = stringr::str_remove(value, glue::glue("{here()}/docs")), 
+    value = stringr::str_remove_all(value, glue::glue("{here()}")), 
     path = glue::glue("({url_root}{value})"), 
     link = glue::glue("{names}{path}")) |> 
   dplyr::pull(link)
+
 ```
 
 A PDF version of the summary is available [here](https://www.jvcasillas.com/morph_pred_hs/scripts/summary.pdf)
