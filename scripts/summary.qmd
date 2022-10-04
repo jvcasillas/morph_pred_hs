@@ -59,7 +59,7 @@ yes_no <- function(affirm = TRUE) {
 
 \clearpage
 
-## Take-aways
+# Take-aways
 
 - The two bilingual groups are essentially equivalent regarding proficiency and use.
 - Stress matters: Monolinguals always predict, bilinguals do to some degree, but depends on stress (holding use and proficiency constant)
@@ -87,9 +87,9 @@ yes_no <- function(affirm = TRUE) {
 
 \clearpage
 
-## Key plots
+# Key plots
 
-### Prof/use check
+## Prof/use check
 
 See [Proficiency/use cleaup and EDA](https://www.jvcasillas.com/morph_pred_hs/scripts/02_eda_prof_use.html) for full details. 
 `r xfun::numbers_to_words(subject_stuff$n_removed, cap = T)` of `r subject_stuff$n_total` participants removed to make *use* more comparable between groups. 
@@ -104,7 +104,7 @@ include_graphics(here("figs", "eda-prof-use-models-1.png"))
 
 \clearpage
 
-### Eye-tracking: Raw data
+## Eye-tracking: Raw data
 
 ```{r}
 #| label: raw-et-data
@@ -116,9 +116,9 @@ include_graphics(here("figs", "checks-fixes-1.png"))
 
 \clearpage
 
-### Eye-tracking: Group model (no prof/use)
+## Eye-tracking: Group model (no prof/use)
 
-#### Time course: GAMMs
+### Time course: GAMMs
 
 ```{r}
 #| label: group-comparison-plot
@@ -140,7 +140,7 @@ include_graphics(here("figs", "group-diff-smooths-plot-1.png"))
 
 \clearpage
 
-#### Prediction at target offset
+### Prediction at target offset
 
 ```{r}
 #| label: group-prediction-plot
@@ -152,7 +152,7 @@ include_graphics(here("figs", "group-prediction-plot-1.png"))
 
 \clearpage
 
-#### Estimated marginal slopes at target offset
+### Estimated marginal slopes at target offset
 
 ```{r}
 #| label: marginal-slopes-plot
@@ -165,9 +165,9 @@ include_graphics(here("figs", "marginal-slopes-plot-1.png"))
 
 \clearpage
 
-### Bilinguals only (prof/use)
+## Bilinguals only (prof/use)
 
-#### Time course: GAMMs
+### Time course: GAMMs
 
 ```{r}
 #| label: bi-comparison-plot
@@ -179,7 +179,7 @@ include_graphics(here("figs", "bi-comparison-plot-1.png"))
 
 \clearpage
 
-#### Prediction at target offset: ZOIDBERG
+### Prediction at target offset: ZOIDBERG
 
 ```{r}
 #| label: bi-prof-use-heatmap
@@ -191,11 +191,11 @@ include_graphics(here("figs", "bi-prof-use-heatmap-1.png"))
 
 \clearpage
 
-## Write-up
+# Write-up
 
-### Method
+## Method
 
-#### Lexical stress
+### Lexical stress
 
 Lexical stress (henceforth stress) refers to the relative prominence of one syllable with regard to the others in a given word. 
 Stress is lexically encoded and contrastive in Spanish ('término' [ˈteɾ.mi.no], Eng. *term*; 'termino' [teɾ.ˈmi.no], Eng. *I finish*; 'terminó' [teɾ.mi.ˈno], Eng. *(s)he finished*) and in English ('produce' [ˈpɹo.duːs] noun, 'produce' [pɹə.ˈduːs] verb), though it is more productive in the former than in the latter. 
@@ -211,50 +211,56 @@ Evidence from cross-modal priming studies indeed suggests that stress is process
 The extant literature suggests that native listeners are tuned in to the relevant acoustic cues of their language and take advantage of them to increase processing efficiency. 
 Unsurprisingly, they use the same cue-weighting strategies when learning an L2, often resulting in difficulties during the early stages of acquisition [@ingvalson2012can; @iverson2003perceptual]. 
 
-#### Participants
+### Participants
 
 We included data from `r subject_stuff$n_final` individuals for analysis. 
 There were `r pull_from_tib(subject_stuff$n_group, group, "Monolingual", n)` monolingual participants, `r pull_from_tib(subject_stuff$n_group, group, "HL", n)` heritage speakers, and `r pull_from_tib(subject_stuff$n_group, group, "L2", n)` adult L2 learners. 
 
 The bilingual participants completed language *use* and *proficiency* assessments. 
 We fit the *use* and *proficiency* data to separate Bayesian linear models to assess potential group differences. 
-In both cases, the response variable, use or proficiency score, was a proportion. 
+In both cases, the response variable, *use* or *proficiency* score, was a proportion. 
 Thus, we used the beta distribution for the model likelihood with a logit linking function. 
 The models included regularizing, weakly informative priors.^[See [Proficiency/use cleaup and EDA](https://www.jvcasillas.com/morph_pred_hs/scripts/02_eda_prof_use.html) for full details.] 
 We compare the posterior marginal mean difference between groups on both response variables. 
 We established a region of practical equivalence (ROPE) of ±0.1. 
-If, for a given measure, the full range of the 95% highest density interval of the difference estimate falls within the ROPE, we consider there to be compelling evidence that the groups are equivalent. 
-The HL group had an average proficiency score of `r pull_from_tib(prof_use_desc, Group, "HL", Proficiency)` compared to the L2 groups' score of `r pull_from_tib(prof_use_desc, Group, "L2", Proficiency)`. 
+If, for a given measure, the full range of the 95% highest density credible interval (HDI) of the difference estimate falls within the ROPE, we consider there to be compelling evidence that the groups are equivalent. 
+The HL group had an average proficiency score of `r pull_from_tib(prof_use_desc, Group, "HL", Proficiency_prose)` compared to the L2 groups' score of `r pull_from_tib(prof_use_desc, Group, "L2", Proficiency_prose)`. 
 The marginal mean difference was `r pull_from_tib(prof_use_mod, Metric, "Proficiency", Estimate)` and all of the HDI fell within the ROPE. 
 The probability that the effect was positive was `r pull_from_tib(prof_use_mod, Metric, "Proficiency", PD)`. 
-Regarding language use, the HL group had an average score of `r pull_from_tib(prof_use_desc, Group, "HL", Use)` compared to the L2 groups' score of `r pull_from_tib(prof_use_desc, Group, "L2", Use)`. 
+Regarding language use, the HL group had an average score of `r pull_from_tib(prof_use_desc, Group, "HL", Use_prose)` compared to the L2 groups' score of `r pull_from_tib(prof_use_desc, Group, "L2", Use_prose)`. 
 The marginal mean difference was `r pull_from_tib(prof_use_mod, Metric, "Use", Estimate)` and, again, all of the HDI fell within the ROPE. 
 The probability that the effect was negative was `r pull_from_tib(prof_use_mod, Metric, "Use", PD)`. 
 Taken together, we are confident that the groups do not differ in any meaningful way with regard to use of/proficiency in Spanish.
-@tbl-prof-use-desc provides descriptive statistics and @tbl-prof-use-mod  summarizes the models. 
+@tbl-prof-use-desc provides descriptive statistics and summarizes the models. 
 
 
 ```{r}
 #| label: tbl-prof-use-desc
-#| tbl-cap: "Language use and proficiency assessments for the bilingual groups. Descriptive summary. Mean plus standard deviation of use and proficiency."
+#| tbl-cap: "Language use and proficiency assessments for the heritage and L2 bilingual groups. The table reports the mean and standard deviation, as well as posterior estimates of the marginal mean difference (L2 - HL) and the 95% highest denisty credible interval (in brackets). The proportion of the posterior density falling within the region of practical equivalence (±0.1) is reported in the ROPE column. The probability that the effect is of the median's sign is reported in the PD column."
+
 prof_use_desc %>% 
-  knitr::kable(format = "pandoc", align = c("l", "r", "r", "r"))
+  select(-c("Proficiency_prose", "Use_prose")) %>% 
+  t() %>% 
+  as_tibble() %>% 
+  janitor::row_to_names(., row_number = 1) %>% 
+  rename(`HL (n = 42)` = HL, `L2 (n = 50)` = L2) %>% 
+  slice(-1) %>% 
+  mutate(Metric = c("Proficiency", "Use")) %>% 
+  left_join(., prof_use_mod, by = "Metric") %>% 
+  select(Metric, everything()) %>% 
+  kable(format = "pandoc", align = c("l", "r", "r", "l", "r", "r", "r"))
+
 ```
 
-```{r}
-#| label: tbl-prof-use-mod
-#| tbl-cap: "Language use and proficiency assessments for the bilingual groups. Model summary. Posterior estimates of the marginal mean difference (L2 - HL) for use and proficiency values. The proportion of the posterior density falling within the region of practical equivalence is reported in the ROPE column. The probability that the effect is of the medians sign is reported in the PD column."
-prof_use_mod %>% 
-  knitr::kable(format = "markdown", align = c("l", "l", "r", "r", "r"))
-```
+### Statistical analyses
 
-#### Statistical analyses
+#### GAMMS
 
-##### GAMMS
+#### ZOIDBERG
 
-##### ZOIDBERG
+## Results
 
-### Results
+\clearpage
 
-### References
+# References
 

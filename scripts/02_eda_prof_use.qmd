@@ -220,13 +220,18 @@ tab_prof_use_desc <- prof_use_final %>%
     list(mean = mean, sd = sd))) %>% 
   mutate_if(is.numeric, specify_decimal, k = 2) %>% 
   left_join(., n_groups, by = "group") %>% 
-  mutate(Proficiency = glue("{prof_p_mean} [{prof_p_sd}]"), 
-    Use = glue("{use_p_mean} [{use_p_sd}]")) %>% 
-  transmute(Group = group, n, Proficiency, Use) %>% 
+  mutate(
+    Proficiency = glue("{prof_p_mean} ({prof_p_sd})"), 
+    Proficiency_prose = glue("{prof_p_mean} (SD = {prof_p_sd})"), 
+    Use = glue("{use_p_mean} ({use_p_sd})"), 
+    Use_prose = glue("{use_p_mean} (SD = {use_p_sd})"), 
+    ) %>% 
+  transmute(Group = group, n, Proficiency, Use, Proficiency_prose, Use_prose) %>% 
   mutate(Group = str_to_upper(Group)) %>% 
   write_csv(here("tables", "tab_prof_use_desc.csv"))
 
 tab_prof_use_desc %>% 
+  select(-c("Proficiency_prose", "Use_prose")) %>% 
   knitr::kable(format = "pandoc", 
     align = c("l", "r", "r", "r"), 
     caption = "Average use and proficiency for L2 and heritage learners.")

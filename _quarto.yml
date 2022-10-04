@@ -7,7 +7,8 @@
 
 toc: true
 number-sections: true
-bibliography: references.bib  
+bibliography: references.bib
+csl: apa.csl
 language: 
   title-block-published: "Last updated:"
 
