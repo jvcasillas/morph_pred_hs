@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joseph V. Casillas">
-<meta name="dcterms.date" content="2022-10-03">
+<meta name="dcterms.date" content="2022-10-07">
 
 <title>Morphological predictability - HS: 1.2</title>
 <style>
@@ -117,6 +117,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#load-libraries-helpers-and-data" id="toc-load-libraries-helpers-and-data" class="nav-link" data-scroll-target="#load-libraries-helpers-and-data"><span class="toc-section-number">1.1</span>  Load libraries, helpers, and data</a></li>
   </ul></li>
   <li><a href="#bilingual-model" id="toc-bilingual-model" class="nav-link" data-scroll-target="#bilingual-model"><span class="toc-section-number">2</span>  Bilingual model</a></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="toc-section-number">3</span>  Tables</a></li>
   </ul>
 </nav>
 </div>
@@ -142,7 +143,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Last updated:</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 3, 2022</p>
+      <p class="date">October 7, 2022</p>
     </div>
   </div>
     
@@ -613,6 +614,319 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="../figs/bi-prof-use-heatmap-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <p></p><figcaption class="figure-caption">Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores for the bilingual groups. The top rows illustrate model estimate for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition.</figcaption><p></p>
 </figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tables" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Tables</h1>
+<div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe_posterior</span>(beta_reg_group_stress)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>bi_zoid_tib_prep <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(beta_reg_group_stress)[[<span class="st">"fixed"</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">"Term"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Effect =</span> <span class="st">"Population"</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(beta_reg_group_stress)[[<span class="st">"random"</span>]][[<span class="st">"id"</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_tibble</span>(<span class="at">rownames =</span> <span class="st">"Term"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Effect =</span> <span class="st">"Grouping"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">"Effect"</span>, <span class="st">"Term"</span>), specify_decimal, <span class="at">k =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Term =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"phi_Intercept"</span> <span class="sc">~</span> <span class="st">"ϕ Intercept"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"zi_Intercept"</span> <span class="sc">~</span> <span class="st">"zi Intercept"</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"group_sum"</span> <span class="sc">~</span> <span class="st">"Group"</span>, </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"stress_sum"</span> <span class="sc">~</span> <span class="st">"Stress"</span>, </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"prof_z"</span> <span class="sc">~</span> <span class="st">"Proficiency"</span>, </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"use_z"</span> <span class="sc">~</span> <span class="st">"Use"</span>, </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"group_sum:stress_sum"</span> <span class="sc">~</span> <span class="st">"Group:Stress"</span>, </span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"group_sum:use_z"</span> <span class="sc">~</span> <span class="st">"Group:Use"</span>, </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"stress_sum:use_z"</span> <span class="sc">~</span> <span class="st">"Stress:Use"</span>, </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"group_sum:prof_z"</span> <span class="sc">~</span> <span class="st">"Group:Proficiency"</span>, </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"Stress_sum:prof_z"</span> <span class="sc">~</span> <span class="st">"Stress:Proficiency"</span>, </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"use_z:prof_z"</span> <span class="sc">~</span> <span class="st">"Use:Proficiency"</span>, </span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"group_sum:stress_sum:use_z"</span> <span class="sc">~</span> <span class="st">"Group:Stress:Use"</span>, </span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"group_sum:stress_sum:prof_z"</span> <span class="sc">~</span> <span class="st">"Group:Stress:Prof."</span>, </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"group_sum:use_z:prof_z"</span> <span class="sc">~</span> <span class="st">"Group:Use:Prof."</span>, </span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"stress_sum:use_z:prof_z"</span> <span class="sc">~</span> <span class="st">"Stress:Use:Prof."</span>, </span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"group_sum:stress_sum:use_z:prof_z"</span> <span class="sc">~</span> <span class="st">"Group:Stress:Use:Prof."</span>, </span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"sd(stress_sum)"</span> <span class="sc">~</span> <span class="st">"sd(Stress)"</span>, </span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"sd(phi_Intercept)"</span> <span class="sc">~</span> <span class="st">"sd(ϕ Intercept)"</span>, </span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"sd(zi_Intercept)"</span> <span class="sc">~</span> <span class="st">"sd(zi Intercept"</span>, </span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"cor(Intercept,stress_sum)"</span> <span class="sc">~</span> <span class="st">"cor(Intercept,Stress)"</span>, </span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> Term)) </span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>bi_zoid_tib <span class="ot">&lt;-</span> bi_zoid_tib_prep <span class="sc">%&gt;%</span> </span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(Effect, Term, Estimate, </span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">HDI =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"[{`l-95% CI`}, {`u-95% CI`}]"</span>), </span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    Rhat, <span class="st">`</span><span class="at">Bulk ESS</span><span class="st">`</span> <span class="ot">=</span> Bulk_ESS, <span class="st">`</span><span class="at">Tail ESS</span><span class="st">`</span> <span class="ot">=</span> Tail_ESS) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">Estimate =</span> <span class="fu">str_replace_all</span>(Estimate, <span class="st">"-"</span>, <span class="st">"\U2212"</span>), </span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">HDI =</span> <span class="fu">str_replace_all</span>(HDI, <span class="st">"-"</span>, <span class="st">"\U2212"</span>) </span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="fu">here</span>(<span class="st">"tables"</span>, <span class="st">"tab_bi_zoid_mod.csv"</span>))</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>bi_zoid_tib <span class="sc">%&gt;%</span> </span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"pandoc"</span>, </span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"l"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>), </span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Bilingual ZOID summary."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="tbl-beta-reg" class="cell tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;1: <strong>?(caption)</strong></p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>Summary of Posterior Distribution
+
+Parameter                         |    Median |         95% CI |     pd |          ROPE | % in ROPE |  Rhat |     ESS
+---------------------------------------------------------------------------------------------------------------------
+(Intercept)                       |      0.13 | [ 0.02,  0.24] | 98.88% | [-0.18, 0.18] |    84.39% | 1.000 | 4032.00
+phi_Intercept                     |      2.16 | [ 1.86,  2.51] |   100% | [-0.18, 0.18] |        0% | 1.000 | 3809.00
+group_sum                         |     -0.04 | [-0.15,  0.06] | 79.40% | [-0.18, 0.18] |      100% | 1.000 | 4088.00
+stress_sum                        |  1.46e-03 | [-0.10,  0.10] | 51.15% | [-0.18, 0.18] |      100% | 1.001 | 3855.00
+use_z                             |      0.02 | [-0.09,  0.13] | 63.98% | [-0.18, 0.18] |      100% | 1.001 | 3835.00
+prof_z                            |      0.06 | [-0.06,  0.19] | 84.95% | [-0.18, 0.18] |    99.42% | 1.000 | 3987.00
+group_sum:stress_sum              |      0.19 | [ 0.09,  0.29] | 99.95% | [-0.18, 0.18] |    45.39% | 0.999 | 3778.00
+group_sum:use_z                   |     -0.13 | [-0.23, -0.02] | 98.83% | [-0.18, 0.18] |    85.97% | 1.000 | 3709.00
+stress_sum:use_z                  |     -0.12 | [-0.23, -0.01] | 98.55% | [-0.18, 0.18] |    87.24% | 0.999 | 3932.00
+group_sum:prof_z                  |     -0.02 | [-0.15,  0.09] | 64.42% | [-0.18, 0.18] |      100% | 1.000 | 4013.00
+stress_sum:prof_z                 |     -0.01 | [-0.13,  0.11] | 55.57% | [-0.18, 0.18] |      100% | 1.001 | 3924.00
+use_z:prof_z                      | -2.18e-03 | [-0.13,  0.12] | 51.15% | [-0.18, 0.18] |      100% | 1.000 | 3556.00
+group_sum:stress_sum:use_z        |      0.02 | [-0.10,  0.12] | 61.98% | [-0.18, 0.18] |      100% | 1.000 | 3965.00
+group_sum:stress_sum:prof_z       |      0.07 | [-0.04,  0.19] | 88.52% | [-0.18, 0.18] |    99.00% | 1.000 | 3914.00
+group_sum:use_z:prof_z            |     -0.04 | [-0.16,  0.09] | 74.30% | [-0.18, 0.18] |      100% | 1.000 | 3868.00
+stress_sum:use_z:prof_z           | -2.60e-03 | [-0.12,  0.12] | 51.73% | [-0.18, 0.18] |      100% | 1.000 | 3967.00
+group_sum:stress_sum:use_z:prof_z |     -0.11 | [-0.23,  0.01] | 96.62% | [-0.18, 0.18] |    87.79% | 0.999 | 4019.00</code></pre>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-beta-reg-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-beta-reg" style="flex-basis: 100.0%;justify-content: center;">
+<table class="table table-sm table-striped">
+<caption>(a) Bilingual ZOID summary.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Effect</th>
+<th style="text-align: left;">Term</th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">HDI</th>
+<th style="text-align: right;">Rhat</th>
+<th style="text-align: right;">Bulk ESS</th>
+<th style="text-align: right;">Tail ESS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">[0.02, 0.24]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4040.14</td>
+<td style="text-align: right;">3952.14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">ϕ Intercept</td>
+<td style="text-align: right;">2.17</td>
+<td style="text-align: right;">[1.86, 2.51]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3852.71</td>
+<td style="text-align: right;">3739.37</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">zi Intercept</td>
+<td style="text-align: right;">−4.37</td>
+<td style="text-align: right;">[−6.34, −3.17]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3847.73</td>
+<td style="text-align: right;">3778.92</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Group</td>
+<td style="text-align: right;">−0.04</td>
+<td style="text-align: right;">[−0.15, 0.06]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4103.24</td>
+<td style="text-align: right;">3948.07</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Stress</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">[−0.10, 0.10]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3881.54</td>
+<td style="text-align: right;">3775.78</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Use</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">[−0.09, 0.13]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3869.10</td>
+<td style="text-align: right;">3873.47</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Proficiency</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">[−0.06, 0.19]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3942.20</td>
+<td style="text-align: right;">3929.86</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Group:Stress</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">[0.09, 0.29]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3773.70</td>
+<td style="text-align: right;">3696.87</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Group:Use</td>
+<td style="text-align: right;">−0.13</td>
+<td style="text-align: right;">[−0.23, −0.02]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3739.06</td>
+<td style="text-align: right;">3711.31</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Stress:Use</td>
+<td style="text-align: right;">−0.12</td>
+<td style="text-align: right;">[−0.23, −0.01]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3926.60</td>
+<td style="text-align: right;">3999.60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Group:Proficiency</td>
+<td style="text-align: right;">−0.02</td>
+<td style="text-align: right;">[−0.15, 0.09]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4021.95</td>
+<td style="text-align: right;">4014.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">stress_sum:prof_z</td>
+<td style="text-align: right;">−0.01</td>
+<td style="text-align: right;">[−0.13, 0.11]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3940.73</td>
+<td style="text-align: right;">3437.18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Use:Proficiency</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">[−0.13, 0.12]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3612.81</td>
+<td style="text-align: right;">3918.69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Group:Stress:Use</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">[−0.10, 0.12]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3982.24</td>
+<td style="text-align: right;">3756.15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Group:Stress:Prof.</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">[−0.04, 0.19]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3931.67</td>
+<td style="text-align: right;">4102.86</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Group:Use:Prof.</td>
+<td style="text-align: right;">−0.04</td>
+<td style="text-align: right;">[−0.16, 0.09]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3879.26</td>
+<td style="text-align: right;">3396.92</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Stress:Use:Prof.</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">[−0.12, 0.12]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3990.53</td>
+<td style="text-align: right;">3892.69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Group:Stress:Use:Prof.</td>
+<td style="text-align: right;">−0.11</td>
+<td style="text-align: right;">[−0.23, 0.01]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4030.29</td>
+<td style="text-align: right;">3842.42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grouping</td>
+<td style="text-align: left;">sd(Intercept)</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">[0.01, 0.32]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3446.94</td>
+<td style="text-align: right;">3699.61</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Grouping</td>
+<td style="text-align: left;">sd(Stress)</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">[0.00, 0.26]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3533.06</td>
+<td style="text-align: right;">3722.07</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grouping</td>
+<td style="text-align: left;">sd(ϕ Intercept)</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">[0.45, 1.23]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3638.79</td>
+<td style="text-align: right;">3850.73</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Grouping</td>
+<td style="text-align: left;">sd(zi Intercept</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">[0.03, 2.44]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3975.84</td>
+<td style="text-align: right;">3798.24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grouping</td>
+<td style="text-align: left;">cor(Intercept,Stress)</td>
+<td style="text-align: right;">−0.16</td>
+<td style="text-align: right;">[−0.96, 0.91]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3883.60</td>
+<td style="text-align: right;">3654.52</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>

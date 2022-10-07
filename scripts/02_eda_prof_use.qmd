@@ -3,14 +3,28 @@ title: "{{< var title >}}: {{< var version >}}"
 subtitle: "EDA - proficiency/use"
 author: "{{< var author.name >}}"
 date: "`r Sys.Date()`"
-format: html
+format: 
+  html: default
+  pdf: default
+number-sections: false
+execute: 
+  echo: true
+  warning: false
+  message: false
+  fig.retina: 2
 ---
+
+### Setup
+
+Load libraries and helper functions: 
 
 ```{r}
 #| label: load-packages
 source(here::here("scripts", "00_libraries.R"))
 source(here::here("scripts", "01_helpers.R"))
 ```
+
+Load proficiency and use data: 
 
 ```{r}
 #| label: load-prof-use-data
@@ -20,6 +34,7 @@ prof_use_temp <- read_xlsx(
   rename(id = Participant, prof = dele, use = `span_week_%`)
 ```
 
+Next, we tidy the data and convert to z-scores.
 
 ```{r}
 #| label: tidy-clean-up
@@ -40,20 +55,23 @@ prof_use <- prof_use_temp %>%
   
 ```
 
+Basic plot to check distributions. 
+
 ```{r}
 #| label: eda-prof-use-plots
 
 prof_use %>% 
   ggplot(., aes(x = use_p, y = prof_p, color = group)) + 
     geom_point() + 
-    coord_cartesian(ylim = c(0,1), xlim = c(0, 1))
-
+    scale_color_viridis_d(option = "A", begin = 0.3, end = 0.85)
 ```
 
-It looks pretty evenly distributed, though perhaps there is more variability in the L2 group. 
+The data look pretty evenly distributed, though perhaps there is more variability in the L2 group. 
+Now we will look at some descriptives in order to get a sense of whether or not there are any individuals that might make the groups uneven.
 
 ```{r}
 #| label: prof-use-descriptives
+#| results: 'hold'
 # Check mean (SD) for each TYPE
 prof_use %>% 
   group_by(Type) %>% 
@@ -64,7 +82,8 @@ prof_use %>%
 # heritage with high use
 prof_use %>% 
   filter(Type == "intermediate_heritage") %>% 
-  arrange(desc(use_p))
+  arrange(desc(use_p)) %>% 
+  select(id, prof_p, use_p)
 
 # There are three in the 70+ % range
 # We'll start there
@@ -77,7 +96,8 @@ prof_use %>%
 # They are closer now. We can also take out a few of the lower L2 use
 prof_use %>% 
   filter(Type == "intermediate_l2") %>% 
-  arrange(use_p)
+  arrange(use_p) %>% 
+  select(id, prof_p, use_p)
 
 # There are three in the 15% range
 # We'll start there
@@ -90,10 +110,11 @@ prof_use %>%
 
 prof_use %>% 
   filter(Type == "advanced_heritage") %>% 
-  arrange(desc(use_p))
+  arrange(desc(use_p)) %>% 
+  select(id, prof_p, use_p)
 
-prof_use %>% 
-  filter(!(id %in% c("ihs24", "ihs13", "ihs18")), 
+
+prof_use %>%   filter(!(id %in% c("ihs24", "ihs13", "ihs18")), 
          !(id %in% c("ahs12", "ahs03")), 
          !(id %in% c("ies09", "ies26", "ies29"))) %>% 
   group_by(group) %>% 
@@ -114,18 +135,23 @@ prof_use_final <- prof_use %>%
 
 ```
 
-We now have candidates to remove. 
+We now have a few candidates. 
 We will do a few formal tests to look at equivalence in proficiency and use with and without them. 
 
 ```{r}
 #| label: eda-prof-use-models
-# Fit models will all participants
 
+#
+# Fit models
+#
+
+# model formula
 model_formula <- bf(
   prop ~ group, 
   phi  ~ group 
   )
 
+# Fit proficiency model with all data
 prof_with <- brm(
   formula = model_formula, 
   family = Beta(), 
@@ -133,6 +159,7 @@ prof_with <- brm(
   file = here("models", "eda_prof_use", "prof_with")
   )
 
+# Fit use model with all data
 use_with <- brm(
   formula = model_formula, 
   family = Beta(), 
@@ -140,6 +167,7 @@ use_with <- brm(
   file = here("models", "eda_prof_use", "use_with")
   )
 
+# Fit proficiency model remove a few participants
 prof_wo <- brm(
   formula = model_formula, 
   family = Beta(), 
@@ -147,13 +175,21 @@ prof_wo <- brm(
   file = here("models", "eda_prof_use", "prof_wo")
   )
 
+# Fit use model remove a few participants
 use_wo <- brm(
   formula = model_formula, 
   family = Beta(), 
   data = mutate(prof_use_final, prop = use / 100), 
   file = here("models", "eda_prof_use", "use_wo")
   )
+```
 
+Now we can check the marginal mean estimates to see how the groups compare. 
+
+```{r}
+#| label: eda-prof-use-marginal-mean-estimates
+
+# Get marginal mean estimates for prof with ids removed
 prof_contrast <- prof_wo %>% 
   emmeans(spec = ~ group, 
     at = list(group = c("l2", "hl")), 
@@ -162,6 +198,7 @@ prof_contrast <- prof_wo %>%
   gather_emmeans_draws() %>% 
   mutate(metric = "prof")
 
+# Get marginal mean estimates for use with ids removed
 use_contrast <- use_wo %>% 
   emmeans(spec = ~ group, 
     at = list(group = c("l2", "hl")), 

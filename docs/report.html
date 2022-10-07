@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.120">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joseph V. Casillas">
+<meta name="dcterms.date" content="2022-10-07">
+
+<title>Morphological predictability - HS: 1.2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="report_files/libs/clipboard/clipboard.min.js"></script>
+<script src="report_files/libs/quarto-html/quarto.js"></script>
+<script src="report_files/libs/quarto-html/popper.min.js"></script>
+<script src="report_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="report_files/libs/quarto-html/anchor.min.js"></script>
+<link href="report_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="report_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="report_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="report_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="report_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="report_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="toc-section-number">1</span>  Introduction</a>
+  <ul class="collapse">
+  <li><a href="#lexical-stress" id="toc-lexical-stress" class="nav-link" data-scroll-target="#lexical-stress"><span class="toc-section-number">1.1</span>  Lexical stress</a></li>
+  </ul></li>
+  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method"><span class="toc-section-number">2</span>  Method</a>
+  <ul class="collapse">
+  <li><a href="#participants" id="toc-participants" class="nav-link" data-scroll-target="#participants"><span class="toc-section-number">2.1</span>  Participants</a></li>
+  <li><a href="#statistical-analyses" id="toc-statistical-analyses" class="nav-link" data-scroll-target="#statistical-analyses"><span class="toc-section-number">2.2</span>  Statistical analyses</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="toc-section-number">3</span>  Results</a>
+  <ul class="collapse">
+  <li><a href="#sec-gamm" id="toc-sec-gamm" class="nav-link" data-scroll-target="#sec-gamm"><span class="toc-section-number">3.1</span>  The time course of morphological processing</a></li>
+  <li><a href="#prediction-at-target-offset" id="toc-prediction-at-target-offset" class="nav-link" data-scroll-target="#prediction-at-target-offset"><span class="toc-section-number">3.2</span>  Prediction at target offset</a></li>
+  <li><a href="#proficiency-and-use" id="toc-proficiency-and-use" class="nav-link" data-scroll-target="#proficiency-and-use"><span class="toc-section-number">3.3</span>  Proficiency and use</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="toc-section-number">4</span>  References</a></li>
+  <li><a href="#supplementary-materials" id="toc-supplementary-materials" class="nav-link" data-scroll-target="#supplementary-materials"><span class="toc-section-number">5</span>  Supplementary materials</a>
+  <ul class="collapse">
+  <li><a href="#sec-bda" id="toc-sec-bda" class="nav-link" data-scroll-target="#sec-bda"><span class="toc-section-number">5.1</span>  Bayesian data analysis</a></li>
+  <li><a href="#sec-gamms-supp" id="toc-sec-gamms-supp" class="nav-link" data-scroll-target="#sec-gamms-supp"><span class="toc-section-number">5.2</span>  GAMMs</a></li>
+  <li><a href="#sec-prof-use-supp" id="toc-sec-prof-use-supp" class="nav-link" data-scroll-target="#sec-prof-use-supp"><span class="toc-section-number">5.3</span>  Proficiency and use</a></li>
+  <li><a href="#reproducibility-information" id="toc-reproducibility-information" class="nav-link" data-scroll-target="#reproducibility-information"><span class="toc-section-number">5.4</span>  Reproducibility information</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Morphological predictability - HS: 1.2</h1>
+<p class="subtitle lead">Report</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Joseph V. Casillas </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Last updated:</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 7, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="abstract-title">Abstract</div>
+    Write-up of morphosyntactic predictability project.
+  </div>
+</div>
+
+</header>
+
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<section id="lexical-stress" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="lexical-stress"><span class="header-section-number">1.1</span> Lexical stress</h2>
+<p>Lexical stress (henceforth stress) refers to the relative prominence of one syllable with regard to the others in a given word. Stress is lexically encoded and contrastive in Spanish (‘término’ [ˈteɾ.mi.no], Eng. <em>term</em>; ‘termino’ [teɾ.ˈmi.no], Eng. <em>I finish</em>; ‘terminó’ [teɾ.mi.ˈno], Eng. <em>(s)he finished</em>) and in English (‘produce’ [ˈpɹo.duːs] noun, ‘produce’ [pɹə.ˈduːs] verb), though it is more productive in the former than in the latter. To wit, few stress minimal pairs exist in English that are not semantically related <span class="citation" data-cites="cutler2012native">(See <a href="#ref-cutler2012native" role="doc-biblioref">Cutler, 2012</a>)</span>. The primary acoustic correlates of stress are <span class="math inline">f_{0}</span>, duration, and intensity, though their relative cue-weighting is language-specific <span class="citation" data-cites="chrabaszcz2014acoustic gordon2017acoustic holt2006cue">(See <a href="#ref-chrabaszcz2014acoustic" role="doc-biblioref">Chrabaszcz et al., 2014</a>; <a href="#ref-gordon2017acoustic" role="doc-biblioref">Gordon &amp; Roettger, 2017</a>; <a href="#ref-holt2006cue" role="doc-biblioref">Holt &amp; Lotto, 2006</a>, among many others)</span>. Despite native English speakers’ familiarity with stress, they typically have trouble producing <span class="citation" data-cites="bullock2003analogy lord2007role">(<a href="#ref-bullock2003analogy" role="doc-biblioref">Bullock &amp; Lord, 2003</a>; <a href="#ref-lord2007role" role="doc-biblioref">Lord, 2007</a>)</span> and perceiving <span class="citation" data-cites="face2000role face2005syllable face2006cognitive ortega2013english saalfeld2012teaching">(<a href="#ref-face2000role" role="doc-biblioref">Face, 2000</a>, <a href="#ref-face2005syllable" role="doc-biblioref">2005</a>, <a href="#ref-face2006cognitive" role="doc-biblioref">2006</a>; <a href="#ref-ortega2013english" role="doc-biblioref">Ortega-Llebaria et al., 2013</a>; <a href="#ref-saalfeld2012teaching" role="doc-biblioref">Saalfeld, 2012</a>)</span> stress differences in L2 Spanish. A possible explanation might be found in language-specific isochrony <span class="citation" data-cites="pike1945intonation">(<a href="#ref-pike1945intonation" role="doc-biblioref">Pike, 1945</a>)</span>. Whereas English is often described as a ‘stress-timed’ language, i.e., one with relatively constant intervals between stressed syllables, Spanish is typically described as ‘syllable-timed’, i.e., each syllable is perceived as having the same duration. Differences such as these may shape how stress is perceived in each language. In English, for example, unstressed vowel reduction—often present in stress-timed languages—may be sufficient for indicating stress <span class="citation" data-cites="cutler2012native tremblay2018functional">(<a href="#ref-cutler2012native" role="doc-biblioref">Cutler, 2012</a>; <a href="#ref-tremblay2018functional" role="doc-biblioref">Tremblay et al., 2018</a>)</span>, rendering other cues relatively less important for speech perception. As a consequence, native English speakers may have to adjust their cue-weighting strategies when learning Spanish, a language that does not have vowel reduction. Evidence from cross-modal priming studies indeed suggests that stress is processed differently by native listeners in both languages during lexical access <span class="citation" data-cites="cooper2002constraints soto2001segmental">(See <a href="#ref-cooper2002constraints" role="doc-biblioref">Cooper et al., 2002</a>; <a href="#ref-soto2001segmental" role="doc-biblioref">Soto-Faraco et al., 2001</a>)</span>. The extant literature suggests that native listeners are tuned in to the relevant acoustic cues of their language and take advantage of them to increase processing efficiency. Unsurprisingly, they use the same cue-weighting strategies when learning an L2, often resulting in difficulties during the early stages of acquisition <span class="citation" data-cites="ingvalson2012can iverson2003perceptual">(<a href="#ref-ingvalson2012can" role="doc-biblioref">Ingvalson et al., 2012</a>; <a href="#ref-iverson2003perceptual" role="doc-biblioref">Iverson et al., 2003</a>)</span>. With regard to prediction, there is evidence that monolingual Spanish speakers use lexical stress to predict a word’s suffix (AUTHORS) and that highly skilled late bilinguals can also learn this skill (AUTHORS). It is not clear how unique language experience, e.g., heritage speakers, language proficiency and language use modulate spoken word prediction.</p>
+</section>
+</section>
+<section id="method" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Method</h1>
+<section id="participants" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="participants"><span class="header-section-number">2.1</span> Participants</h2>
+<p>We collected data from 122 individuals for analysis. There were 30 monolingual participants, 42 heritage speakers, and 50 adult L2 learners. The bilingual participants completed language <em>use</em> and <em>proficiency</em> assessments. We fit the <em>use</em> and <em>proficiency</em> data to separate Bayesian linear models to assess potential group differences.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> We compare the posterior marginal mean difference between groups on both response variables. We established a region of practical equivalence (ROPE) of ±0.1. If, for a given measure, the full range of the 95% highest density credible interval (HDI) of the difference estimate falls within the ROPE, we consider there to be compelling evidence that the groups are equivalent. The HL group had an average proficiency score of 0.70 (SD = 0.09) compared to the L2 groups’ score of 0.71 (SD = 0.14). The marginal mean difference was 0.02 [−0.03, 0.07] and all of the HDI fell within the ROPE. The probability that the effect was positive was 0.77. Regarding language use, the HL group had an average score of 0.41 (SD = 0.15) compared to the L2 groups’ score of 0.38 (SD = 0.16). The marginal mean difference was −0.02 [−0.09, 0.05] and, again, all of the HDI fell within the ROPE. The probability that the effect was negative was 0.72. Taken together, we are confident that the groups do not differ in any meaningful way with regard to use of/proficiency in Spanish. <a href="#tbl-prof-use-desc">Table&nbsp;1</a> provides descriptive statistics and summarizes the models.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-prof-use-desc" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;1: Language use and proficiency assessments for the heritage and L2 bilingual groups. The table reports the mean and standard deviation, as well as posterior estimates of the marginal mean difference (L2 - HL) and the 95% highest denisty credible interval (in brackets). The proportion of the posterior density falling within the region of practical equivalence (±0.1) is reported in the ROPE column. The probability that the effect is of the median’s sign is reported in the PD column.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Metric</th>
+<th style="text-align: right;">HL (n = 42)</th>
+<th style="text-align: right;">L2 (n = 50)</th>
+<th style="text-align: left;">Contrast</th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">ROPE</th>
+<th style="text-align: right;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Proficiency</td>
+<td style="text-align: right;">0.70 (0.09)</td>
+<td style="text-align: right;">0.71 (0.14)</td>
+<td style="text-align: left;">L2 - HL</td>
+<td style="text-align: right;">0.02 [−0.03, 0.07]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.77</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Use</td>
+<td style="text-align: right;">0.41 (0.15)</td>
+<td style="text-align: right;">0.38 (0.16)</td>
+<td style="text-align: left;">L2 - HL</td>
+<td style="text-align: right;">−0.02 [−0.09, 0.05]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.72</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="statistical-analyses" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="statistical-analyses"><span class="header-section-number">2.2</span> Statistical analyses</h2>
+<p>We fit a series of Bayesian regression analyses to examine to time course data. The primary model is a Generalized Additive Mixed Model <span class="citation" data-cites="soskuthy2017generalised winter2016">(GAMM, <a href="#ref-soskuthy2017generalised" role="doc-biblioref">Sóskuthy, 2017</a>; <a href="#ref-winter2016" role="doc-biblioref">Winter &amp; Wieling, 2016</a>)</span>. GAMMs are useful for scrutinizing non-linear data, such as that typically associated with eye-tracking.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> In subsequent analyses, we summarize the posterior predictive distribution to make inferences about the relationships between speaker groups, lexical stress, language proficiency, and language use. Given the distinct nature of some of these analyses, we provide a brief description of the statistical approach at the beginning of each of the corresponding subsections. For all models, we use regularizing, weakly informative priors <span class="citation" data-cites="Gelman_2017">(<a href="#ref-Gelman_2017" role="doc-biblioref">Gelman et al., 2017</a>)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> In most cases, we established a region of practical equivalence (ROPE) around a point null value using the following formula <span class="citation" data-cites="kruschke2018rejecting">(See <a href="#ref-kruschke2018rejecting" role="doc-biblioref">Kruschke, 2018</a>)</span>:</p>
+<p><span class="math display">ROPE = \frac{\mu_1 - \mu_2}{\sqrt{\frac{\sigma_1^2 + \sigma_2^2}{2}}}</span></p>
+<p>We report mean posterior point estimates for parameters of interest, along with the 95% highest density credible interval (HDI), the percent of the region of the HDI contained within the ROPE, and the probability of direction for each effect (PD). For statistical inferences, we focus on estimation rather than decision-making rules, though, generally, a posterior distribution for a parameter β in which 95% of the HDI falls outside the ROPE and a high PD (i.e., values close to 1) are taken as compelling evidence for a given effect. We conducted all analyses using R (version 4.2.1) and fit all models using the probabilistic programming language <code>stan</code> via the R package <code>brms</code> <span class="citation" data-cites="R_brms_a R_brms_b">(<a href="#ref-R_brms_a" role="doc-biblioref">Bürkner, 2017</a>, <a href="#ref-R_brms_b" role="doc-biblioref">2018</a>)</span>.</p>
+</section>
+</section>
+<section id="results" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Results</h1>
+<p>The analyses are divided into three subsections. First, we describe the trajectories of the time course. Second, we evaluate suffix prediction at the target syllable offset. Finally, we consider the effects of L2 use and proficiency.</p>
+<section id="sec-gamm" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-gamm"><span class="header-section-number">3.1</span> The time course of morphological processing</h2>
+<p>The time course data from the eye-tracking task were analyzed to model how the probability of fixating on target items changed over time and under different suprasegmental conditions. We downsampled the data to bins of 50 ms which were centered at the offset of the first syllable of target items. The time course of fixation used for analysis ranged from 200 ms before target syllable offset to 600 ms after. We chose this window because it captured the portion of the time course in which target fixations began to steadily increase from chance. <a href="#fig-raw-et-data-report">Figure&nbsp;1</a> illustrates the trajectories of the Monolingual, HL, and L2 groups as a function of lexical stress. In both panels, we see that the probability of fixating on the target hovers around .5 and begins to increase as time increases. Crucially, we also observe that the lines are not overlapping. For both paroxytonic and oxytonic stress conditions, the monolingual group begins to fixate on the target earlier in the time course. In essence, the HL and L2 groups are phase shifted to the right, representing later target fixation.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-raw-et-data-report" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/checks-fixes-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Time course of raw target fixation data as a function of stress condition (paroxytone, oxytone) for monolingual, HL, and L2 groups. Transparent ribbons represent 99% bootstrapped confidence intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Given the binary nature of the outcome variable (target fixation, elsewhere), the likelihood was assumed to be binomially distributed. The model assessed target fixations as a function of the parametric terms <em>group</em> (monolingual, HL, L2), <em>stress</em> (paroxytone, oxytone), and a non-linear function of time. Both <em>group</em> and <em>stress</em> were set as ordered variables with monolinguals and paroxytones coded as ‘0’. We implemented cubic regression splines with four basis knots as (a) a reference smooth to time, (b) as a difference smooth to time conditioned on stress, and (c) as a random smooth for each participant conditioned on time. Thus, we use the trajectory of the monolinguals’ target fixations to paroxytone words (e.g., CANta) as the baseline and compared it the trajectories of the other groups. The forest plot in <a href="#fig-forest-plot-group-gamm-report">Figure&nbsp;2</a> illustrates the model summary (See supplementary materials for the complete summary in table form).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-forest-plot-group-gamm-report" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/forest-plot-group-gamm-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Forest plot of the omnibus GAMM. The horizontal axis represents the models estimates in log-odds. The vertical axis lists the terms estimated in the model. The points illustrate the posterior mean along with the 66% and 95% HDI. The vertical facetting separates the estimates into parametric and non-parametric population-level effects, group-level effects, and smooth terms.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In order to quantify and assess the between-group differences over time, we used the posterior predictive distribution to calculate posterior pairwise difference smooths. <a href="#fig-group-diff-smooths-plot">Figure&nbsp;3</a> illustrates these pairwise comparisons over the time course in the probability space. Overall, the analysis shows that the monolingual group fixates on targets earlier than the HL and L2 groups in both stress conditions over the time-window we have selected. The HL-L2 comparison suggests that the HL group fixates on targets slightly more and earlier in paxoytone condition, but the opposite is true in the oxytone condition.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-group-diff-smooths-plot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/group-diff-smooths-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Pairwise difference smooths for paroxytone and oxytone items. From dark to light, the colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% highest density credible intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="prediction-at-target-offset" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="prediction-at-target-offset"><span class="header-section-number">3.2</span> Prediction at target offset</h2>
+<p>In order to assess the participants’ ability to predict suffixes, we used the posterior predictive distribution of target fixations 200 ms after the target syllable offset <span class="citation" data-cites="fischer1992saccadic">(i.e., the minimum time necessary to plan and launch a saccade, see <a href="#ref-fischer1992saccadic" role="doc-biblioref">Fischer, 1992</a>)</span>. We assessed the probability that target fixation was greater than chance at this time point for each group, in each stress condition. We implemented a ROPE of $$0.01 around a point null, chance value of 0.5. <a href="#fig-group-prediction-plot-report">Figure&nbsp;4</a> illustrates posterior distributions of target fixations.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-group-prediction-plot-report" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/group-prediction-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: Proportion of target fixations 200ms after the offset of 1st syllable for monolingual, HL, and L2 groups in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. The vertical dotted line marks chance (50%) surrounded by a ±1% region of practical equivalence (ROPE). The density mass of a posterior distribution that falls below the upper bound of the ROPE is displayed in red and values above this threshold are purple.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>All groups fixated on targets above chance 200 ms after the target syllable offset with the exception of the HL group in the oxytone condition (β = 0.48, HDI = [0.45, 0.52], ROPE = 0.97, PD = 0.85). Approximately 97% of the HDI fell below the upper bound of the ROPE and there is an 85% chance that the estimate is below 0.5. Additionally, a small portion of the posterior probability mass of the L2 group in the paroxytone condition fell within the ROPE (β = 0.54, HDI = [0.51, 0.57], ROPE = 0.01, PD = 1), though, given the model, the data and our prior assumptions, the effect is nearly certain to be above 0.5.</p>
+<p>Next, we assessed the rate of target fixations at the same time point (i.e., 200 ms after the offset of the target syllable). While the previous assessment explained <em>if</em> participants fixate on targets before hearing a critical suffix, this analysis sheds light on how fast target fixations occur by calculating the partial derivative (i.e., slope) of the trajectory at this time point. The top panels of <a href="#fig-marginal-slopes-plot-report">Figure&nbsp;5</a> show the marginal slope estimates for each group for paroxtone and oxytone words. The bottom panels of <a href="#fig-marginal-slopes-plot-report">Figure&nbsp;5</a> provide pairwise group comparisons in each condition. The monolingual group had a slower rate of target fixation (i.e., a less steep slope) than the HL group for paroxytones (β = -0.004, HDI = [-0.008, -0.001], ROPE = 0, PD = 0.999) and oxytones (β = -0.006, HDI = [-0.010, -0.004], ROPE = 0, PD = 1). This was also the case when compared with L2 learners (Paroxytones: β = -0.006, HDI = [-0.009, -0.003], ROPE = 0, PD = 1; Oxytones: β = -0.006, HDI = [-0.009, -0.003], ROPE = 0, PD = 1). Upon comparing the HL and L2 groups, we do not find compelling evidence that either group has a faster rate of target fixation. In the paroxytone condition, the L2 group might be slightly faster, but nearly half the HDI fell within the ROPE (β = -0.001, HDI = [-0.003, 0.000], ROPE = 0.514, PD = 0.922). In the oxytone condition the opposite was true, that is, the L2 group may have been slightly slower, but, again, a large portion of the HDI fell within the ROPE (β = 0.001, HDI = [0.000, 0.002], ROPE = 0.697, PD = 0.957). Taken together, we do not believe there is compelling evidence that the rate of target fixation differs between the HL and L2 groups. Additional plots and a table summary are provided in the supplementary materials.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-marginal-slopes-plot-report" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/group-marginal-slopes-table-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: Marginal slope estimates (top panels) and pairwise difference estimates (bottom panels) for monolingual, HL, and L2 groups 200ms after the target syllable offset in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. Points represent posterior means along with the 66% and 95% HDI. In the bottom panels, the vertical blue rectangle illustrates a ROPE of ±0.001. Posterior mass falling within the ROPE is depicted in red and values outside the ROPE are in purple.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="proficiency-and-use" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="proficiency-and-use"><span class="header-section-number">3.3</span> Proficiency and use</h2>
+<p>In order to assess the effects of language proficiency and use, we took a subset of the bilingual data (HL and L2 groups). Specifically, we used the data from the time bin that corresponded with 200 ms after the offset of the initial syllable in the target items. We calculated the proportion of target fixations for each participant, in each condition and submitted these proportions to a zero-and-one inflated beta regression model. The outcome was modeled as a function of group (HL, L2), stress (paroxytone, oxytone), use, and proficiency, along with all higher order interactions. The group and stress predictors were sum coded (-1, 1) and the continuous predictors were standardized (i.e., converted to z-scores), thus the model intercept provided an estimate of target fixation marginalizing over <em>group</em> and <em>stress</em>, with <em>use</em> and <em>proficiency</em> equal to 0 (i.e., at the unstandardized mean). We included a group-level effect for participants. A full description of the model specification and priors is available in the supplementary materials.</p>
+<p><a href="#fig-bi-prof-use-heatmap-report">Figure&nbsp;6</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bi-prof-use-heatmap-report" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/bi-prof-use-heatmap-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6: Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores for the bilingual groups. The top rows illustrate model estimate for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="references" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> References</h1>
+
+<div style="page-break-after: always;"></div>
+</section>
+<section id="supplementary-materials" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Supplementary materials</h1>
+<section id="sec-bda" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-bda"><span class="header-section-number">5.1</span> Bayesian data analysis</h2>
+<p>This study employs Bayesian Data Analysis for quantitative inferential statistics. Specifically, this implies that we use Bayesian <em>credible intervals</em>—and other metrics—to draw statistical inferences. A Bayesian model calculates a posterior distribution, i.e., a distribution of plausible parameter values, given the data, a data-generating model, and any prior assumptions we have about those parameter values. Posterior distributions are computationally costly. For this reason, we use the Hamiltonian Markov Chain Monte Carlo algorithm to obtain a sample that includes thousands of values from the posterior distribution. In practical terms, what this means is that we do not calculate a single point estimate for an effect β, but rather we draw a sample of 4,000 plausible values for β. This allows us to quantify our uncertainty regarding β by summarizing the distribution of those values. We will use 4 statistics to describe the posterior distribution: (1) the posterior mean, (2) the highest density credible interval (HDI), (3) the proportion of the HDI that falls within a Region of Practical Equivalence (ROPE), and (4) the Maximum Probability of Effect (MPE). The posterior mean provides a point estimate for the distribution. The 95% highest density credible interval provides bounds for the effect. The ROPE designates a region of practical equivalence for a negligible effect and calculates the proportion of the HDI that falls within this interval.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> The MPE calculates the proportion of the posterior distribution that is of the median’s sign (or the probability that the effect is positive or negative). If, for instance, a hypothesis states that β &gt; 0, we judge there to be <em>compelling evidence</em> for this hypothesis if the mean point estimate is a positive number, if the 95% credible interval of β does not contain 0 and is outside the ROPE by a reasonably clear margin, and the posterior <em>P</em>(β &gt; 0) is close to one. Together these four statistics allow us to quantify our uncertainty and provide an intuitive interpretation of any given effect. Consider a case in which the posterior mean of β is 100 and the 95% credible interval is [40, 160]. The interval tells us that we can be 95% certain the <em>true</em> value of β is between 40 and 160, given the data, our model, and our prior information. Furthermore, the interval allows us to specify areas of uncertainty. In this example, we can conclude that the effect is almost certain to be positive. The lower interval value of 40 tells us that 95% of the plausible values are greater than 40. We also note that the interval covers a wide range of values, thus we also conclude that we are not very certain about the size of the effect. This type of interpretation is not possible under a frequentist paradigm.</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="sec-gamms-supp" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-gamms-supp"><span class="header-section-number">5.2</span> GAMMs</h2>
+<p><a href="#tbl-group-gamm">Table&nbsp;2</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-group-gamm" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;2: Group GAMM summary.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Effect</th>
+<th style="text-align: left;">Term</th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">HDI</th>
+<th style="text-align: right;">Rhat</th>
+<th style="text-align: right;">Bulk ESS</th>
+<th style="text-align: right;">Tail ESS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">[0.44, 0.76]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">797.53</td>
+<td style="text-align: right;">1436.65</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HL</td>
+<td style="text-align: right;">−0.30</td>
+<td style="text-align: right;">[−0.53, −0.11]</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">744.97</td>
+<td style="text-align: right;">1223.82</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">L2</td>
+<td style="text-align: right;">−0.43</td>
+<td style="text-align: right;">[−0.64, −0.23]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">708.42</td>
+<td style="text-align: right;">761.10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Oxytone</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">[0.05, 0.08]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3429.99</td>
+<td style="text-align: right;">3735.29</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">HL:Oxytone</td>
+<td style="text-align: right;">−0.44</td>
+<td style="text-align: right;">[−0.46, −0.42]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3469.26</td>
+<td style="text-align: right;">3630.77</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">L2:Oxytone</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">[−0.02, 0.02]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3114.31</td>
+<td style="text-align: right;">3926.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Time</td>
+<td style="text-align: right;">−0.26</td>
+<td style="text-align: right;">[−0.26, −0.26]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3581.16</td>
+<td style="text-align: right;">3934.31</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Time:Oxytone</td>
+<td style="text-align: right;">−0.01</td>
+<td style="text-align: right;">[−0.01, −0.01]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3865.39</td>
+<td style="text-align: right;">3348.79</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grouping</td>
+<td style="text-align: left;">sd(Intercept)</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">[0.40, 0.51]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1088.45</td>
+<td style="text-align: right;">1923.43</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Smooths</td>
+<td style="text-align: left;">sds(Time)</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">[0.02, 0.06]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1620.98</td>
+<td style="text-align: right;">2149.99</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sds(Time:Oxytone)</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">[0.01, 0.04]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2522.74</td>
+<td style="text-align: right;">3383.84</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><a href="#tbl-group-gamm-prediction">Table&nbsp;3</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-group-gamm-prediction" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;3: Group prediction summary.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Group</th>
+<th style="text-align: left;">Stress</th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">HDI</th>
+<th style="text-align: right;">ROPE</th>
+<th style="text-align: right;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Monolingual</td>
+<td style="text-align: left;">Paroxytone</td>
+<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">[0.61, 0.68]</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Oxytone</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">[0.63, 0.70]</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HL</td>
+<td style="text-align: left;">Paroxytone</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">[0.54, 0.60]</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Oxytone</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">[0.45, 0.52]</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">0.85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">L2</td>
+<td style="text-align: left;">Paroxytone</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">[0.51, 0.57]</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Oxytone</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">[0.53, 0.59]</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><a href="#fig-marginal-slopes-plot-2">Figure&nbsp;7</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-marginal-slopes-plot-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/marginal-slopes-plot-2-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7: Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. Group marginal slopes pairwise comparisons summary.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#tbl-group-maginal-slopes-pairwise">Table&nbsp;4</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-group-maginal-slopes-pairwise" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;4: Marginal slopes pairwise comparisons.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stress</th>
+<th style="text-align: left;">Comparison</th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">HDI</th>
+<th style="text-align: right;">ROPE</th>
+<th style="text-align: right;">PD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Paroxytone</td>
+<td style="text-align: left;">HL - L2</td>
+<td style="text-align: right;">-0.001</td>
+<td style="text-align: right;">[-0.003, 0.000]</td>
+<td style="text-align: right;">0.514</td>
+<td style="text-align: right;">0.922</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Mono - HL</td>
+<td style="text-align: right;">-0.004</td>
+<td style="text-align: right;">[-0.008, -0.001]</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.999</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Mono - L2</td>
+<td style="text-align: right;">-0.006</td>
+<td style="text-align: right;">[-0.009, -0.003]</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">1.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oxytone</td>
+<td style="text-align: left;">HL - L2</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">[0.000, 0.002]</td>
+<td style="text-align: right;">0.697</td>
+<td style="text-align: right;">0.957</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Mono - HL</td>
+<td style="text-align: right;">-0.006</td>
+<td style="text-align: right;">[-0.010, -0.004]</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">1.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Mono - L2</td>
+<td style="text-align: right;">-0.006</td>
+<td style="text-align: right;">[-0.009, -0.003]</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">1.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><a href="#fig-bi-comparison-plot-report">Figure&nbsp;8</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bi-comparison-plot-report" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/bi-comparison-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;8: Probability of fixating on target as a function of stress for the bilingual groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent paroxytone (‘CANta’, green) and oxytone (‘canTO’, orange) conditions plus 95%, 80%, and 50% credible intervals. Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#tbl-bi-gamm">Table&nbsp;5</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-bi-gamm" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5: Bilingual GAMM summary.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Effect</th>
+<th style="text-align: left;">Term</th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">HDI</th>
+<th style="text-align: right;">Rhat</th>
+<th style="text-align: right;">Bulk ESS</th>
+<th style="text-align: right;">Tail ESS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">[0.22, 0.53]</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">565.11</td>
+<td style="text-align: right;">1104.64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">L2</td>
+<td style="text-align: right;">−0.17</td>
+<td style="text-align: right;">[−0.37, 0.04]</td>
+<td style="text-align: right;">1.02</td>
+<td style="text-align: right;">439.52</td>
+<td style="text-align: right;">928.86</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Oxytone</td>
+<td style="text-align: right;">−0.39</td>
+<td style="text-align: right;">[−0.41, −0.38]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3169.14</td>
+<td style="text-align: right;">3706.47</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Proficiency</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">[−0.06, 0.14]</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">668.20</td>
+<td style="text-align: right;">1129.77</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Use</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">[−0.09, 0.12]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">686.17</td>
+<td style="text-align: right;">1083.40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">L2:Oxytone</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">[0.50, 0.53]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3124.51</td>
+<td style="text-align: right;">3462.27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Time</td>
+<td style="text-align: right;">1.49</td>
+<td style="text-align: right;">[1.48, 1.51]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3101.44</td>
+<td style="text-align: right;">3522.33</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Time:Oxytone</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">[−0.02, 0.02]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2909.08</td>
+<td style="text-align: right;">3457.55</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grouping</td>
+<td style="text-align: left;">sd(Intercept)</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">[0.42, 0.58]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">904.53</td>
+<td style="text-align: right;">1272.59</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Smooths</td>
+<td style="text-align: left;">sds(Time)</td>
+<td style="text-align: right;">1.39</td>
+<td style="text-align: right;">[0.34, 3.86]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2319.02</td>
+<td style="text-align: right;">2697.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sds(Time:Oxytone)</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">[0.10, 3.27]</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1838.93</td>
+<td style="text-align: right;">1948.50</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><a href="#fig-forest-plot-bi-gamm-report">Figure&nbsp;9</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-forest-plot-bi-gamm-report" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/forest-plot-bi-gamm-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9: Forest plot of the bilingual GAMM. The horizontal axis represents the models estimates in log-odds. The vertical axis lists the terms estimated in the model. The points illustrate the posterior mean along with the 66% and 95% HDI. The vertical facetting separates the estimates into parametric and non-parametric population-level effects, group-level effects, and smooth terms.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="sec-prof-use-supp" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-prof-use-supp"><span class="header-section-number">5.3</span> Proficiency and use</h2>
+<p><a href="#fig-bi-prof-use-plot-report">Figure&nbsp;10</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bi-prof-use-plot-report" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/bi-prof-use-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10: Use and proficiency in Spanish.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-eda-prof-use-marginal-mean-estimates-report">Figure&nbsp;11</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-eda-prof-use-marginal-mean-estimates-report" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../figs/eda-prof-use-marginal-mean-estimates-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;11: Marginal mean estimates plot.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#tbl-bi-zoid">Table&nbsp;6</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-bi-zoid" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;6: Bilingual GAMM summary.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Effect</th>
+<th style="text-align: left;">Term</th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">HDI</th>
+<th style="text-align: right;">Rhat</th>
+<th style="text-align: right;">Bulk ESS</th>
+<th style="text-align: right;">Tail ESS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">[0.02, 0.24]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4040.14</td>
+<td style="text-align: right;">3952.14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ϕ Intercept</td>
+<td style="text-align: right;">2.17</td>
+<td style="text-align: right;">[1.86, 2.51]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3852.71</td>
+<td style="text-align: right;">3739.37</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">zi Intercept</td>
+<td style="text-align: right;">−4.37</td>
+<td style="text-align: right;">[−6.34, −3.17]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3847.73</td>
+<td style="text-align: right;">3778.92</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Group</td>
+<td style="text-align: right;">−0.04</td>
+<td style="text-align: right;">[−0.15, 0.06]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4103.24</td>
+<td style="text-align: right;">3948.07</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Stress</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">[−0.10, 0.10]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3881.54</td>
+<td style="text-align: right;">3775.78</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Use</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">[−0.09, 0.13]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3869.10</td>
+<td style="text-align: right;">3873.47</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Proficiency</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">[−0.06, 0.19]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3942.20</td>
+<td style="text-align: right;">3929.86</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Group:Stress</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">[0.09, 0.29]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3773.70</td>
+<td style="text-align: right;">3696.87</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Group:Use</td>
+<td style="text-align: right;">−0.13</td>
+<td style="text-align: right;">[−0.23, −0.02]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3739.06</td>
+<td style="text-align: right;">3711.31</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Stress:Use</td>
+<td style="text-align: right;">−0.12</td>
+<td style="text-align: right;">[−0.23, −0.01]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3926.60</td>
+<td style="text-align: right;">3999.60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Group:Proficiency</td>
+<td style="text-align: right;">−0.02</td>
+<td style="text-align: right;">[−0.15, 0.09]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4021.95</td>
+<td style="text-align: right;">4014.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">stress_sum:prof_z</td>
+<td style="text-align: right;">−0.01</td>
+<td style="text-align: right;">[−0.13, 0.11]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3940.73</td>
+<td style="text-align: right;">3437.18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Use:Proficiency</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">[−0.13, 0.12]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3612.81</td>
+<td style="text-align: right;">3918.69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Group:Stress:Use</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">[−0.10, 0.12]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3982.24</td>
+<td style="text-align: right;">3756.15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Group:Stress:Prof.</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">[−0.04, 0.19]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3931.67</td>
+<td style="text-align: right;">4102.86</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Group:Use:Prof.</td>
+<td style="text-align: right;">−0.04</td>
+<td style="text-align: right;">[−0.16, 0.09]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3879.26</td>
+<td style="text-align: right;">3396.92</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Stress:Use:Prof.</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">[−0.12, 0.12]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3990.53</td>
+<td style="text-align: right;">3892.69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Group:Stress:Use:Prof.</td>
+<td style="text-align: right;">−0.11</td>
+<td style="text-align: right;">[−0.23, 0.01]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4030.29</td>
+<td style="text-align: right;">3842.42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grouping</td>
+<td style="text-align: left;">sd(Intercept)</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">[0.01, 0.32]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3446.94</td>
+<td style="text-align: right;">3699.61</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd(Stress)</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">[0.00, 0.26]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3533.06</td>
+<td style="text-align: right;">3722.07</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd(ϕ Intercept)</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">[0.45, 1.23]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3638.79</td>
+<td style="text-align: right;">3850.73</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd(zi Intercept</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">[0.03, 2.44]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3975.84</td>
+<td style="text-align: right;">3798.24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">cor(Intercept,Stress)</td>
+<td style="text-align: right;">−0.16</td>
+<td style="text-align: right;">[−0.96, 0.91]</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3883.60</td>
+<td style="text-align: right;">3654.52</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="reproducibility-information" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="reproducibility-information"><span class="header-section-number">5.4</span> Reproducibility information</h2>
+<p><strong>About this document</strong></p>
+<p>This document was written in <code>quarto</code>.</p>
+<p><strong>Session info</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> setting  value
+ version  R version 4.2.1 (2022-06-23)
+ os       macOS Big Sur ... 10.16
+ system   x86_64, darwin17.0
+ ui       X11
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       America/New_York
+ date     2022-10-07
+ pandoc   2.18 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               loadedversion       date
+abind                  1.4-5 2016-07-21
+arrayhelpers           1.1-0 2020-02-04
+assertthat             0.2.1 2019-03-21
+backports              1.4.1 2021-12-13
+base64enc              0.1-3 2015-07-28
+bayesplot              1.9.0 2022-03-10
+bayestestR            0.12.1 2022-05-02
+bit                    4.0.4 2020-08-04
+bit64                  4.0.5 2020-08-30
+bridgesampling         1.1-2 2021-04-16
+brms                  2.17.0 2022-04-13
+Brobdingnag            1.2-7 2022-02-03
+cachem                 1.0.6 2021-08-19
+callr                  3.7.2 2022-08-22
+cellranger             1.1.0 2016-07-27
+checkmate              2.1.0 2022-04-21
+cli                    3.3.0 2022-04-25
+coda                  0.19-4 2020-09-30
+codetools             0.2-18 2020-11-04
+colorspace             2.0-3 2022-02-21
+colourpicker           1.1.1 2021-10-04
+crayon                 1.5.1 2022-03-26
+crosstalk              1.2.0 2021-11-04
+datawizard             0.5.1 2022-08-17
+DBI                    1.1.3 2022-06-18
+devtools               2.4.4 2022-07-20
+digest                0.6.29 2021-12-01
+distributional         0.3.0 2022-01-05
+dplyr                  1.0.9 2022-04-28
+DT                      0.24 2022-08-09
+dygraphs             1.1.1.6 2018-07-11
+ellipsis               0.3.2 2021-04-29
+emmeans              1.8.1-1 2022-09-08
+estimability           1.4.1 2022-08-05
+evaluate                0.16 2022-08-09
+fansi                  1.0.3 2022-03-24
+farver                 2.1.1 2022-07-06
+fastmap                1.1.0 2021-01-25
+forcats                0.5.2 2022-08-19
+fs                     1.5.2 2021-12-08
+generics               0.1.3 2022-07-05
+ggdist                 3.2.0 2022-07-19
+ggplot2                3.3.6 2022-05-03
+ggridges               0.5.3 2021-01-08
+glue                   1.6.2 2022-02-24
+gridExtra                2.3 2017-09-09
+gtable                 0.3.0 2019-03-25
+gtools                 3.9.3 2022-07-11
+here                   1.0.1 2020-12-13
+highr                    0.9 2021-04-16
+hms                    1.1.2 2022-08-19
+htmltools              0.5.3 2022-07-18
+htmlwidgets            1.5.4 2021-09-08
+httpuv                 1.6.5 2022-01-05
+igraph                 1.3.4 2022-07-19
+inline                0.3.19 2021-05-31
+insight               0.18.2 2022-08-10
+janitor                2.1.0 2021-01-05
+jsonlite               1.8.0 2022-02-22
+knitr                   1.40 2022-08-24
+later                  1.3.0 2021-08-18
+lattice              0.20-45 2021-09-22
+lifecycle              1.0.1 2021-09-24
+loo                    2.5.1 2022-03-24
+lubridate              1.8.0 2021-10-07
+magrittr               2.0.3 2022-03-30
+markdown                 1.1 2019-08-07
+Matrix                 1.5-0 2022-09-10
+matrixStats           0.62.0 2022-04-19
+memoise                2.0.1 2021-11-26
+mime                    0.12 2021-09-28
+miniUI               0.1.1.1 2018-05-18
+munsell                0.5.0 2018-06-12
+mvtnorm                1.1-3 2021-10-08
+nlme                 3.1-157 2022-03-25
+patchwork              1.1.2 2022-08-19
+pillar                 1.8.1 2022-08-19
+pkgbuild               1.3.1 2021-12-20
+pkgconfig              2.0.3 2019-09-22
+pkgload                1.3.0 2022-06-27
+plyr                   1.8.7 2022-03-24
+posterior              1.3.0 2022-08-15
+prettyunits            1.1.1 2020-01-24
+processx               3.7.0 2022-07-07
+profvis                0.3.7 2020-11-02
+promises             1.2.0.1 2021-02-11
+ps                     1.7.1 2022-06-18
+purrr                  0.3.4 2020-04-17
+R6                     2.5.1 2021-08-19
+Rcpp                   1.0.9 2022-07-08
+RcppParallel           5.1.5 2022-01-05
+readr                  2.1.2 2022-01-30
+readxl                 1.4.1 2022-08-17
+remotes                2.4.2 2021-11-30
+reshape2               1.4.4 2020-04-09
+rlang                  1.0.4 2022-07-12
+rmarkdown               2.16 2022-08-24
+rprojroot              2.0.3 2022-04-02
+rstan                 2.21.5 2022-04-11
+rstantools             2.2.0 2022-04-08
+rstudioapi              0.14 2022-08-22
+scales                 1.2.1 2022-08-20
+sessioninfo            1.2.2 2021-12-06
+shiny                  1.7.2 2022-07-19
+shinyjs                2.1.0 2021-12-23
+shinystan              2.6.0 2022-03-03
+shinythemes            1.2.0 2021-01-25
+snakecase             0.11.0 2019-05-25
+StanHeaders         2.21.0-7 2020-12-17
+stringi                1.7.8 2022-07-11
+stringr                1.4.1 2022-08-20
+svUnit                 1.0.6 2021-04-19
+tensorA               0.36.2 2020-11-19
+threejs                0.3.3 2020-01-21
+tibble                 3.1.8 2022-07-22
+tidybayes              3.0.2 2022-01-05
+tidyr                  1.2.0 2022-02-01
+tidyselect             1.1.2 2022-02-21
+tzdb                   0.3.0 2022-03-28
+urlchecker             1.0.1 2021-11-30
+usethis                2.1.6 2022-05-25
+utf8                   1.2.2 2021-07-24
+vctrs                  0.4.1 2022-04-13
+vroom                  1.5.7 2021-11-30
+withr                  2.5.0 2022-03-03
+xfun                    0.32 2022-08-10
+xtable                 1.8-4 2019-04-21
+xts                   0.12.1 2020-09-09
+yaml                   2.3.5 2022-02-21
+zoo                   1.8-10 2022-04-15</code></pre>
+</div>
+</div>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-bullock2003analogy" class="csl-entry" role="doc-biblioentry">
+Bullock, B., &amp; Lord, G. (2003). Analogy as a learning tool in second language acquisition. In A. T. Pérez-Leroux &amp; Y. Roberge (Eds.), <em>Romance linguistics: Theory and acquisition</em> (Vol. 244, pp. 281–297). John Benjamins Publishing. <a href="https://doi.org/10.1075/cilt.244.21bul">https://doi.org/10.1075/cilt.244.21bul</a>
+</div>
+<div id="ref-R_brms_a" class="csl-entry" role="doc-biblioentry">
+Bürkner, P.-C. (2017). <span class="nocase">brms</span>: An <span>R</span> package for <span>Bayesian</span> multilevel models using <span>Stan</span>. <em>Journal of Statistical Software</em>, <em>80</em>(1), 1–28. <a href="https://doi.org/10.18637/jss.v080.i01">https://doi.org/10.18637/jss.v080.i01</a>
+</div>
+<div id="ref-R_brms_b" class="csl-entry" role="doc-biblioentry">
+Bürkner, P.-C. (2018). <span class="nocase">Advanced Bayesian Multilevel Modeling with the R Package brms</span>. <em><span>The R Journal</span></em>, <em>10</em>(1), 395–411. <a href="https://doi.org/10.32614/RJ-2018-017">https://doi.org/10.32614/RJ-2018-017</a>
+</div>
+<div id="ref-chrabaszcz2014acoustic" class="csl-entry" role="doc-biblioentry">
+Chrabaszcz, A., Winn, M., Lin, C. Y., &amp; Idsardi, W. J. (2014). Acoustic cues to perception of word stress by english, mandarin, and russian speakers. <em>Journal of Speech, Language, and Hearing Research</em>, <em>57</em>(4), 1468–1479. <a href="https://doi.org/10.1044/2014_JSLHR-L-13-0279">https://doi.org/10.1044/2014_JSLHR-L-13-0279</a>
+</div>
+<div id="ref-cooper2002constraints" class="csl-entry" role="doc-biblioentry">
+Cooper, N., Cutler, A., &amp; Wales, R. (2002). Constraints of lexical stress on lexical access in english: Evidence from native and non-native listeners. <em>Language and Speech</em>, <em>45</em>(3), 207–228. <a href="https://doi.org/10.1177/002383090204500301">https://doi.org/10.1177/002383090204500301</a>
+</div>
+<div id="ref-cutler2012native" class="csl-entry" role="doc-biblioentry">
+Cutler, A. (2012). <em>Native listening: Language experience and the recognition of spoken words</em>. MIT Press.
+</div>
+<div id="ref-face2000role" class="csl-entry" role="doc-biblioentry">
+Face, T. L. (2000). The role of syllable weight in the perception of spanish stress. In H. Campos &amp; E. Herburger (Eds.), <em>Hispanic linguistics at the turn of the millennium</em> (pp. 1–13). Sommerville, MA: Cascadilla Proceedings Project.
+</div>
+<div id="ref-face2005syllable" class="csl-entry" role="doc-biblioentry">
+Face, T. L. (2005). Syllable weight and the perception of spanish stress placement by second language learners. <em>Journal of Language and Learning</em>, <em>3</em>, 90–103.
+</div>
+<div id="ref-face2006cognitive" class="csl-entry" role="doc-biblioentry">
+Face, T. L. (2006). <em>Cognitive factors in the perception of spanish stress placement: Implications for a model of speech perception</em>. <em>44</em>(6), 1237–1267. <a href="https://doi.org/10.1515/LING.2006.040">https://doi.org/10.1515/LING.2006.040</a>
+</div>
+<div id="ref-fischer1992saccadic" class="csl-entry" role="doc-biblioentry">
+Fischer, B. (1992). Saccadic reaction time: Implications for reading, dyslexia, and visual cognition. In K. Rayner (Ed.), <em>Eye movements and visual cognition. Springer series in neuropsychology</em> (pp. 31–45). Springer. <a href="https://doi.org/10.1007/978-1-4612-2852-3_3">https://doi.org/10.1007/978-1-4612-2852-3_3</a>
+</div>
+<div id="ref-Gelman_2017" class="csl-entry" role="doc-biblioentry">
+Gelman, A., Simpson, D., &amp; Betancourt, M. (2017). The prior can often only be understood in the context of the likelihood. <em>Entropy</em>, <em>19</em>(10), 1–13. <a href="https://doi.org/10.3390/e19100555">https://doi.org/10.3390/e19100555</a>
+</div>
+<div id="ref-gordon2017acoustic" class="csl-entry" role="doc-biblioentry">
+Gordon, M., &amp; Roettger, T. (2017). Acoustic correlates of word stress: A cross-linguistic survey. <em>Linguistics Vanguard</em>, <em>3</em>(1). <a href="https://doi.org/10.1515/lingvan-2017-0007">https://doi.org/10.1515/lingvan-2017-0007</a>
+</div>
+<div id="ref-holt2006cue" class="csl-entry" role="doc-biblioentry">
+Holt, L. L., &amp; Lotto, A. J. (2006). Cue weighting in auditory categorization: Implications for first and second language acquisition. <em>The Journal of the Acoustical Society of America</em>, <em>119</em>(5), 3059–3071. <a href="https://doi.org/10.1121/1.2188377">https://doi.org/10.1121/1.2188377</a>
+</div>
+<div id="ref-ingvalson2012can" class="csl-entry" role="doc-biblioentry">
+Ingvalson, E. M., Holt, L. L., &amp; McClelland, J. L. (2012). Can native japanese listeners learn to differentiate /r-l/ on the basis of F3 onset frequency? <em>Bilingualism: Language and Cognition</em>, <em>15</em>(2), 255–274. <a href="https://doi.org/10.1017/S1366728911000447">https://doi.org/10.1017/S1366728911000447</a>
+</div>
+<div id="ref-iverson2003perceptual" class="csl-entry" role="doc-biblioentry">
+Iverson, P., Kuhl, P. K., Akahane-Yamada, R., Diesch, E., Kettermann, A., Siebert, C., et al. (2003). A perceptual interference account of acquisition difficulties for non-native phonemes. <em>Cognition</em>, <em>87</em>(1), B47–B57. <a href="https://doi.org/10.1016/s0010-0277(02)00198-1">https://doi.org/10.1016/s0010-0277(02)00198-1</a>
+</div>
+<div id="ref-kruschke2018rejecting" class="csl-entry" role="doc-biblioentry">
+Kruschke, J. K. (2018). Rejecting or accepting parameter values in <span>B</span>ayesian estimation. <em>Advances in Methods and Practices in Psychological Science</em>, <em>1</em>(2), 270–280.
+</div>
+<div id="ref-lord2007role" class="csl-entry" role="doc-biblioentry">
+Lord, G. (2007). The role of the lexicon in learning second language stress patterns. <em>Applied Language Learning</em>, <em>17</em>(1-2), 1–14.
+</div>
+<div id="ref-ortega2013english" class="csl-entry" role="doc-biblioentry">
+Ortega-Llebaria, M., Gu, H., &amp; Fan, J. (2013). English speakers’ perception of spanish lexical stress: Context-driven L2 stress perception. <em>Journal of Phonetics</em>, <em>41</em>(3-4), 186–197. <a href="https://doi.org/10.1016/j.wocn.2013.01.006">https://doi.org/10.1016/j.wocn.2013.01.006</a>
+</div>
+<div id="ref-pike1945intonation" class="csl-entry" role="doc-biblioentry">
+Pike, K. L. (1945). <em>The intonation of american english</em>.
+</div>
+<div id="ref-saalfeld2012teaching" class="csl-entry" role="doc-biblioentry">
+Saalfeld, A. K. (2012). Teaching L2 spanish stress. <em>Foreign Language Annals</em>, <em>45</em>(2), 283–303. <a href="https://doi.org/10.1111/j.1944-9720.2012.01191.x">https://doi.org/10.1111/j.1944-9720.2012.01191.x</a>
+</div>
+<div id="ref-soskuthy2017generalised" class="csl-entry" role="doc-biblioentry">
+Sóskuthy, M. (2017). Generalised additive mixed models for dynamic analysis in linguistics: A practical introduction. <em>arXiv Preprint arXiv:1703.05339</em>.
+</div>
+<div id="ref-soto2001segmental" class="csl-entry" role="doc-biblioentry">
+Soto-Faraco, S., Sebastián-Gallés, N., &amp; Cutler, A. (2001). Segmental and suprasegmental mismatch in lexical access. <em>Journal of Memory and Language</em>, <em>45</em>, 412–432. <a href="https://doi.org/10.1006/jmla.2000.2783">https://doi.org/10.1006/jmla.2000.2783</a>
+</div>
+<div id="ref-tremblay2018functional" class="csl-entry" role="doc-biblioentry">
+Tremblay, A., Broersma, M., &amp; Coughlin, C. E. (2018). The functional weight of a prosodic cue in the native language predicts the learning of speech segmentation in a second language. <em>Bilingualism: Language and Cognition</em>, <em>21</em>(3), 640–652. <a href="https://doi.org/10.1017/S136672891700030X">https://doi.org/10.1017/S136672891700030X</a>
+</div>
+<div id="ref-winter2016" class="csl-entry" role="doc-biblioentry">
+Winter, B., &amp; Wieling, M. (2016). How to analyze linguistic change using mixed models, growth curve analysis and generalized additive modeling. <em>Journal of Language Evolution</em>, <em>1, 1</em>, 7–18. https://doi.org/<a href="https://doi.org/10.1093/jole/lzv003">https://doi.org/10.1093/jole/lzv003</a>
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>In both cases, the response variable, <em>use</em> or <em>proficiency</em> score, was a proportion. Thus, we used the beta distribution for the model likelihood with a logit linking function. The models included regularizing, weakly informative priors. See <a href="#sec-prof-use-supp">Section&nbsp;5.3</a> of the supplementary materials for full details.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>GAMMs represent an extension to the linear model framework that allow non-linear functions called factor smooths to be applied to predictors. In this sense, the predictors can be classified into two types: parametric terms (equivalent to fixed effects in hierarchical model terminology) and smooth terms. Random smooths are conceptually similar to random slopes and intercepts in the mixed-effects regression framework <span class="citation" data-cites="winter2016">(<a href="#ref-winter2016" role="doc-biblioref">Winter &amp; Wieling, 2016</a>)</span>. Thus, they allow the by-subject trajectory shapes to vary as a function of a parametric effect and are essential in avoiding anti-conservative models.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>See supplementary materials for detailed information.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>We utilize a ROPE of ±1 for standardized values. For non-standardized values <span class="citation" data-cites="kruschke2018rejecting">Kruschke (<a href="#ref-kruschke2018rejecting" role="doc-biblioref">2018</a>)</span> recommends using the following formula: <span class="math inline">ROPE = \frac{\mu_1 - \mu_2}{\sqrt{\frac{\sigma_1^2 + \sigma_2^2}{2}}}</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

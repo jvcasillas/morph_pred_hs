@@ -26,7 +26,7 @@ clean_guide <- function(position, title) {
   )
 }
 
-my_colors <- c("#f98e09", "#bc3754", "#57106e")
+my_colors <- c("#f98e09", "#bc3754", "#57106e", "#cc0033")
 
 # Point-slope formula: (y - y1) = m(x - x1)
 find_intercept <- function(x1, y1, slope) {
@@ -81,32 +81,36 @@ pull_from_tib <- function(df, col, row, val) {
 }
 
 # Report estimate from posterior distribution summary
-report_posterior <- function(df, param, is_exp = TRUE, mod = NULL) {
+# Report posterior estimates, HDI, ROPE, and MPE in prose
+report_posterior <- function(df, param, metric = NULL, prefix = NULL,
+                             supress = FALSE) {
   
-  if (is_exp == TRUE) {
-    
+  if (is.null(metric)) {
     # Extract wanted value from model output
-    est  <- df[df$Parameter == param, "Median"]
-    cis  <- df[df$Parameter == param, "HDI"]
-    rope <- df[df$Parameter == param, "% in ROPE"]
-    mpe  <- df[df$Parameter == param, "MPE"]
-
-    capture.output(
-      paste0("(&beta; = ", est, ", HDI = ", cis, ", ROPE = ", rope, 
-             ", MPE = ", mpe, ")", "\n") %>% 
-        cat()) %>% 
-        paste()
+    est  <- df[df$parameter == param, "Estimate"]
+    cis  <- df[df$parameter == param, "HDI"]
+    rope <- df[df$parameter == param, "ROPE"]
+    pd   <- df[df$parameter == param, "PD"]
   } else {
     # Extract wanted value from model output
-    est  <- df[df$Parameter == param & df$Model == mod, "Median"]
-    cis  <- df[df$Parameter == param & df$Model == mod, "HDI"]
-    mpe  <- df[df$Parameter == param & df$Model == mod, "MPE"]
-
+    est  <- df[df$parameter == param & df$Metric == metric, "Estimate"]
+    cis  <- df[df$parameter == param & df$Metric == metric, "HDI"]
+    rope <- df[df$parameter == param & df$Metric == metric, "ROPE"]
+    pd   <- df[df$parameter == param & df$Metric == metric, "PD"]
+  }
+  
+  if(supress == FALSE) {
     capture.output(
-      paste0("(&beta; = ", est, ", HDI = ", cis, ", MPE = ", mpe, ")", 
-             "\n") %>% 
-        cat()) %>% 
-        paste()
+      paste0("(", prefix, "&beta; = ", est, ", HDI = ", cis, ", ROPE = ", rope,
+             ", PD = ", pd, ")", "\n") %>%
+        cat()) %>%
+      paste()
+  } else {
+    capture.output(
+      paste0(prefix, "&beta; = ", est, ", HDI = ", cis, ", ROPE = ", rope,
+             ", PD = ", pd, "\n") %>%
+        cat()) %>%
+      paste()
   }
 }
 

@@ -19,15 +19,21 @@ library("here")
 
 url_root <- "https://www.jvcasillas.com/morph_pred_hs"
 
-dir_ls(path = here("scripts"), regexp = "\\.html$") |> 
-  tibble::as_tibble() |> 
-  dplyr::mutate(
-    names = c(
+dplyr::bind_rows(
+  dir_ls(path = here("scripts"), regexp = "\\.html$") |> 
+    tibble::as_tibble(), 
+  dir_ls(path = here("docs"), regexp = "\\.html$") |> 
+    tibble::as_tibble() 
+) |> 
+  dplyr::mutate(order = c(1, 2, 3, 4, 6, 5)) |>
+  dplyr::arrange(order) |>
+  dplyr::mutate(names = c(
       "1. [Proficiency/use clean up and EDA]",
       "2. [Tidy eye-tracking data]",
       "3. [GAMMs]",
       "4. [Beta regression]", 
-      "5. [Summary]"
+      "5. [Summary]", 
+      "6. [Write-up]"
     ), 
     value = stringr::str_remove_all(value, glue::glue("{here()}")), 
     path = glue::glue("({url_root}{value})"), 
@@ -36,4 +42,4 @@ dir_ls(path = here("scripts"), regexp = "\\.html$") |>
 
 ```
 
-A PDF version of the summary is available [here](https://www.jvcasillas.com/morph_pred_hs/scripts/summary.pdf)
+A PDF version of the summary is available [here](https://www.jvcasillas.com/morph_pred_hs/docs/summary.pdf)

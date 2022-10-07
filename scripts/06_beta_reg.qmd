@@ -4,6 +4,8 @@ subtitle: "Beta regression"
 author: "{{< var author.name >}}"
 date: "`r Sys.Date()`"
 format: html
+execute: 
+  fig.retina: 2
 ---
 
 # Setup
@@ -291,3 +293,60 @@ bi_heat_map %>%
     clean_guide("bottom", "P(Target fixation)")
 ```
 
+
+
+# Tables
+
+```{r}
+#| label: tbl-beta-reg
+
+describe_posterior(beta_reg_group_stress)
+
+bi_zoid_tib_prep <- bind_rows(
+  summary(beta_reg_group_stress)[["fixed"]] %>% 
+    as_tibble(rownames = "Term") %>% 
+    mutate(Effect = "Population"),
+  summary(beta_reg_group_stress)[["random"]][["id"]] %>% 
+    as_tibble(rownames = "Term") %>% 
+    mutate(Effect = "Grouping")
+) %>% 
+  mutate(across(-c("Effect", "Term"), specify_decimal, k = 2)) %>% 
+  mutate(Term = case_when(
+      Term == "phi_Intercept" ~ "ϕ Intercept",
+      Term == "zi_Intercept" ~ "zi Intercept",
+      Term == "group_sum" ~ "Group", 
+      Term == "stress_sum" ~ "Stress", 
+      Term == "prof_z" ~ "Proficiency", 
+      Term == "use_z" ~ "Use", 
+      Term == "group_sum:stress_sum" ~ "Group:Stress", 
+      Term == "group_sum:use_z" ~ "Group:Use", 
+      Term == "stress_sum:use_z" ~ "Stress:Use", 
+      Term == "group_sum:prof_z" ~ "Group:Proficiency", 
+      Term == "Stress_sum:prof_z" ~ "Stress:Proficiency", 
+      Term == "use_z:prof_z" ~ "Use:Proficiency", 
+      Term == "group_sum:stress_sum:use_z" ~ "Group:Stress:Use", 
+      Term == "group_sum:stress_sum:prof_z" ~ "Group:Stress:Prof.", 
+      Term == "group_sum:use_z:prof_z" ~ "Group:Use:Prof.", 
+      Term == "stress_sum:use_z:prof_z" ~ "Stress:Use:Prof.", 
+      Term == "group_sum:stress_sum:use_z:prof_z" ~ "Group:Stress:Use:Prof.", 
+      Term == "sd(stress_sum)" ~ "sd(Stress)", 
+      Term == "sd(phi_Intercept)" ~ "sd(ϕ Intercept)", 
+      Term == "sd(zi_Intercept)" ~ "sd(zi Intercept", 
+      Term == "cor(Intercept,stress_sum)" ~ "cor(Intercept,Stress)", 
+      TRUE ~ Term)) 
+
+bi_zoid_tib <- bi_zoid_tib_prep %>% 
+  transmute(Effect, Term, Estimate, 
+    HDI = glue::glue("[{`l-95% CI`}, {`u-95% CI`}]"), 
+    Rhat, `Bulk ESS` = Bulk_ESS, `Tail ESS` = Tail_ESS) %>% 
+  mutate(
+    Estimate = str_replace_all(Estimate, "-", "\U2212"), 
+    HDI = str_replace_all(HDI, "-", "\U2212") 
+  ) %>% 
+  write_csv(here("tables", "tab_bi_zoid_mod.csv"))
+
+bi_zoid_tib %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r", "r", "r"), 
+    caption = "Bilingual ZOID summary.")
+```

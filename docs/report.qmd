@@ -1,0 +1,466 @@
+---
+title: "{{< var title >}}: {{< var version >}}"
+subtitle: "Report"
+author: "{{< var author.name >}}"
+date: "`r Sys.Date()`"
+abstract: "Write-up of morphosyntactic predictability project."
+format:
+  pdf: 
+    documentclass: scrreprt
+    fontfamily: libertinus
+    include-in-header:
+      - packages.tex
+    geometry: 
+      - top=20mm
+      - left=30mm
+      - right=30mm
+  html: default
+  docx: default
+cap-location: bottom
+toc-depth: 2
+lof: false
+lot: false
+execute:
+  echo: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Load libs
+library("knitr")
+library("here")
+
+# Load small data
+source(here::here("scripts", "99_small_data.R"))
+
+```
+
+# Introduction
+
+## Lexical stress
+
+Lexical stress (henceforth stress) refers to the relative prominence of one syllable with regard to the others in a given word. 
+Stress is lexically encoded and contrastive in Spanish ('término' [ˈteɾ.mi.no], Eng. *term*; 'termino' [teɾ.ˈmi.no], Eng. *I finish*; 'terminó' [teɾ.mi.ˈno], Eng. *(s)he finished*) and in English ('produce' [ˈpɹo.duːs] noun, 'produce' [pɹə.ˈduːs] verb), though it is more productive in the former than in the latter. 
+To wit, few stress minimal pairs exist in English that are not semantically related [See @cutler2012native]. 
+The primary acoustic correlates of stress are $f_{0}$, duration, and intensity, though their relative cue-weighting is language-specific [See @chrabaszcz2014acoustic; @gordon2017acoustic; @holt2006cue, among many others]. 
+Despite native English speakers' familiarity with stress, they typically have trouble producing [@bullock2003analogy; @lord2007role] and perceiving [@face2000role; @face2005syllable; @face2006cognitive; @ortega2013english; @saalfeld2012teaching] stress differences in L2 Spanish. 
+A possible explanation might be found in language-specific isochrony [@pike1945intonation]. 
+Whereas English is often described as a 'stress-timed' language, i.e., one with relatively constant intervals between stressed syllables, Spanish is typically described as 'syllable-timed', i.e., each syllable is perceived as having the same duration. 
+Differences such as these may shape how stress is perceived in each language. 
+In English, for example, unstressed vowel reduction---often present in stress-timed languages---may be sufficient for indicating stress [@cutler2012native; @tremblay2018functional], rendering other cues relatively less important for speech perception. 
+As a consequence, native English speakers may have to adjust their cue-weighting strategies when learning Spanish, a language that does not have vowel reduction. 
+Evidence from cross-modal priming studies indeed suggests that stress is processed differently by native listeners in both languages during lexical access [See @cooper2002constraints; @soto2001segmental]. 
+The extant literature suggests that native listeners are tuned in to the relevant acoustic cues of their language and take advantage of them to increase processing efficiency. 
+Unsurprisingly, they use the same cue-weighting strategies when learning an L2, often resulting in difficulties during the early stages of acquisition [@ingvalson2012can; @iverson2003perceptual]. 
+With regard to prediction, there is evidence that monolingual Spanish speakers use lexical stress to predict a word's suffix (AUTHORS) and that highly skilled late bilinguals can also learn this skill (AUTHORS). 
+It is not clear how unique language experience, e.g., heritage speakers, language proficiency and language use modulate spoken word prediction. 
+
+# Method
+
+## Participants
+
+We collected data from `r subject_stuff$n_final` individuals for analysis. 
+There were `r pull_from_tib(subject_stuff$n_group, group, "Monolingual", n)` monolingual participants, `r pull_from_tib(subject_stuff$n_group, group, "HL", n)` heritage speakers, and `r pull_from_tib(subject_stuff$n_group, group, "L2", n)` adult L2 learners. 
+The bilingual participants completed language *use* and *proficiency* assessments. 
+We fit the *use* and *proficiency* data to separate Bayesian linear models to assess potential group differences.^[In both cases, the response variable, *use* or *proficiency* score, was a proportion. 
+Thus, we used the beta distribution for the model likelihood with a logit linking function. 
+The models included regularizing, weakly informative priors. 
+See @sec-prof-use-supp of the supplementary materials for full details.] 
+We compare the posterior marginal mean difference between groups on both response variables. 
+We established a region of practical equivalence (ROPE) of ±0.1. 
+If, for a given measure, the full range of the 95% highest density credible interval (HDI) of the difference estimate falls within the ROPE, we consider there to be compelling evidence that the groups are equivalent. 
+The HL group had an average proficiency score of `r pull_from_tib(prof_use_desc, Group, "HL", Proficiency_prose)` compared to the L2 groups' score of `r pull_from_tib(prof_use_desc, Group, "L2", Proficiency_prose)`. 
+The marginal mean difference was `r pull_from_tib(prof_use_mod, Metric, "Proficiency", Estimate)` and all of the HDI fell within the ROPE. 
+The probability that the effect was positive was `r pull_from_tib(prof_use_mod, Metric, "Proficiency", PD)`. 
+Regarding language use, the HL group had an average score of `r pull_from_tib(prof_use_desc, Group, "HL", Use_prose)` compared to the L2 groups' score of `r pull_from_tib(prof_use_desc, Group, "L2", Use_prose)`. 
+The marginal mean difference was `r pull_from_tib(prof_use_mod, Metric, "Use", Estimate)` and, again, all of the HDI fell within the ROPE. 
+The probability that the effect was negative was `r pull_from_tib(prof_use_mod, Metric, "Use", PD)`. 
+Taken together, we are confident that the groups do not differ in any meaningful way with regard to use of/proficiency in Spanish.
+@tbl-prof-use-desc provides descriptive statistics and summarizes the models. 
+
+
+```{r}
+#| label: tbl-prof-use-desc
+#| tbl-cap: "Language use and proficiency assessments for the heritage and L2 bilingual groups. The table reports the mean and standard deviation, as well as posterior estimates of the marginal mean difference (L2 - HL) and the 95% highest denisty credible interval (in brackets). The proportion of the posterior density falling within the region of practical equivalence (±0.1) is reported in the ROPE column. The probability that the effect is of the median's sign is reported in the PD column."
+
+prof_use_desc %>% 
+  select(-c("Proficiency_prose", "Use_prose")) %>% 
+  t() %>% 
+  as_tibble() %>% 
+  janitor::row_to_names(., row_number = 1) %>% 
+  rename(`HL (n = 42)` = HL, `L2 (n = 50)` = L2) %>% 
+  slice(-1) %>% 
+  mutate(Metric = c("Proficiency", "Use")) %>% 
+  left_join(., prof_use_mod, by = "Metric") %>% 
+  select(Metric, everything()) %>% 
+  kable(format = "pandoc", align = c("l", "r", "r", "l", "r", "r", "r"))
+
+```
+
+## Statistical analyses
+
+We fit a series of Bayesian regression analyses to examine to time course data. 
+The primary model is a Generalized Additive Mixed Model [GAMM, @soskuthy2017generalised; @winter2016]. 
+GAMMs are useful for scrutinizing non-linear data, such as that typically associated with eye-tracking.[^gamm] 
+In subsequent analyses, we summarize the posterior predictive distribution to make inferences about the relationships between speaker groups, lexical stress, language proficiency, and language use. 
+Given the distinct nature of some of these analyses, we provide a brief description of the statistical approach at the beginning of each of the corresponding subsections. 
+For all models, we use regularizing, weakly informative priors [@Gelman_2017].^[See supplementary materials for detailed information.]
+In most cases, we established a region of practical equivalence (ROPE) around a point null value using the following formula [See @kruschke2018rejecting]:
+
+$$ROPE = \frac{\mu_1 - \mu_2}{\sqrt{\frac{\sigma_1^2 + \sigma_2^2}{2}}}$$
+
+We report mean posterior point estimates for parameters of interest, along with the 95% highest density credible interval (HDI), the percent of the region of the HDI contained within the ROPE, and the probability of direction for each effect (PD). 
+For statistical inferences, we focus on estimation rather than decision-making rules, though, generally, a posterior distribution for a parameter &beta; in which 95% of the HDI falls outside the ROPE and a high PD (i.e., values close to 1) are taken as compelling evidence for a given effect. 
+We conducted all analyses using R (`r session_info`) and fit all models using the probabilistic programming language `stan` via the R package `brms` [@R_brms_a; @R_brms_b]. 
+
+[^gamm]: GAMMs represent an extension to the linear model framework that allow non-linear functions called factor smooths to be applied to predictors. 
+In this sense, the predictors can be classified into two types: parametric terms (equivalent to fixed effects in hierarchical model terminology) and smooth terms. 
+Random smooths are conceptually similar to random slopes and intercepts in the mixed-effects regression framework [@winter2016]. 
+Thus, they allow the by-subject trajectory shapes to vary as a function of a parametric effect and are essential in avoiding anti-conservative models.
+
+# Results
+
+The analyses are divided into three subsections. 
+First, we describe the trajectories of the time course. 
+Second, we evaluate suffix prediction at the target syllable offset. 
+Finally, we consider the effects of L2 use and proficiency. 
+
+## The time course of morphological processing {#sec-gamm}
+
+The time course data from the eye-tracking task were analyzed to model how the probability of fixating on target items changed over time and under different suprasegmental conditions. 
+We downsampled the data to bins of 50 ms which were centered at the offset of the first syllable of target items. 
+The time course of fixation used for analysis ranged from 200 ms before target syllable offset to 600 ms after. 
+We chose this window because it captured the portion of the time course in which target fixations began to steadily increase from chance. 
+@fig-raw-et-data-report illustrates the trajectories of the Monolingual, HL, and L2 groups as a function of lexical stress. 
+In both panels, we see that the probability of fixating on the target hovers around .5 and begins to increase as time increases. 
+Crucially, we also observe that the lines are not overlapping. 
+For both paroxytonic and oxytonic stress conditions, the monolingual group begins to fixate on the target earlier in the time course. 
+In essence, the HL and L2 groups are phase shifted to the right, representing later target fixation.
+
+```{r}
+#| label: fig-raw-et-data-report
+#| out.width: "100%"
+#| fig.height: 3.5
+#| fig.cap: "Time course of raw target fixation data as a function of stress condition (paroxytone, oxytone) for monolingual, HL, and L2 groups. Transparent ribbons represent 99% bootstrapped confidence intervals."
+include_graphics(here("figs", "checks-fixes-1.png"))
+```
+
+Given the binary nature of the outcome variable (target fixation, elsewhere), the likelihood was assumed to be binomially distributed. 
+The model assessed target fixations as a function of the parametric terms *group* (monolingual, HL, L2), *stress* (paroxytone, oxytone), and a non-linear function of time. 
+Both *group* and *stress* were set as ordered variables with monolinguals and paroxytones coded as '0'. 
+We implemented cubic regression splines with four basis knots as (a) a reference smooth to time, (b) as a difference smooth to time conditioned on stress, and (c) as a random smooth for each participant conditioned on time. 
+Thus, we use the trajectory of the monolinguals' target fixations to paroxytone words (e.g., CANta) as the baseline and compared it the trajectories of the other groups.
+The forest plot in @fig-forest-plot-group-gamm-report illustrates the model summary (See supplementary materials for the complete summary in table form). 
+
+```{r}
+#| label: fig-forest-plot-group-gamm-report
+#| out.width: "100%"
+#| fig.height: 3.5
+#| fig.cap: "Forest plot of the omnibus GAMM. The horizontal axis represents the models estimates in log-odds. The vertical axis lists the terms estimated in the model. The points illustrate the posterior mean along with the 66% and 95% HDI. The vertical facetting separates the estimates into parametric and non-parametric population-level effects, group-level effects, and smooth terms."
+include_graphics(here("figs", "forest-plot-group-gamm-1.png"))
+```
+
+In order to quantify and assess the between-group differences over time, we used the posterior predictive distribution to calculate posterior pairwise difference smooths. 
+@fig-group-diff-smooths-plot illustrates these pairwise comparisons over the time course in the probability space. 
+Overall, the analysis shows that the monolingual group fixates on targets earlier than the HL and L2 groups in both stress conditions over the time-window we have selected. 
+The HL-L2 comparison suggests that the HL group fixates on targets slightly more and earlier in paxoytone condition, but the opposite is true in the oxytone condition.
+
+```{r}
+#| label: fig-group-diff-smooths-plot
+#| out.width: "100%"
+#| fig.height: 6
+#| fig.cap: "Pairwise difference smooths for paroxytone and oxytone items. From dark to light, the colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% highest density credible intervals."
+include_graphics(here("figs", "group-diff-smooths-plot-1.png"))
+```
+
+
+
+
+
+## Prediction at target offset
+
+In order to assess the participants' ability to predict suffixes, we used the posterior predictive distribution of target fixations 200 ms after the target syllable offset [i.e., the minimum time necessary to plan and launch a saccade, see @fischer1992saccadic]. 
+We assessed the probability that target fixation was greater than chance at this time point for each group, in each stress condition. 
+We implemented a ROPE of $\pm$0.01 around a point null, chance value of 0.5. 
+@fig-group-prediction-plot-report illustrates posterior distributions of target fixations.
+
+```{r}
+#| label: fig-group-prediction-plot-report
+#| out.width: "100%"
+#| fig.height: 3.5
+#| fig.cap: "Proportion of target fixations 200ms after the offset of 1st syllable for monolingual, HL, and L2 groups in paroxytone (*CANto*) and oxytone (*canTO*) conditions. The vertical dotted line marks chance (50%) surrounded by a &pm;1% region of practical equivalence (ROPE). The density mass of a posterior distribution that falls below the upper bound of the ROPE is displayed in red and values above this threshold are purple."
+include_graphics(here("figs", "group-prediction-plot-1.png"))
+```
+
+All groups fixated on targets above chance 200 ms after the target syllable offset with the exception of the HL group in the oxytone condition `r report_posterior(group_prediction_tib, "HL_Oxytone")`. 
+Approximately 97% of the HDI fell below the upper bound of the ROPE and there is an 85% chance that the estimate is below 0.5. 
+Additionally, a small portion of the posterior probability mass of the L2 group in the paroxytone condition fell within the ROPE `r report_posterior(group_prediction_tib, "L2_Paroxytone")`, though, given the model, the data and our prior assumptions, the effect is nearly certain to be above 0.5.  
+
+Next, we assessed the rate of target fixations at the same time point (i.e., 200 ms after the offset of the target syllable). 
+While the previous assessment explained *if* participants fixate on targets before hearing a critical suffix, this analysis sheds light on how fast target fixations occur by calculating the partial derivative (i.e., slope) of the trajectory at this time point. 
+The top panels of @fig-marginal-slopes-plot-report show the marginal slope estimates for each group for paroxtone and oxytone words. 
+The bottom panels of @fig-marginal-slopes-plot-report provide pairwise group comparisons in each condition. 
+The monolingual group had a slower rate of target fixation (i.e., a less steep slope) than the HL group for paroxytones `r report_posterior(group_marginal_slopes_tib, "Paroxytone_Mono - HL")` and oxytones `r report_posterior(group_marginal_slopes_tib, "Oxytone_Mono - HL")`. 
+This was also the case when compared with L2 learners (`r report_posterior(group_marginal_slopes_tib, "Paroxytone_Mono - L2", supress = T, prefix = "Paroxytones: ")`; `r report_posterior(group_marginal_slopes_tib, "Oxytone_Mono - L2", supress = T, prefix = "Oxytones: ")`).
+Upon comparing the HL and L2 groups, we do not find compelling evidence that either group has a faster rate of target fixation. 
+In the paroxytone condition, the L2 group might be slightly faster, but nearly half the HDI fell within the ROPE `r report_posterior(group_marginal_slopes_tib, "Paroxytone_HL - L2")`. 
+In the oxytone condition the opposite was true, that is, the L2 group may have been slightly slower, but, again, a large portion of the HDI fell within the ROPE `r report_posterior(group_marginal_slopes_tib, "Oxytone_HL - L2")`. 
+Taken together, we do not believe there is compelling evidence that the rate of target fixation differs between the HL and L2 groups. 
+Additional plots and a table summary are provided in the supplementary materials. 
+
+
+```{r}
+#| label: fig-marginal-slopes-plot-report
+#| fig.height: 3.5
+#| out.width: "100%"
+#| fig.cap: "Marginal slope estimates (top panels) and pairwise difference estimates (bottom panels) for monolingual, HL, and L2 groups 200ms after the target syllable offset in paroxytone (*CANto*) and oxytone (*canTO*) conditions. Points represent posterior means along with the 66% and 95% HDI. In the bottom panels, the vertical blue rectangle illustrates a ROPE of &pm;0.001. Posterior mass falling within the ROPE is depicted in red and values outside the ROPE are in purple."
+include_graphics(here("figs", "group-marginal-slopes-table-1.png"))
+```
+
+
+
+
+
+## Proficiency and use
+
+In order to assess the effects of language proficiency and use, we took a subset of the bilingual data (HL and L2 groups). 
+Specifically, we used the data from the time bin that corresponded with 200 ms after the offset of the initial syllable in the target items. 
+We calculated the proportion of target fixations for each participant, in each condition and submitted these proportions to a zero-and-one inflated beta regression model. 
+The outcome was modeled as a function of group (HL, L2), stress (paroxytone, oxytone), use, and proficiency, along with all higher order interactions. 
+The group and stress predictors were sum coded (-1, 1) and the continuous predictors were standardized (i.e., converted to z-scores), thus the model intercept provided an estimate of target fixation marginalizing over *group* and *stress*, with *use* and *proficiency* equal to 0 (i.e., at the unstandardized mean). 
+We included a group-level effect for participants. 
+A full description of the model specification and priors is available in the supplementary materials. 
+
+@fig-bi-prof-use-heatmap-report
+
+```{r}
+#| label: fig-bi-prof-use-heatmap-report
+#| out.width: "100%"
+#| fig.height: 6
+#| fig.cap: "Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores for the bilingual groups. The top rows illustrate model estimate for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition."
+include_graphics(here("figs", "bi-prof-use-heatmap-1.png"))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{< pagebreak >}}
+
+# References
+
+::: {#refs}
+:::
+
+{{< pagebreak >}}
+
+# Supplementary materials
+
+## Bayesian data analysis {#sec-bda}
+
+This study employs Bayesian Data Analysis for quantitative inferential statistics.
+Specifically, this implies that we use Bayesian *credible intervals*---and other metrics---to draw statistical inferences.
+A Bayesian model calculates a posterior distribution, i.e., a distribution of plausible parameter values, given the data, a data-generating model, and any prior assumptions we have about those parameter values.
+Posterior distributions are computationally costly.
+For this reason, we use the Hamiltonian Markov Chain Monte Carlo algorithm to obtain a sample that includes thousands of values from the posterior distribution.
+In practical terms, what this means is that we do not calculate a single point estimate for an effect &beta;, but rather we draw a sample of 4,000 plausible values for &beta;.
+This allows us to quantify our uncertainty regarding &beta; by summarizing the distribution of those values.
+We will use 4 statistics to describe the posterior distribution: (1) the posterior mean, (2) the highest density credible interval (HDI), (3) the proportion of the HDI that falls within a Region of Practical Equivalence (ROPE), and (4) the Maximum Probability of Effect (MPE).
+The posterior mean provides a point estimate for the distribution.
+The 95% highest density credible interval provides bounds for the effect.
+The ROPE designates a region of practical equivalence for a negligible effect and calculates the proportion of the HDI that falls within this interval.[^rope]
+The MPE calculates the proportion of the posterior distribution that is of the median's sign (or the probability that the effect is positive or negative).
+If, for instance, a hypothesis states that &beta; \> 0, we judge there to be *compelling evidence* for this hypothesis if the mean point estimate is a positive number, if the 95% credible interval of &beta; does not contain 0 and is outside the ROPE by a reasonably clear margin, and the posterior *P*(&beta; \> 0) is close to one.
+Together these four statistics allow us to quantify our uncertainty and provide an intuitive interpretation of any given effect.
+Consider a case in which the posterior mean of &beta; is 100 and the 95% credible interval is \[40, 160\].
+The interval tells us that we can be 95% certain the *true* value of &beta; is between 40 and 160, given the data, our model, and our prior information.
+Furthermore, the interval allows us to specify areas of uncertainty.
+In this example, we can conclude that the effect is almost certain to be positive.
+The lower interval value of 40 tells us that 95% of the plausible values are greater than 40.
+We also note that the interval covers a wide range of values, thus we also conclude that we are not very certain about the size of the effect.
+This type of interpretation is not possible under a frequentist paradigm.
+
+[^rope]: We utilize a ROPE of &pm;1 for standardized values. For non-standardized values @kruschke2018rejecting recommends using the following formula: $ROPE = \frac{\mu_1 - \mu_2}{\sqrt{\frac{\sigma_1^2 + \sigma_2^2}{2}}}$
+
+{{< pagebreak >}}
+
+## GAMMs {#sec-gamms-supp}
+
+@tbl-group-gamm
+
+```{r}
+#| label: tbl-group-gamm
+#| tbl-cap: "Group GAMM summary."
+group_gamm_tib %>% 
+  mutate(Effect = case_when(
+    Term != "Intercept" & Effect == "Population" ~ " ", 
+    Term != "sds(Time)" & Effect == "Smooths" ~ " ", 
+    TRUE ~ Effect
+  )) %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r", "r", "r"))
+```
+
+@tbl-group-gamm-prediction
+
+```{r}
+#| label: tbl-group-gamm-prediction
+#| tbl-cap: "Group prediction summary."
+group_prediction_tib %>% 
+  select(-parameter) %>% 
+  mutate(Group = case_when(
+    Stress != "Paroxytone" & Group == "Monolingual" ~ " ", 
+    Stress != "Paroxytone" & Group == "HL" ~ " ", 
+    Stress != "Paroxytone" & Group == "L2" ~ " ", 
+    TRUE ~ Group
+  )) %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r", "r"))
+```
+
+@fig-marginal-slopes-plot-2
+
+```{r}
+#| label: fig-marginal-slopes-plot-2
+#| out.width: "100%"
+#| fig.height: 6.5
+#| fig.cap: "Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions. Group marginal slopes pairwise comparisons summary."
+include_graphics(here("figs", "marginal-slopes-plot-2-1.png"))
+```
+
+@tbl-group-maginal-slopes-pairwise
+
+```{r}
+#| label: tbl-group-maginal-slopes-pairwise
+#| tbl-cap: "Marginal slopes pairwise comparisons."
+group_marginal_slopes_tib %>% 
+  select(-parameter) %>% 
+  mutate(Stress = case_when(
+    Comparison != "HL - L2" & Stress == "Paroxytone" ~ " ", 
+    Comparison != "HL - L2" & Stress == "Oxytone" ~ " ", 
+    TRUE ~ Stress
+  ))  %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r", "r"))
+```
+
+@fig-bi-comparison-plot-report
+
+```{r}
+#| label: fig-bi-comparison-plot-report
+#| out.width: "100%"
+#| fig.height: 5.5
+#| fig.cap: "Probability of fixating on target as a function of stress for the bilingual groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent paroxytone ('CANta', green) and oxytone ('canTO', orange) conditions plus 95%, 80%, and 50% credible intervals. Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals."
+include_graphics(here("figs", "bi-comparison-plot-1.png"))
+```
+
+
+
+@tbl-bi-gamm
+
+```{r}
+#| label: tbl-bi-gamm
+#| tbl-cap: "Bilingual GAMM summary."
+bi_gamm_tib %>% 
+  mutate(Effect = case_when(
+    Term != "Intercept" & Effect == "Population" ~ " ", 
+    Term != "sds(Time)" & Effect == "Smooths" ~ " ", 
+    TRUE ~ Effect
+  )) %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r", "r", "r"))
+```
+
+@fig-forest-plot-bi-gamm-report
+
+```{r}
+#| label: fig-forest-plot-bi-gamm-report
+#| out.width: "100%"
+#| fig.height: 3.5
+#| fig.cap: "Forest plot of the bilingual GAMM. The horizontal axis represents the models estimates in log-odds. The vertical axis lists the terms estimated in the model. The points illustrate the posterior mean along with the 66% and 95% HDI. The vertical facetting separates the estimates into parametric and non-parametric population-level effects, group-level effects, and smooth terms."
+include_graphics(here("figs", "forest-plot-bi-gamm-1.png"))
+```
+
+
+
+
+
+
+
+
+{{< pagebreak >}}
+
+## Proficiency and use {#sec-prof-use-supp}
+
+@fig-bi-prof-use-plot-report
+
+```{r}
+#| label: fig-bi-prof-use-plot-report
+#| out.width: "100%"
+#| fig.height: 5.5
+#| fig.cap: "Use and proficiency in Spanish."
+include_graphics(here("figs", "bi-prof-use-plot-1.png"))
+```
+
+@fig-eda-prof-use-marginal-mean-estimates-report
+
+```{r}
+#| label: fig-eda-prof-use-marginal-mean-estimates-report
+#| out.width: "100%"
+#| fig.height: 5.5
+#| fig.cap: "Marginal mean estimates plot."
+include_graphics(here("figs", "eda-prof-use-marginal-mean-estimates-1.png"))
+```
+
+
+
+@tbl-bi-zoid
+
+```{r}
+#| label: tbl-bi-zoid
+#| tbl-cap: "Bilingual GAMM summary."
+bi_zoid_tib %>% 
+  mutate(Effect = case_when(
+    Term != "Intercept" & Effect == "Population" ~ " ", 
+    Term != "sd(Intercept)" & Effect == "Grouping" ~ " ", 
+    TRUE ~ Effect
+  )) %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r", "r", "r"))
+```
+
+
+
+
+
+
+
+{{< pagebreak >}}
+
+## Reproducibility information
+
+**About this document**  
+
+This document was written in `quarto`.
+
+**Session info**  
+
+```{r, session-info, comment=""}
+devtools::session_info()$platform
+as.data.frame(devtools::package_info())[, c(3, 8)]
+```
+
+

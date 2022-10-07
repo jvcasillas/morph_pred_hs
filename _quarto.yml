@@ -1,8 +1,13 @@
-#project:
+project:
   #execute-dir: project
-#  render:
- #   - "*.qmd"
-  #  - "!index.qmd"
+  render:
+    - "./scripts/02_eda_prof_use.qmd"
+    - "./scripts/03_tidy_eyetracking_data.qmd"
+    - "./scripts/05_gamms.qmd"
+    - "./scripts/06_beta_reg.qmd"
+    - "./docs/summary.qmd"
+    - "./docs/report.qmd"
+    - "index.qmd"
 
 
 toc: true

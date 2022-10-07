@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.120">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joseph V. Casillas">
+<meta name="dcterms.date" content="2022-10-05">
+
+<title>Morphological predictability - HS: 1.2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="summary_files/libs/clipboard/clipboard.min.js"></script>
+<script src="summary_files/libs/quarto-html/quarto.js"></script>
+<script src="summary_files/libs/quarto-html/popper.min.js"></script>
+<script src="summary_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="summary_files/libs/quarto-html/anchor.min.js"></script>
+<link href="summary_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="summary_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="summary_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="summary_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="summary_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="summary_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="summary_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#take-aways" id="toc-take-aways" class="nav-link active" data-scroll-target="#take-aways"><span class="toc-section-number">1</span>  Take-aways</a></li>
+  <li><a href="#key-plots" id="toc-key-plots" class="nav-link" data-scroll-target="#key-plots"><span class="toc-section-number">2</span>  Key plots</a>
+  <ul class="collapse">
+  <li><a href="#profuse-check" id="toc-profuse-check" class="nav-link" data-scroll-target="#profuse-check"><span class="toc-section-number">2.1</span>  Prof/use check</a></li>
+  <li><a href="#eye-tracking-raw-data" id="toc-eye-tracking-raw-data" class="nav-link" data-scroll-target="#eye-tracking-raw-data"><span class="toc-section-number">2.2</span>  Eye-tracking: Raw data</a></li>
+  <li><a href="#eye-tracking-group-model-no-profuse" id="toc-eye-tracking-group-model-no-profuse" class="nav-link" data-scroll-target="#eye-tracking-group-model-no-profuse"><span class="toc-section-number">2.3</span>  Eye-tracking: Group model (no prof/use)</a></li>
+  <li><a href="#bilinguals-only-profuse" id="toc-bilinguals-only-profuse" class="nav-link" data-scroll-target="#bilinguals-only-profuse"><span class="toc-section-number">2.4</span>  Bilinguals only (prof/use)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Morphological predictability - HS: 1.2</h1>
+<p class="subtitle lead">Summary</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Joseph V. Casillas </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Last updated:</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 5, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="abstract-title">Abstract</div>
+    Summary of analyses for morphosyntactic predictability project.
+  </div>
+</div>
+
+</header>
+
+<section id="take-aways" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Take-aways</h1>
+<ul>
+<li>The two bilingual groups are essentially equivalent regarding proficiency and use.</li>
+<li>Stress matters: Monolinguals always predict, bilinguals do to some degree, but depends on stress (holding use and proficiency constant)
+<ul>
+<li>HL:
+<ul>
+<li>Paroxytone (CANta) (most common): 👍</li>
+<li>Oxytone (canTA) (less common): 👎</li>
+</ul></li>
+<li>L2:
+<ul>
+<li>Paroxytone (CANta) (most common): 👍</li>
+<li>Oxytone (canTA) (less common): 👍</li>
+</ul></li>
+</ul></li>
+<li>Group differences
+<ul>
+<li>Monolingual time course different from both bilingual groups (they predict sooner) regardless of stress</li>
+<li>HL and L2ers have essentially the same time course with paroxytonic stress, but L2 course is slightly delayed in comparison, the opposite is true for oxytonic stress, i.e., the HL time course is slightly delayed</li>
+<li>L2ers predict more than HL with (less common) oxytonic stress pattern (but still not a lot)</li>
+</ul></li>
+<li>Proficiency, use, and prediction
+<ul>
+<li>HL
+<ul>
+<li>High use individuals always predict in paroxytone condition.</li>
+<li>As use decreases, so does prediction</li>
+<li>Marginalizing over stress, prediction is pretty good across the board</li>
+<li>For oxytonic stress condition, only high use/high prof individuals predict</li>
+<li>Unexplained weirdness… in oxytone condition low prof/low use predicts higher (not sure about this)</li>
+</ul></li>
+<li>L2
+<ul>
+<li>Generally use is less important</li>
+<li>Higher proficiency associated with higher prediction</li>
+<li>Lowest overall prediction in paroxytone condition</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="key-plots" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Key plots</h1>
+<section id="profuse-check" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="profuse-check"><span class="header-section-number">2.1</span> Prof/use check</h2>
+<p>See <a href="https://www.jvcasillas.com/morph_pred_hs/scripts/02_eda_prof_use.html">Proficiency/use cleaup and EDA</a> for full details. Eight of 130 participants removed to make <em>use</em> more comparable between groups.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/eda-prof-use-marginal-mean-estimates-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Estimated marginal mean difference between HL and L2 groups for standardized <em>use</em> and <em>proficiency</em>. The blue vertical bar represents a region of practical equivalence (ROPE) of ±0.1.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="eye-tracking-raw-data" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="eye-tracking-raw-data"><span class="header-section-number">2.2</span> Eye-tracking: Raw data</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/checks-fixes-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Time course of raw target fixation data as a function of stress condition (paroxytone, oxytone) for monolingual, HL, and L2 groups. Transparent ribbons represent 99% bootstrapped confidence intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="eye-tracking-group-model-no-profuse" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="eye-tracking-group-model-no-profuse"><span class="header-section-number">2.3</span> Eye-tracking: Group model (no prof/use)</h2>
+<section id="time-course-gamms" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="time-course-gamms"><span class="header-section-number">2.3.1</span> Time course: GAMMs</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/group-comparison-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Probability of fixating on target as a function of stress for all three groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent group trajectories plus 95%, 80%, and 50% credible intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/group-diff-smooths-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="prediction-at-target-offset" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="prediction-at-target-offset"><span class="header-section-number">2.3.2</span> Prediction at target offset</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/group-prediction-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Proportion of target fixations 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. The vertical dotted line marks chance (50%) surrounded by a ±1% region of practical equivalence (ROPE). Density mass of the posterior distribution that falls within the ROPE is discolored (pinkish).</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="estimated-marginal-slopes-at-target-offset" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="estimated-marginal-slopes-at-target-offset"><span class="header-section-number">2.3.3</span> Estimated marginal slopes at target offset</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/marginal-slopes-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bilinguals-only-profuse" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="bilinguals-only-profuse"><span class="header-section-number">2.4</span> Bilinguals only (prof/use)</h2>
+<section id="time-course-gamms-1" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="time-course-gamms-1"><span class="header-section-number">2.4.1</span> Time course: GAMMs</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/bi-comparison-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Probability of fixating on target as a function of stress for the bilingual groups. The time course is centered around the target syllable offset (point 0). Vertical lines represent 200ms after target syllable offset. Lines represent paroxytone (‘CANta’, green) and oxytone (‘canTO’, orange) conditions plus 95%, 80%, and 50% credible intervals. Pairwise difference smooths for paroxytone and oxytone items. From dark to light, colors represent 95%, 80%, 70%, 60%, 50%, 35% and 10% credible intervals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="prediction-at-target-offset-zoidberg" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="prediction-at-target-offset-zoidberg"><span class="header-section-number">2.4.2</span> Prediction at target offset: ZOIDBERG</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/bi-prof-use-heatmap-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores for the bilingual groups. The top rows illustrate model estimate for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

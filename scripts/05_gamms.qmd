@@ -3,7 +3,11 @@ title: "{{< var title >}}: {{< var version >}}"
 subtitle: "GAMMs"
 author: "{{< var author.name >}}"
 date: "`r Sys.Date()`"
-format: html
+format: 
+  html: default
+  pdf: default
+execute: 
+  fig.retina: 2
 ---
 
 # Setup
@@ -178,9 +182,9 @@ gamm_prop_group_stress <- brm(
   formula = formula_prop_gamm_stress, 
   family = gaussian(), 
   prior = stress_prop_gamm_priors, 
-  iter = 2000, warmup = 1000, cores = 4, threads = threading(4), 
+  iter = 2000, warmup = 1000, cores = 4, threads = threading(2), 
   backend = "cmdstanr", 
-  control = list(adapt_delta = 0.99, max_treedepth = 12), 
+  control = list(adapt_delta = 0.999999, max_treedepth = 14), 
   data = stress_50_gamm, 
   file = here("models", "gamms", "gamm_prop_group_stress")
 )
@@ -228,7 +232,7 @@ gamm_log_group_stress <- brm(
   formula = formula_log_gamm_stress, 
   family =  binomial(link = "logit"), 
   prior = stress_log_gamm_priors, 
-  iter = 2000, warmup = 1000, cores = 4, threads = threading(2), 
+  iter = 11000, warmup = 1000, cores = 4, threads = threading(2), thin = 10, 
   backend = "cmdstanr", 
   control = list(adapt_delta = 0.9999, max_treedepth = 15), 
   data = stress_50_gamm, 
@@ -318,7 +322,7 @@ gamm_log_bi_stress <- brm(
   formula = formula_gamm_bi, 
   family = binomial(link = "logit"), 
   prior = bi_gamm_priors, 
-  iter = 2000, warmup = 1000, cores = 4, 
+  iter = 11000, warmup = 1000, cores = 4, threads = threading(2), thin = 10, 
   backend = "cmdstanr", 
   control = list(adapt_delta = 0.9999, max_treedepth = 15), 
   data = bi_50_gamm, 
@@ -344,7 +348,7 @@ gamm_log_group_stress_draws <- gamm_log_group_stress %>%
     ra_formula = NULL) %>% 
   gather_emmeans_draws()
 
-gamm_log_group_stress_draws %>% 
+gamm_log_group_stress_plot <- gamm_log_group_stress_draws %>% 
   ggplot() + 
     aes(x = time_zero, y = .value / 50, color = group) + 
     facet_grid(. ~ stress) + 
@@ -360,6 +364,7 @@ gamm_log_group_stress_draws %>%
     labs(y = "P(Target fixation)", x = "Time course") + 
     theme(legend.position = c(0.12, 0.86), 
           legend.text = element_text(size = 10))
+gamm_log_group_stress_plot
 ```
 
 ```{r}
@@ -400,12 +405,14 @@ gamm_log_group_stress_draws_diffs %>%
 #| fig.height: 3.5
 #| fig.cap: "Proportion of target fixations 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions. The vertical dotted line marks chance (50%) surrounded by a &pm;1% region of practical equivalence (ROPE). Density mass of the posterior distribution that falls within the ROPE is discolored (pinkish)."
 #| cache: true
-gamm_log_group_stress %>% 
+gamm_log_group_stress_dat <- gamm_log_group_stress %>% 
   emmeans(spec = ~ time_zero + stress + group, 
     at = list(time_zero = 4), 
     ra_formula = NULL) %>% 
   gather_emmeans_draws() %>% 
-  mutate(prop = plogis(.value)) %>% 
+  mutate(prop = plogis(.value))
+
+gamm_log_group_stress_dat %>% 
   ggplot() + 
     aes(x = prop, y = group, fill = stat(x > 0.51)) + 
     facet_grid(. ~ stress) + 
@@ -419,13 +426,12 @@ gamm_log_group_stress %>%
     scale_color_manual(name = NULL, values = my_colors[2:3], labels = NULL) + 
     coord_cartesian(xlim = c(NA, NA)) + 
     labs(y = NULL, x = "P(Target fixation)")
-
 ```
 
 ```{r}
 #| label: marginal-slopes-plot
 #| out.width: "100%"
-#| fig.height: 5.5
+#| fig.height: 3.5
 #| fig.cap: "Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions."
 #| cache: true
 
@@ -434,33 +440,60 @@ gamm_log_group_stress %>%
 # This can be used in a plot (if necessary) by estimating the y value 
 # at the desired x (time_zero == 4, for example) and then calculating 
 # the intercept using `find_intercept` (see example below)
-if(F) {
-  lines <- bind_rows(
-    gamm_log_group_stress %>% 
-      emmeans(specs = ~ time_zero + stress + group, 
-        at = list(time_zero = 4), 
-        epred = T) %>% 
-      gather_emmeans_draws() %>% 
-      mutate(.value = .value / 50) %>% 
-      median_hdi() %>% 
-      transmute(stress, group, .value, term = "y"), 
-
-     gamm_log_group_stress %>% 
-       emtrends(spec = ~ time_zero + stress + group, 
-         var = "time_zero", 
-         at = list(time_zero = 4), 
-         delta.var = 0.001, 
-         epred = T) %>% 
-       gather_emmeans_draws() %>% 
-       mutate(.value = .value / 50) %>% 
-       median_hdi() %>% 
-       transmute(stress, group, .value, term = "slope")) %>% 
-    pivot_wider(names_from = term, values_from = .value) %>% 
-    mutate(intercept = find_intercept(x1 = 4, y1 = y, slope = slope))
-}
 
 # Get posterior estimates of marginal slopes
-gamm_log_group_stress %>% 
+marginal_slopes_p1 <- gamm_log_group_stress %>% 
+  emtrends(
+    spec = ~ time_zero + stress + group, 
+    var = "time_zero", 
+    at = list(time_zero = 4), 
+    delta.var = 0.001, 
+    epred = T) %>% 
+  gather_emmeans_draws() %>% 
+  ungroup() %>% 
+  mutate(group = str_replace_all(group, "Monolingual", "Mono"), 
+         group = fct_relevel(group, "L2", "HL")) %>% 
+  ggplot() + 
+    aes(x = .value / 50, y = group, fill = group) + 
+    facet_grid(. ~ stress) + 
+    stat_slab(alpha = 0.7, color = "white", show.legend = F) +
+    stat_pointinterval(pch = 21, point_fill = "white", show.legend = F) +
+    scale_fill_manual(name = NULL, values = my_colors, labels = NULL) + 
+    coord_cartesian(xlim = c(NA, NA)) + 
+    labs(y = NULL, x = "Marginal slope estimate") 
+marginal_slopes_p1
+```
+
+```{r}
+#| label: marginal-slopes-plot-2
+#| out.width: "100%"
+#| fig.height: 6.5
+#| fig.cap: "Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions."
+#| cache: true
+lines <- bind_rows(
+  gamm_log_group_stress %>% 
+    emmeans(specs = ~ time_zero + stress + group, 
+      at = list(time_zero = 4), 
+      epred = T) %>% 
+    gather_emmeans_draws() %>% 
+    mutate(.value = .value / 50) %>% 
+    #median_hdi() %>% 
+    transmute(stress, group, .draw, .value, term = "y"), 
+
+   gamm_log_group_stress %>% 
+     emtrends(spec = ~ time_zero + stress + group, 
+       var = "time_zero", 
+       at = list(time_zero = 4), 
+       delta.var = 0.001, 
+       epred = T) %>% 
+     gather_emmeans_draws() %>% 
+     mutate(.value = .value / 50) %>% 
+     #median_hdi() %>% 
+     transmute(stress, group, .draw, .value, term = "slope")) %>% 
+  pivot_wider(names_from = term, values_from = .value) %>% 
+  mutate(x = 4, intercept = find_intercept(x1 = 4, y1 = y, slope = slope))
+
+marginal_slopes_p1b <- gamm_log_group_stress %>% 
   emtrends(
     spec = ~ time_zero + stress + group, 
     var = "time_zero", 
@@ -469,13 +502,20 @@ gamm_log_group_stress %>%
     epred = T) %>% 
   gather_emmeans_draws() %>% 
   ggplot() + 
-    aes(x = .value / 50, y = group, fill = group) + 
-    facet_grid(stress ~ .) + 
+    aes(y = .value / 50, x = group, fill = group) + 
+    facet_grid(. ~ stress) + 
     stat_slab(alpha = 0.7, color = "white", show.legend = F) +
     stat_pointinterval(pch = 21, point_fill = "white", show.legend = F) +
     scale_fill_manual(name = NULL, values = my_colors, labels = NULL) + 
-    coord_cartesian(xlim = c(NA, NA)) + 
-    labs(y = NULL, x = "Marginal slope estimate")
+    coord_cartesian(ylim = c(NA, NA)) + 
+    labs(x = NULL, y = "Marginal slope estimate") 
+
+marginal_slopes_p2 <- gamm_log_group_stress_plot + 
+  geom_abline(data = sample_n(lines, 200), alpha = 0.03, size = 0.25, 
+    aes(intercept = intercept, slope = slope, color = group)) + 
+    theme(strip.text.x = element_blank())
+
+marginal_slopes_p1b / marginal_slopes_p2
 ```
 
 
@@ -541,4 +581,295 @@ gamm_bi_p2 <- gamm_log_bi_stress_draws_diffs %>%
     theme(strip.background = element_blank(), strip.text = element_blank())
 
 gamm_bi_p1 / gamm_bi_p2
+```
+
+
+# Tables
+
+## Group model
+
+```{r}
+#| label: table-group-gamm
+
+group_gamm_tib_prep <- bind_rows(
+  summary(gamm_log_group_stress)[["fixed"]] %>% 
+    as_tibble(rownames = "Term") %>% 
+    mutate(Effect = "Population"),
+  summary(gamm_log_group_stress)[["random"]][["id"]] %>% 
+    as_tibble(rownames = "Term") %>% 
+    mutate(Effect = "Grouping"),
+  summary(gamm_log_group_stress)[["splines"]] %>% 
+    as_tibble(rownames = "Term") %>% 
+    mutate(Effect = "Smooths")
+) %>% 
+  mutate(across(-c("Effect", "Term"), specify_decimal, k = 2)) %>% 
+  mutate(Term = case_when(
+      Term == "groupHL" ~ "HL", 
+      Term == "groupL2" ~ "L2", 
+      Term == "stressOxytone" ~ "Oxytone", 
+      Term == "groupHL:stressOxytone" ~ "HL:Oxytone", 
+      Term == "groupL2:stressOxytone" ~ "L2:Oxytone", 
+      Term == "stime_zero_1" ~ "Time", 
+      Term == "stime_zero:stressOxytone_1" ~ "Time:Oxytone", 
+      Term == "sds(stime_zero_1)" ~ "sds(Time)", 
+      Term == "sds(stime_zerostressOxytone_1)" ~ "sds(Time:Oxytone)", 
+      TRUE ~ Term)) 
+
+group_gamm_tib <- group_gamm_tib_prep %>% 
+  transmute(Effect, Term, Estimate, 
+    HDI = glue::glue("[{`l-95% CI`}, {`u-95% CI`}]"), 
+    Rhat, `Bulk ESS` = Bulk_ESS, `Tail ESS` = Tail_ESS) %>% 
+  mutate(
+    Estimate = str_replace_all(Estimate, "-", "\U2212"), 
+    HDI = str_replace_all(HDI, "-", "\U2212") 
+  ) %>% 
+  write_csv(here("tables", "tab_group_gamm_mod.csv"))
+
+group_gamm_tib %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r", "r", "r"), 
+    caption = "Group GAMM summary.")
+```
+
+```{r}
+#| label: forest-plot-group-gamm
+#| fig.height: 6
+
+# Get posterior and cleanup colnames and term names
+group_gamm_tab_dat <- as_draws_df(gamm_log_group_stress) %>% 
+  select(starts_with(c("b_", "bs_", "sd_", "sds_"))) %>% 
+  pivot_longer(cols = everything()) %>% 
+  mutate(type = case_when(
+      startsWith(name, "b_") ~ "Parametric\nPopulation", 
+      startsWith(name, "bs_") ~ "Non-parametric\nPopulation", 
+      startsWith(name, "sd_") ~ "Grouping", 
+      startsWith(name, "sds_") ~ "Smooth"), 
+    type = fct_relevel(type, "Parametric\nPopulation", 
+      "Non-parametric\nPopulation", "Grouping")) %>% 
+  mutate(name = case_when(
+      name == "b_Intercept" ~ "Intercept", 
+      name == "b_groupHL" ~ "HL", 
+      name == "b_groupL2" ~ "L2", 
+      name == "b_stressOxytone" ~ "Oxytone", 
+      name == "b_groupHL:stressOxytone" ~ "HL:Oxytone", 
+      name == "b_groupL2:stressOxytone" ~ "L2:Oxytone", 
+      name == "bs_stime_zero_1" ~ "Time", 
+      name == "bs_stime_zero:stressOxytone_1" ~ "Time:Oxytone", 
+      name == "sd_id__Intercept" ~ "σ\nID", 
+      name == "sds_stime_zero_1" ~ "σ\nTime", 
+      name == "sds_stime_zerostressOxytone_1" ~ "σ\nTime:Oxytone", 
+    )
+  ) %>% 
+  mutate(name = fct_relevel(name, "σ\nTime:Oxytone", "σ\nTime", "σ\nID", 
+    "Time:Oxytone", "Time", "L2:Oxytone", "HL:Oxytone", "Oxytone", "L2", "HL", 
+    "Intercept"))
+
+# Summarize posterior for printing estimates in plot
+group_gamm_summary <- group_by(group_gamm_tab_dat, name, type) %>% 
+  mean_qi(value, .width = 0.95) %>% 
+  mutate_if(is.numeric, specify_decimal, k = 2) %>% 
+  mutate(label = glue::glue("{value} [{.lower}, {.upper}]"), 
+         label = str_replace_all(label, "-", "\U2212"))
+
+# Forest plot
+group_gamm_tab_dat %>% 
+  ggplot(., aes(x = value, y = name)) + 
+    facet_grid(type ~ ., scales = "free", space = "free") + 
+    geom_vline(xintercept = 0, lty = 3) + 
+    stat_pointinterval(point_fill = "white",  pch = 21, show.legend = F) +
+    geom_text(data = group_gamm_summary, 
+      hjust = 1, family = "Times", size = 3.25, 
+      aes(group = type, label = label, x = -0.65)) +
+    coord_cartesian(xlim = c(-0.95, 0.8)) + 
+    scale_x_continuous(breaks = c(-0.5, 0, 0.5, 1)) + 
+    labs(y = NULL, x = "Estimate") + 
+    theme(plot.margin = unit(x = c(0, 0, 0, 0), units = "mm"), 
+      strip.placement = "outside", strip.background = element_blank(), 
+      axis.text.y = element_text(hjust = 1), axis.ticks.y = element_blank())
+```
+
+```{r}
+#| label: group-prediction-table
+group_prediction_tib <- gamm_log_group_stress_dat %>% 
+  group_by(stress, group) %>% 
+  summarize(.groups = "drop", 
+    hdi = mean_qi(prop), 
+    rope = rope(prop, range = c(0, 0.51)), 
+    PD = pd(prop, null = 0.5)[1]) %>% 
+  transmute(Group = group, Stress = stress, Estimate = hdi$y, 
+    lower = hdi$ymin, upper = hdi$ymax, ROPE = rope$ROPE_Percentage, PD) %>% 
+  mutate_if(is.numeric, specify_decimal, k = 2) %>% 
+  transmute(Group, Stress, Estimate, 
+    HDI = glue::glue("[{lower}, {upper}]"), ROPE, PD, 
+    parameter = glue::glue("{Group}_{Stress}")) %>% 
+  arrange(Group) %>% 
+  write_csv(here("tables", "tab_group_prediction.csv"))
+
+group_prediction_tib %>% 
+  select(-parameter) %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r", "r"), 
+    caption = "Group prediction summary.")
+```
+
+```{r}
+#| label: group-marginal-slopes-table
+#| out.width: 100%
+#| fig.height: 6
+group_marginal_slopes_post <- lines %>% 
+  ungroup() %>% 
+  select(stress, group, slope) %>% 
+  group_by(stress, group) %>% 
+  mutate(draw = seq_along(group)) %>% 
+  pivot_wider(names_from = "group", values_from = "slope") %>% 
+  transmute(stress, 
+    mono_hl = Monolingual - HL, mono_l2 = Monolingual - L2, hl_l2 = HL - L2) %>% 
+  pivot_longer(cols = -stress, names_to = "comp", values_to = "diff") %>% 
+  mutate(comp = str_replace_all(comp, "_", " - "), 
+         comp = str_to_upper(comp), 
+         comp = str_replace_all(comp, "MONO", "Mono"))
+
+marginal_slopes_p2 <- group_marginal_slopes_post %>% 
+  ggplot() + 
+    aes(x = diff, y = comp, fill = stat(abs(x) >= 0.001)) + 
+    facet_grid(. ~ stress) + 
+    geom_rect(data = tibble(x = c(-0.001, 0.001), y = NULL), 
+      aes(xmin = min(x), xmax = max(x), ymin = -Inf, ymax = Inf),
+      fill = "lightblue", alpha = 0.2, inherit.aes = FALSE) +
+    geom_vline(xintercept = 0, lty = 3, size = 0.5) + 
+    stat_slab(alpha = 0.7, color = "white", show.legend = F) +
+    stat_pointinterval(pch = 21, point_fill = "white", show.legend = F) +
+    scale_fill_manual(name = NULL, values = my_colors[2:3], labels = NULL) + 
+    scale_color_manual(name = NULL, values = my_colors[2:3], labels = NULL) + 
+    coord_cartesian(xlim = c(-0.011, NA)) + 
+    labs(y = NULL, x = "Difference estimate") 
+
+marginal_slopes_p1 / marginal_slopes_p2
+
+group_marginal_slopes_tib <- group_marginal_slopes_post %>% 
+  group_by(stress, comp) %>% 
+  summarize(.groups = "drop", 
+    hdi = mean_qi(diff), 
+    rope = rope(diff, range = c(-0.001, 0.001)), 
+    PD = pd(diff, null = 0)[1]) %>% 
+  transmute(Stress = stress, Comparison = comp, Estimate = hdi$y, 
+    lower = hdi$ymin, upper = hdi$ymax, ROPE = rope$ROPE_Percentage, PD) %>% 
+  mutate_if(is.numeric, specify_decimal, k = 3) %>% 
+  transmute(Stress, Comparison, Estimate, 
+    HDI = glue::glue("[{lower}, {upper}]"), ROPE, PD, 
+    parameter = glue::glue("{Stress}_{Comparison}")) %>% 
+  arrange(Stress) %>% 
+  write_csv(here("tables", "tab_group_marginal_slopes.csv"))
+
+group_marginal_slopes_tib %>% 
+  select(-parameter) %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r", "r"), 
+    caption = "Group marginal slopes pairwise comparisons summary.")
+
+```
+
+## Bilingual model
+
+```{r}
+#| label: table-bi-gamm
+
+bi_gamm_tib_prep <- bind_rows(
+  summary(gamm_log_bi_stress)[["fixed"]] %>% 
+    as_tibble(rownames = "Term") %>% 
+    mutate(Effect = "Population"),
+  summary(gamm_log_bi_stress)[["random"]][["id"]] %>% 
+    as_tibble(rownames = "Term") %>% 
+    mutate(Effect = "Grouping"),
+  summary(gamm_log_bi_stress)[["splines"]] %>% 
+    as_tibble(rownames = "Term") %>% 
+    mutate(Effect = "Smooths")
+) %>% 
+  mutate(across(-c("Effect", "Term"), specify_decimal, k = 2)) %>% 
+  mutate(Term = case_when(
+      Term == "groupL2" ~ "L2", 
+      Term == "stressOxytone" ~ "Oxytone", 
+      Term == "prof_z" ~ "Proficiency", 
+      Term == "use_z" ~ "Use", 
+      Term == "groupL2:stressOxytone" ~ "L2:Oxytone", 
+      Term == "stime_zero_1" ~ "Time", 
+      Term == "stime_zero:stressOxytone_1" ~ "Time:Oxytone", 
+      Term == "sds(stime_zero_1)" ~ "sds(Time)", 
+      Term == "sds(stime_zerostressOxytone_1)" ~ "sds(Time:Oxytone)", 
+      TRUE ~ Term)) 
+
+bi_gamm_tib <- bi_gamm_tib_prep %>% 
+  transmute(Effect, Term, Estimate, 
+    HDI = glue::glue("[{`l-95% CI`}, {`u-95% CI`}]"), 
+    Rhat, `Bulk ESS` = Bulk_ESS, `Tail ESS` = Tail_ESS) %>% 
+  mutate(
+    Estimate = str_replace_all(Estimate, "-", "\U2212"), 
+    HDI = str_replace_all(HDI, "-", "\U2212") 
+  ) %>% 
+  write_csv(here("tables", "tab_bi_gamm_mod.csv"))
+
+bi_gamm_tib %>% 
+  knitr::kable(format = "pandoc", 
+    align = c("l", "l", "r", "r", "r", "r", "r"), 
+    caption = "Bilingual GAMM summary.")
+
+```
+
+
+
+```{r}
+#| label: forest-plot-bi-gamm
+#| fig.height: 6
+
+# Get posterior and cleanup colnames and term names
+bi_gamm_tab_dat <- as_draws_df(gamm_log_bi_stress) %>% 
+  select(starts_with(c("b_", "bs_", "sd_", "sds_"))) %>% 
+  pivot_longer(cols = everything()) %>% 
+  mutate(type = case_when(
+      startsWith(name, "b_") ~ "Parametric\nPopulation", 
+      startsWith(name, "bs_") ~ "Non-parametric\nPopulation", 
+      startsWith(name, "sd_") ~ "Grouping", 
+      startsWith(name, "sds_") ~ "Smooth"), 
+    type = fct_relevel(type, "Parametric\nPopulation", 
+      "Non-parametric\nPopulation", "Grouping")) %>% 
+  mutate(name = case_when(
+      name == "b_Intercept" ~ "Intercept", 
+      name == "b_groupL2" ~ "L2", 
+      name == "b_stressOxytone" ~ "Oxytone", 
+      name == "b_prof_z" ~ "Proficiency", 
+      name == "b_use_z" ~ "Use", 
+      name == "b_groupL2:stressOxytone" ~ "L2:Oxytone", 
+      name == "bs_stime_zero_1" ~ "Time", 
+      name == "bs_stime_zero:stressOxytone_1" ~ "Time:Oxytone", 
+      name == "sd_id__Intercept" ~ "σ\nID", 
+      name == "sds_stime_zero_1" ~ "σ\nTime", 
+      name == "sds_stime_zerostressOxytone_1" ~ "σ\nTime:Oxytone", 
+    )
+  ) %>% 
+  mutate(name = fct_relevel(name, "σ\nTime:Oxytone", "σ\nTime", "σ\nID", 
+    "Time:Oxytone", "Time", "L2:Oxytone", "Use", "Proficiency", "Oxytone", 
+    "L2", "Intercept"))
+
+# Summarize posterior for printing estimates in plot
+bi_gamm_summary <- group_by(bi_gamm_tab_dat, name, type) %>% 
+  mean_qi(value, .width = 0.95) %>% 
+  mutate_if(is.numeric, specify_decimal, k = 2) %>% 
+  mutate(label = glue::glue("{value} [{.lower}, {.upper}]"), 
+         label = str_replace_all(label, "-", "\U2212")) 
+
+# Forest plot
+bi_gamm_tab_dat %>% 
+  ggplot(., aes(x = value, y = name)) + 
+    facet_grid(type ~ ., scales = "free", space = "free") + 
+    geom_vline(xintercept = 0, lty = 3) + 
+    stat_pointinterval(point_fill = "white",  pch = 21, show.legend = F) +
+    geom_text(data = bi_gamm_summary, 
+      hjust = 1, family = "Times", size = 3.25, 
+      aes(group = type, label = label, x = -0.62)) +
+    coord_cartesian(xlim = c(-1.5, 4)) + 
+    scale_x_continuous(breaks = c(-1, 0, 1, 2, 3, 4)) + 
+    labs(y = NULL, x = "Estimate") + 
+    theme(plot.margin = unit(x = c(0, 0, 0, 0), units = "mm"), 
+      strip.placement = "outside", strip.background = element_blank(), 
+      axis.text.y = element_text(hjust = 1), axis.ticks.y = element_blank())
 ```
