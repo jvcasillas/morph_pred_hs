@@ -83,14 +83,20 @@ pull_from_tib <- function(df, col, row, val) {
 # Report estimate from posterior distribution summary
 # Report posterior estimates, HDI, ROPE, and MPE in prose
 report_posterior <- function(df, param, metric = NULL, prefix = NULL,
-                             supress = FALSE) {
+                             supress = FALSE, is_exp = TRUE) {
   
-  if (is.null(metric)) {
+  if (is.null(metric)) { 
+    if (is_exp == TRUE) {
     # Extract wanted value from model output
     est  <- df[df$parameter == param, "Estimate"]
     cis  <- df[df$parameter == param, "HDI"]
     rope <- df[df$parameter == param, "ROPE"]
     pd   <- df[df$parameter == param, "PD"]
+    } else {
+      # Extract wanted value from model output
+      est  <- df[df$parameter == param, "Estimate"]
+      cis  <- df[df$parameter == param, "HDI"]
+    }
   } else {
     # Extract wanted value from model output
     est  <- df[df$parameter == param & df$Metric == metric, "Estimate"]
@@ -99,18 +105,32 @@ report_posterior <- function(df, param, metric = NULL, prefix = NULL,
     pd   <- df[df$parameter == param & df$Metric == metric, "PD"]
   }
   
-  if(supress == FALSE) {
-    capture.output(
-      paste0("(", prefix, "&beta; = ", est, ", HDI = ", cis, ", ROPE = ", rope,
-             ", PD = ", pd, ")", "\n") %>%
+  if(supress == FALSE) { 
+    if(is_exp == TRUE) {
+      capture.output(
+        paste0("(", prefix, "&beta; = ", est, ", HDI = ", cis, ", ROPE = ", rope,
+               ", PD = ", pd, ")", "\n") %>%
         cat()) %>%
-      paste()
-  } else {
-    capture.output(
-      paste0(prefix, "&beta; = ", est, ", HDI = ", cis, ", ROPE = ", rope,
+        paste()
+    } else {
+      capture.output(
+        paste0("(", prefix, "&beta; = ", est, ", HDI = ", cis, ")", "\n") %>%
+          cat()) %>%
+        paste()
+    }
+  } else { 
+    if(is_exp == TRUE) {
+      capture.output(
+        paste0(prefix, "&beta; = ", est, ", HDI = ", cis, ", ROPE = ", rope,
              ", PD = ", pd, "\n") %>%
         cat()) %>%
       paste()
+    } else {
+      capture.output(
+        paste0(prefix, "&beta; = ", est, ", HDI = ", cis, "\n") %>%
+          cat()) %>%
+        paste()
+    }
   }
 }
 
