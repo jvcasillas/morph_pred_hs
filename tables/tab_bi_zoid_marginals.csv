@@ -1,0 +1,5 @@
+Estimate,HDI,parameter
+0.48,"[0.38, 0.58]",HL_Oxytone
+0.57,"[0.45, 0.69]",HL_Paroxytone
+0.54,"[0.42, 0.64]",L2_Oxytone
+0.47,"[0.35, 0.61]",L2_Paroxytone

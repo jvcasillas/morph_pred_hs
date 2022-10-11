@@ -1,24 +1,21 @@
-Effect,Term,Estimate,HDI,Rhat,Bulk ESS,Tail ESS
-Population,Intercept,0.13,"[0.02, 0.24]",1.00,4040.14,3952.14
-Population,ϕ Intercept,2.17,"[1.86, 2.51]",1.00,3852.71,3739.37
-Population,zi Intercept,−4.37,"[−6.34, −3.17]",1.00,3847.73,3778.92
-Population,Group,−0.04,"[−0.15, 0.06]",1.00,4103.24,3948.07
-Population,Stress,0.00,"[−0.10, 0.10]",1.00,3881.54,3775.78
-Population,Use,0.02,"[−0.09, 0.13]",1.00,3869.10,3873.47
-Population,Proficiency,0.06,"[−0.06, 0.19]",1.00,3942.20,3929.86
-Population,Group:Stress,0.19,"[0.09, 0.29]",1.00,3773.70,3696.87
-Population,Group:Use,−0.13,"[−0.23, −0.02]",1.00,3739.06,3711.31
-Population,Stress:Use,−0.12,"[−0.23, −0.01]",1.00,3926.60,3999.60
-Population,Group:Proficiency,−0.02,"[−0.15, 0.09]",1.00,4021.95,4014.15
-Population,stress_sum:prof_z,−0.01,"[−0.13, 0.11]",1.00,3940.73,3437.18
-Population,Use:Proficiency,0.00,"[−0.13, 0.12]",1.00,3612.81,3918.69
-Population,Group:Stress:Use,0.02,"[−0.10, 0.12]",1.00,3982.24,3756.15
-Population,Group:Stress:Prof.,0.07,"[−0.04, 0.19]",1.00,3931.67,4102.86
-Population,Group:Use:Prof.,−0.04,"[−0.16, 0.09]",1.00,3879.26,3396.92
-Population,Stress:Use:Prof.,0.00,"[−0.12, 0.12]",1.00,3990.53,3892.69
-Population,Group:Stress:Use:Prof.,−0.11,"[−0.23, 0.01]",1.00,4030.29,3842.42
-Grouping,sd(Intercept),0.14,"[0.01, 0.32]",1.00,3446.94,3699.61
-Grouping,sd(Stress),0.10,"[0.00, 0.26]",1.00,3533.06,3722.07
-Grouping,sd(ϕ Intercept),0.82,"[0.45, 1.23]",1.00,3638.79,3850.73
-Grouping,sd(zi Intercept,0.81,"[0.03, 2.44]",1.00,3975.84,3798.24
-Grouping,"cor(Intercept,Stress)",−0.16,"[−0.96, 0.91]",1.00,3883.60,3654.52
+Effect,Term,Estimate,HDI,ROPE,PD,parameter
+Population-level,Intercept,0.11,"[0.01, 0.22]",0.39,0.99,Intercept
+Population-level,phi Intercept,2.12,"[1.81, 2.47]",0.00,1.00,phi Intercept
+Population-level,zi Intercept,−4.80,"[−7.33, −3.36]",0.00,1.00,zi Intercept
+Population-level,Group,−0.05,"[−0.16, 0.05]",0.83,0.83,Group
+Population-level,Stress,−0.02,"[−0.12, 0.08]",0.97,0.63,Stress
+Population-level,Proficiency,0.07,"[−0.05, 0.19]",0.69,0.87,Proficiency
+Population-level,Use,0.02,"[−0.09, 0.12]",0.96,0.63,Use
+Population-level,Group:Stress,0.17,"[0.06, 0.27]",0.08,1.00,Group:Stress
+Population-level,Group:Use,−0.13,"[−0.23, −0.02]",0.30,0.99,Group:Use
+Population-level,Group:Proficiency,−0.03,"[−0.15, 0.10]",0.91,0.66,Group:Proficiency
+Population-level,Group:Use:Proficiency,−0.03,"[−0.15, 0.09]",0.88,0.67,Group:Use:Proficiency
+Group-level,sd(Intercept),0.13,"[0.01, 0.32]",0.42,1.00,sd(Intercept)
+Group-level,sd(Stress),0.12,"[0.01, 0.31]",0.45,1.00,sd(Stress)
+Group-level,sd(phi Intercept),0.64,"[0.22, 1.05]",0.00,1.00,sd(phi Intercept)
+Group-level,sd(phi Stress),0.33,"[0.02, 0.74]",0.13,1.00,sd(phi Stress)
+Group-level,sd(zi Intercept),0.80,"[0.03, 2.46]",0.06,1.00,sd(zi Intercept)
+Group-level,sd(zi Stress),0.83,"[0.03, 2.55]",0.05,1.00,sd(zi Stress)
+Group-level,"cor(Intercept, Stress)",−0.19,"[−0.97, 0.91]",0.09,0.65,"cor(Intercept, Stress)"
+Group-level,"cor(phi Intercept, phi Stress)",0.41,"[−0.63, 0.97]",0.09,0.82,"cor(phi Intercept, phi Stress)"
+Group-level,"cor(zi Intercept, zi Stress)",0.11,"[−0.90, 0.95]",0.12,0.59,"cor(zi Intercept, zi Stress)"
