@@ -267,7 +267,7 @@ contrasts(bi_50_gamm$stress) <- "contr.treatment"
 # Set model formula
 formula_gamm_bi <- bf(
   target_count | trials(50) ~ 1 + group * stress + 
-    prof_z + use_z + 
+    prof_z * use_z + 
     s(time_zero, bs = "cr", k = 3) + 
     s(time_zero, by = stress, bs = "cr", k = 3) +
     #s(time_zero, id, bs = "fs", m = 1, k = 3) + 
