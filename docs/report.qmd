@@ -223,30 +223,49 @@ include_graphics(here("figs", "group-marginal-slopes-table-1.png"))
 
 
 
-## Proficiency and use
+## Proficiency and use {#sec-prof-use}
 
 In order to assess the effects of language proficiency and use, we took a subset of the bilingual data (HL and L2 groups). 
 Specifically, we used the data from the time bin that corresponded with 200 ms after the offset of the initial syllable in the target items. 
-We calculated the proportion of target fixations for each participant, in each condition and submitted these proportions to a zero-and-one inflated beta regression model. 
-The outcome was modeled as a function of group (HL, L2), stress (paroxytone, oxytone), use, and proficiency, along with all higher order interactions. 
+We calculated the proportion of target fixations for each participant, in each condition and submitted these proportions to a zero-inflated beta regression model.[^zoidberg] 
+The outcome was modeled as a function of group (HL, L2), stress (paroxytone, oxytone), use, and proficiency. 
 The group and stress predictors were sum coded (-1, 1) and the continuous predictors were standardized (i.e., converted to z-scores), thus the model intercept provided an estimate of target fixation marginalizing over *group* and *stress*, with *use* and *proficiency* equal to 0 (i.e., at the unstandardized mean). 
-We included a group-level effect for participants. 
+We included a group-level effect for participants with a varying slope for stress. 
 A full description of the model specification and priors is available in the supplementary materials. 
 
-@fig-bi-prof-use-heatmap-report
+The overall probability of fixating on a target was approximately `r filter(bi_zoid_tib, Term == "Intercept") %>% pull(Estimate) %>% as.numeric() %>% plogis %>% specify_decimal(k = 2)` `r report_posterior(bi_zoid_tib, param = "Intercept", prefix = "Intercept: ")`. 
+There was no main effect for group `r report_posterior(bi_zoid_tib, param = "Group")`, nor stress `r report_posterior(bi_zoid_tib, param = "Stress")`, though the two predictors did interact `r report_posterior(bi_zoid_tib, param = "Group:Stress")`. 
+Holding proficiency and use constant at their mean, the HL group fixated on targets at a higher rate in the paroxytone condition `r report_posterior(bi_zoid_marginals_tib, param = "HL_Paroxytone", is_exp = F)` than in the oxytone condition `r report_posterior(bi_zoid_marginals_tib, param = "HL_Oxytone", is_exp = F)`. 
+The opposite was true for the L2 group (`r report_posterior(bi_zoid_marginals_tib, param = "L2_Oxytone", is_exp = F, supress = T, prefix = "Paroxytone: ")`; `r report_posterior(bi_zoid_marginals_tib, param = "L2_Paroxytone", is_exp = F, supress = T, prefix = "Oxytone: ")`).
+The forest plot provided in @fig-forest-plot-beta-reg-report summarizes the model. 
+Additional figures and tables are available in the supplementary materials. 
+
+```{r}
+#| label: fig-forest-plot-beta-reg-report
+#| out.width: "100%"
+#| fig.height: 6
+#| fig.cap: "Forest plot of the zero-inflated beta regression. The horizontal axis represents the models estimates in log-odds. The vertical axis lists the terms estimated in the model. The points illustrate the posterior mean along with the 66% and 95% HDI. The vertical facetting separates the estimates into population-level and group-level effects."
+include_graphics(here("figs", "forest-plot-beta-reg-1.png"))
+```
+
+There was also evidence of a group $\times$ use interaction `r report_posterior(bi_zoid_tib, param = "Group:Use")`. 
+Although approximately 30% of the HDI fell within the ROPE, given data, the model, and our prior assumptions, we are 99% certain that the interaction effect is negative. 
+@fig-bi-prof-use-heatmap-report provides a heat map that illustrates the relationship between proficiency, use, and stress in the bilingual groups. 
+For the HL group, one observes higher target fixations (lighter colors) in the upper righthand corners of each panel. 
+That is to say, the individuals of the HL group that tended to predict suffixes more at the target syllable offset were those with higher levels of use and proficiency, particularly in the oxytone condition. 
+Target fixation was higher, nearly across the board, in the paroxytone condition. 
+For the L2 group, on the other hand, one observes a higher propensity to predict suffixes (lighter colors) in the lower righthand corners of each panel, in other words, when proficiency is higher, but not necessarily language use. 
+Unlike the HL group, the L2 group seldom predicted in the paroxytone condition (upper right panel).  
 
 ```{r}
 #| label: fig-bi-prof-use-heatmap-report
 #| out.width: "100%"
 #| fig.height: 6
-#| fig.cap: "Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the conditional effects of normalized proficiency and use scores for the bilingual groups. The top rows illustrate model estimate for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition."
+#| fig.cap: "Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the marginal effects of normalized proficiency and use scores. The top rows illustrate model estimates for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition. Moving from left to right, the first column provides estimates for the HL group, the middle column marginalizes over groups, and the rightmost column presents estimates for the L2 group. The vertical and horizontal axis display standardized language use and language proficiency (&pm;2 SD), respectively."
 include_graphics(here("figs", "bi-prof-use-heatmap-1.png"))
 ```
 
-
-
-
-
+[^zoidberg]: More information regarding zero-inflated beta regression is available in the supplementary materials.
 
 
 
@@ -405,17 +424,14 @@ include_graphics(here("figs", "forest-plot-bi-gamm-1.png"))
 
 ## Proficiency and use {#sec-prof-use-supp}
 
-@fig-bi-prof-use-plot-report
+This section provides additional plots and tables related to language use and language proficiency in the HL and L2 groups. 
 
-```{r}
-#| label: fig-bi-prof-use-plot-report
-#| out.width: "100%"
-#| fig.height: 5.5
-#| fig.cap: "Use and proficiency in Spanish."
-include_graphics(here("figs", "bi-prof-use-plot-1.png"))
-```
+### General descriptives
 
-@fig-eda-prof-use-marginal-mean-estimates-report
+@fig-eda-prof-use-marginal-mean-estimates-report illustrates the marginal mean differences (L2 - HL) for each metric. 
+The plot provides visual evidence supporting the notion that the two groups are similar in their proficiency in and use of Spanish. 
+For both metrics, the entirety of the 95% HDI falls within the ROPE (&pm;0.1). 
+@fig-eda-prof-use-marginal-mean-estimates-report complements @tbl-prof-use-desc in the manuscript.
 
 ```{r}
 #| label: fig-eda-prof-use-marginal-mean-estimates-report
@@ -425,22 +441,55 @@ include_graphics(here("figs", "bi-prof-use-plot-1.png"))
 include_graphics(here("figs", "eda-prof-use-marginal-mean-estimates-1.png"))
 ```
 
+### Zero-inflated beta regression
 
-
-@tbl-bi-zoid
+@tbl-bi-zoid provides a model summary of the zero-inflated beta regression conducted in @sec-prof-use. 
+This table provides the same information provided in the @ forest plot.
 
 ```{r}
 #| label: tbl-bi-zoid
-#| tbl-cap: "Bilingual GAMM summary."
+#| tbl-cap: "Bilingual zero-inflated beta regression summary."
 bi_zoid_tib %>% 
+  select(-parameter) %>% 
   mutate(Effect = case_when(
-    Term != "Intercept" & Effect == "Population" ~ " ", 
-    Term != "sd(Intercept)" & Effect == "Grouping" ~ " ", 
+    Term != "Intercept" & Effect == "Population-level" ~ " ", 
+    Term != "sd(Intercept)" & Effect == "Group-level" ~ " ", 
     TRUE ~ Effect
   )) %>% 
   knitr::kable(format = "pandoc", 
     align = c("l", "l", "r", "r", "r", "r", "r"))
 ```
+
+@fig-bi-beta-reg-stress-group-plot-report shows the marginal mean estimates of fixating on a target when marginalizing over proficiency and use. 
+This plot resembles @fig-group-prediction-plot-report, however, it differs in that it depicts estimates holding proficiency and use constant at their respective averages. 
+
+```{r}
+#| label: fig-bi-beta-reg-stress-group-plot-report
+#| out.width: "100%"
+#| fig.height: 3.5
+#| fig.cap: "Marginal mean estimates of target fixations for HL and L2 groups as a function of stress. Language proficiency and use are held constant at z = 0. ."
+include_graphics(here("figs", "bi-beta-reg-stress-group-plot-1.png"))
+```
+
+@fig-bi-prof-use-plot-report plots target fixation as a function of group, use, and proficiency in the paroxytone and oxytone stress conditions, as well as marginalizing over stress. 
+This figure complements the zero-inflated beta regression analysis provided in @sec-prof-use. 
+
+```{r}
+#| label: fig-bi-prof-use-plot-report
+#| out.width: "100%"
+#| fig.height: 5.5
+#| fig.cap: "Use and proficiency in Spanish."
+include_graphics(here("figs", "bi-prof-use-plot-1.png"))
+```
+
+
+
+
+
+
+
+
+
 
 
 
