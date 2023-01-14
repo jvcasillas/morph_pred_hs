@@ -57,6 +57,11 @@ Unsurprisingly, they use the same cue-weighting strategies when learning an L2, 
 With regard to prediction, there is evidence that monolingual Spanish speakers use lexical stress to predict a word's suffix (AUTHORS) and that highly skilled late bilinguals can also learn this skill (AUTHORS). 
 It is not clear how unique language experience, e.g., heritage speakers, language proficiency and language use modulate spoken word prediction. 
 
+<!--
+  About 80% of all stressed words have penultimate stress (Quilis 1993: 403) and more than 95% of all nouns, adjectives, and adverbs follow the unmarked patterns (Morales-Front 1999: 211)
+
+-->
+
 # Method
 
 ## Participants
@@ -261,7 +266,7 @@ Unlike the HL group, the L2 group seldom predicted in the paroxytone condition (
 #| label: fig-bi-prof-use-heatmap-report
 #| out.width: "100%"
 #| fig.height: 6
-#| fig.cap: "Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the marginal effects of normalized proficiency and use scores. The top rows illustrate model estimates for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition. Moving from left to right, the first column provides estimates for the HL group, the middle column marginalizes over groups, and the rightmost column presents estimates for the L2 group. The vertical and horizontal axis display standardized language use and language proficiency (&pm;2 SD), respectively."
+#| fig.cap: "Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the marginal effects of normalized proficiency and use scores. The top rows illustrate model estimates for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom row represents model estimates for the oxytone condition. Moving from left to right, the first column provides estimates for the HL group, the middle column marginalizes over groups, and the rightmost column presents estimates for the L2 group. The vertical and horizontal axis display standardized language use and language proficiency (&pm;2 SD), respectively."
 include_graphics(here("figs", "bi-prof-use-heatmap-1.png"))
 ```
 
@@ -318,7 +323,13 @@ This type of interpretation is not possible under a frequentist paradigm.
 
 ## GAMMs {#sec-gamms-supp}
 
-@tbl-group-gamm
+In this section we provide additional information regarding the GAMMs reported in manuscript. 
+For clarity, we divide this section into two subsections, @sec-all-groups-gamm deals with the model including monolinguals, and @sec-bi-groups-gamm details the model examining only the bilingual groups. 
+
+### GAMM: Bilinguals and monolingual controls {#sec-all-groups-gamm}
+
+@tbl-group-gamm provides the model summary of the omnibus GAMM. 
+It portrays the same information provided in @fig-forest-plot-group-gamm-report, but it table format.
 
 ```{r}
 #| label: tbl-group-gamm
@@ -333,11 +344,13 @@ group_gamm_tib %>%
     align = c("l", "l", "r", "r", "r", "r", "r"))
 ```
 
-@tbl-group-gamm-prediction
+@tbl-group-gamm-prediction summarizes the probability of fixating on a target before actually hearing the target suffix. 
+These estimates were derived from the omnibus model described above. 
+The visual illustration of these results are provided in @fig-group-prediction-plot-report. 
 
 ```{r}
 #| label: tbl-group-gamm-prediction
-#| tbl-cap: "Group prediction summary."
+#| tbl-cap: "Summary of target fixation estimates 200 ms after the target syllable offset. These estimates are derived from the omnibus GAMM. The ROPE is &pm;0.01 around a point null of 0.50. The PD refers to the probability that the posterior mean is above or below 0.51."
 group_prediction_tib %>% 
   select(-parameter) %>% 
   mutate(Group = case_when(
@@ -350,17 +363,20 @@ group_prediction_tib %>%
     align = c("l", "l", "r", "r", "r", "r"))
 ```
 
-@fig-marginal-slopes-plot-2
+In a similar vein, @fig-marginal-slopes-plot-2 illustrates the posterior predictive distribution of the the marginal slope estimates from the omnibus GAMM. 
+These estimates represent the partial derivative of the trajectory at 200 ms after the target syllable offset. 
+@tbl-group-maginal-slopes-pairwise summarizes the posteriors depicted in @fig-marginal-slopes-plot-2. 
+The bottom row of @fig-marginal-slopes-plot-2 plots the marginal slopes in context, i.e., with the trajectory of time course. 
 
 ```{r}
 #| label: fig-marginal-slopes-plot-2
 #| out.width: "100%"
 #| fig.height: 6.5
-#| fig.cap: "Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions. Group marginal slopes pairwise comparisons summary."
+#| fig.cap: "Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (*CANto*) and oxytone (*canTO*) conditions. The top panels show group estimates and the bottom panels plot 200 draws from the posterior predictive distribution."
 include_graphics(here("figs", "marginal-slopes-plot-2-1.png"))
 ```
 
-@tbl-group-maginal-slopes-pairwise
+
 
 ```{r}
 #| label: tbl-group-maginal-slopes-pairwise
@@ -375,6 +391,9 @@ group_marginal_slopes_tib %>%
   knitr::kable(format = "pandoc", 
     align = c("l", "l", "r", "r", "r", "r"))
 ```
+
+
+### GAMM: bilingual groups {#sec-bi-groups-gamm}
 
 @fig-bi-comparison-plot-report
 
