@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.120">
+<meta name="generator" content="quarto-1.3.299">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joseph V. Casillas">
-<meta name="dcterms.date" content="2022-10-11">
+<meta name="dcterms.date" content="2023-04-04">
 
 <title>Morphological predictability - HS: 1.2</title>
 <style>
@@ -19,14 +19,15 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -40,8 +41,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="report_files/libs/clipboard/clipboard.min.js"></script>
@@ -84,31 +84,31 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="toc-section-number">1</span>  Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
   <ul class="collapse">
-  <li><a href="#lexical-stress" id="toc-lexical-stress" class="nav-link" data-scroll-target="#lexical-stress"><span class="toc-section-number">1.1</span>  Lexical stress</a></li>
+  <li><a href="#lexical-stress" id="toc-lexical-stress" class="nav-link" data-scroll-target="#lexical-stress"><span class="header-section-number">1.1</span> Lexical stress</a></li>
   </ul></li>
-  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method"><span class="toc-section-number">2</span>  Method</a>
+  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method"><span class="header-section-number">2</span> Method</a>
   <ul class="collapse">
-  <li><a href="#participants" id="toc-participants" class="nav-link" data-scroll-target="#participants"><span class="toc-section-number">2.1</span>  Participants</a></li>
-  <li><a href="#statistical-analyses" id="toc-statistical-analyses" class="nav-link" data-scroll-target="#statistical-analyses"><span class="toc-section-number">2.2</span>  Statistical analyses</a></li>
+  <li><a href="#participants" id="toc-participants" class="nav-link" data-scroll-target="#participants"><span class="header-section-number">2.1</span> Participants</a></li>
+  <li><a href="#statistical-analyses" id="toc-statistical-analyses" class="nav-link" data-scroll-target="#statistical-analyses"><span class="header-section-number">2.2</span> Statistical analyses</a></li>
   </ul></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="toc-section-number">3</span>  Results</a>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">3</span> Results</a>
   <ul class="collapse">
-  <li><a href="#sec-gamm" id="toc-sec-gamm" class="nav-link" data-scroll-target="#sec-gamm"><span class="toc-section-number">3.1</span>  The time course of morphological processing</a></li>
-  <li><a href="#prediction-at-target-offset" id="toc-prediction-at-target-offset" class="nav-link" data-scroll-target="#prediction-at-target-offset"><span class="toc-section-number">3.2</span>  Prediction at target offset</a></li>
-  <li><a href="#sec-prof-use" id="toc-sec-prof-use" class="nav-link" data-scroll-target="#sec-prof-use"><span class="toc-section-number">3.3</span>  Proficiency and use</a></li>
+  <li><a href="#sec-gamm" id="toc-sec-gamm" class="nav-link" data-scroll-target="#sec-gamm"><span class="header-section-number">3.1</span> The time course of morphological processing</a></li>
+  <li><a href="#prediction-at-target-offset" id="toc-prediction-at-target-offset" class="nav-link" data-scroll-target="#prediction-at-target-offset"><span class="header-section-number">3.2</span> Prediction at target offset</a></li>
+  <li><a href="#sec-prof-use" id="toc-sec-prof-use" class="nav-link" data-scroll-target="#sec-prof-use"><span class="header-section-number">3.3</span> Proficiency and use</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="toc-section-number">4</span>  References</a></li>
-  <li><a href="#supplementary-materials" id="toc-supplementary-materials" class="nav-link" data-scroll-target="#supplementary-materials"><span class="toc-section-number">5</span>  Supplementary materials</a>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4</span> References</a></li>
+  <li><a href="#supplementary-materials" id="toc-supplementary-materials" class="nav-link" data-scroll-target="#supplementary-materials"><span class="header-section-number">5</span> Supplementary materials</a>
   <ul class="collapse">
-  <li><a href="#sec-bda" id="toc-sec-bda" class="nav-link" data-scroll-target="#sec-bda"><span class="toc-section-number">5.1</span>  Bayesian data analysis</a></li>
-  <li><a href="#sec-gamms-supp" id="toc-sec-gamms-supp" class="nav-link" data-scroll-target="#sec-gamms-supp"><span class="toc-section-number">5.2</span>  GAMMs</a></li>
-  <li><a href="#sec-prof-use-supp" id="toc-sec-prof-use-supp" class="nav-link" data-scroll-target="#sec-prof-use-supp"><span class="toc-section-number">5.3</span>  Proficiency and use</a></li>
-  <li><a href="#reproducibility-information" id="toc-reproducibility-information" class="nav-link" data-scroll-target="#reproducibility-information"><span class="toc-section-number">5.4</span>  Reproducibility information</a></li>
+  <li><a href="#sec-bda" id="toc-sec-bda" class="nav-link" data-scroll-target="#sec-bda"><span class="header-section-number">5.1</span> Bayesian data analysis</a></li>
+  <li><a href="#sec-gamms-supp" id="toc-sec-gamms-supp" class="nav-link" data-scroll-target="#sec-gamms-supp"><span class="header-section-number">5.2</span> GAMMs</a></li>
+  <li><a href="#sec-prof-use-supp" id="toc-sec-prof-use-supp" class="nav-link" data-scroll-target="#sec-prof-use-supp"><span class="header-section-number">5.3</span> Proficiency and use</a></li>
+  <li><a href="#reproducibility-information" id="toc-reproducibility-information" class="nav-link" data-scroll-target="#reproducibility-information"><span class="header-section-number">5.4</span> Reproducibility information</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="report.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="report.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -132,9 +132,10 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Last updated:</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 11, 2022</p>
+      <p class="date">April 4, 2023</p>
     </div>
   </div>
+  
     
   </div>
   
@@ -152,22 +153,26 @@ div.csl-indent {
 <section id="lexical-stress" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="lexical-stress"><span class="header-section-number">1.1</span> Lexical stress</h2>
 <p>Lexical stress (henceforth stress) refers to the relative prominence of one syllable with regard to the others in a given word. Stress is lexically encoded and contrastive in Spanish (‘término’ [ˈteɾ.mi.no], Eng. <em>term</em>; ‘termino’ [teɾ.ˈmi.no], Eng. <em>I finish</em>; ‘terminó’ [teɾ.mi.ˈno], Eng. <em>(s)he finished</em>) and in English (‘produce’ [ˈpɹo.duːs] noun, ‘produce’ [pɹə.ˈduːs] verb), though it is more productive in the former than in the latter. To wit, few stress minimal pairs exist in English that are not semantically related <span class="citation" data-cites="cutler2012native">(See <a href="#ref-cutler2012native" role="doc-biblioref">Cutler, 2012</a>)</span>. The primary acoustic correlates of stress are <span class="math inline">f_{0}</span>, duration, and intensity, though their relative cue-weighting is language-specific <span class="citation" data-cites="chrabaszcz2014acoustic gordon2017acoustic holt2006cue">(See <a href="#ref-chrabaszcz2014acoustic" role="doc-biblioref">Chrabaszcz et al., 2014</a>; <a href="#ref-gordon2017acoustic" role="doc-biblioref">Gordon &amp; Roettger, 2017</a>; <a href="#ref-holt2006cue" role="doc-biblioref">Holt &amp; Lotto, 2006</a>, among many others)</span>. Despite native English speakers’ familiarity with stress, they typically have trouble producing <span class="citation" data-cites="bullock2003analogy lord2007role">(<a href="#ref-bullock2003analogy" role="doc-biblioref">Bullock &amp; Lord, 2003</a>; <a href="#ref-lord2007role" role="doc-biblioref">Lord, 2007</a>)</span> and perceiving <span class="citation" data-cites="face2000role face2005syllable face2006cognitive ortega2013english saalfeld2012teaching">(<a href="#ref-face2000role" role="doc-biblioref">Face, 2000</a>, <a href="#ref-face2005syllable" role="doc-biblioref">2005</a>, <a href="#ref-face2006cognitive" role="doc-biblioref">2006</a>; <a href="#ref-ortega2013english" role="doc-biblioref">Ortega-Llebaria et al., 2013</a>; <a href="#ref-saalfeld2012teaching" role="doc-biblioref">Saalfeld, 2012</a>)</span> stress differences in L2 Spanish. A possible explanation might be found in language-specific isochrony <span class="citation" data-cites="pike1945intonation">(<a href="#ref-pike1945intonation" role="doc-biblioref">Pike, 1945</a>)</span>. Whereas English is often described as a ‘stress-timed’ language, i.e., one with relatively constant intervals between stressed syllables, Spanish is typically described as ‘syllable-timed’, i.e., each syllable is perceived as having the same duration. Differences such as these may shape how stress is perceived in each language. In English, for example, unstressed vowel reduction—often present in stress-timed languages—may be sufficient for indicating stress <span class="citation" data-cites="cutler2012native tremblay2018functional">(<a href="#ref-cutler2012native" role="doc-biblioref">Cutler, 2012</a>; <a href="#ref-tremblay2018functional" role="doc-biblioref">Tremblay et al., 2018</a>)</span>, rendering other cues relatively less important for speech perception. As a consequence, native English speakers may have to adjust their cue-weighting strategies when learning Spanish, a language that does not have vowel reduction. Evidence from cross-modal priming studies indeed suggests that stress is processed differently by native listeners in both languages during lexical access <span class="citation" data-cites="cooper2002constraints soto2001segmental">(See <a href="#ref-cooper2002constraints" role="doc-biblioref">Cooper et al., 2002</a>; <a href="#ref-soto2001segmental" role="doc-biblioref">Soto-Faraco et al., 2001</a>)</span>. The extant literature suggests that native listeners are tuned in to the relevant acoustic cues of their language and take advantage of them to increase processing efficiency. Unsurprisingly, they use the same cue-weighting strategies when learning an L2, often resulting in difficulties during the early stages of acquisition <span class="citation" data-cites="ingvalson2012can iverson2003perceptual">(<a href="#ref-ingvalson2012can" role="doc-biblioref">Ingvalson et al., 2012</a>; <a href="#ref-iverson2003perceptual" role="doc-biblioref">Iverson et al., 2003</a>)</span>. With regard to prediction, there is evidence that monolingual Spanish speakers use lexical stress to predict a word’s suffix (AUTHORS) and that highly skilled late bilinguals can also learn this skill (AUTHORS). It is not clear how unique language experience, e.g., heritage speakers, language proficiency and language use modulate spoken word prediction.</p>
+<!--
+  About 80% of all stressed words have penultimate stress (Quilis 1993: 403) and more than 95% of all nouns, adjectives, and adverbs follow the unmarked patterns (Morales-Front 1999: 211)
+
+-->
 </section>
 </section>
 <section id="method" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Method</h1>
 <section id="participants" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="participants"><span class="header-section-number">2.1</span> Participants</h2>
-<p>We collected data from 122 individuals for analysis. There were 30 monolingual participants, 42 heritage speakers, and 50 adult L2 learners. The bilingual participants completed language <em>use</em> and <em>proficiency</em> assessments. We fit the <em>use</em> and <em>proficiency</em> data to separate Bayesian linear models to assess potential group differences.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> We compare the posterior marginal mean difference between groups on both response variables. We established a region of practical equivalence (ROPE) of ±0.1. If, for a given measure, the full range of the 95% highest density credible interval (HDI) of the difference estimate falls within the ROPE, we consider there to be compelling evidence that the groups are equivalent. The HL group had an average proficiency score of 0.70 (SD = 0.09) compared to the L2 groups’ score of 0.71 (SD = 0.14). The marginal mean difference was 0.02 [−0.03, 0.07] and all of the HDI fell within the ROPE. The probability that the effect was positive was 0.77. Regarding language use, the HL group had an average score of 0.41 (SD = 0.15) compared to the L2 groups’ score of 0.38 (SD = 0.16). The marginal mean difference was −0.02 [−0.09, 0.05] and, again, all of the HDI fell within the ROPE. The probability that the effect was negative was 0.72. Taken together, we are confident that the groups do not differ in any meaningful way with regard to use of/proficiency in Spanish. <a href="#tbl-prof-use-desc">Table&nbsp;1</a> provides descriptive statistics and summarizes the models.</p>
+<p>We collected data from 122 individuals for analysis. There were 30 monolingual participants, heritage speakers, and 50 adult L2 learners. The bilingual participants completed language <em>use</em> and <em>proficiency</em> assessments. We fit the <em>use</em> and <em>proficiency</em> data to separate Bayesian linear models to assess potential group differences.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> We compare the posterior marginal mean difference between groups on both response variables. We established a region of practical equivalence (ROPE) of ±0.1. If, for a given measure, the full range of the 95% highest density credible interval (HDI) of the difference estimate falls within the ROPE, we consider there to be compelling evidence that the groups are equivalent. The HL group had an average proficiency score of 0.70 (SD = 0.09) compared to the L2 groups’ score of 0.71 (SD = 0.14). The marginal mean difference was 0.02 [−0.03, 0.07] and all of the HDI fell within the ROPE. The probability that the effect was positive was 0.77. Regarding language use, the HL group had an average score of 0.41 (SD = 0.15) compared to the L2 groups’ score of 0.38 (SD = 0.16). The marginal mean difference was −0.02 [−0.09, 0.05] and, again, all of the HDI fell within the ROPE. The probability that the effect was negative was 0.72. Taken together, we are confident that the groups do not differ in any meaningful way with regard to use of/proficiency in Spanish. <a href="#tbl-prof-use-desc">Table&nbsp;1</a> provides descriptive statistics and summarizes the models.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-prof-use-desc" class="anchored">
-<table class="table table-sm table-striped">
-<caption>Table&nbsp;1: Language use and proficiency assessments for the heritage and L2 bilingual groups. The table reports the mean and standard deviation, as well as posterior estimates of the marginal mean difference (L2 - HL) and the 95% highest denisty credible interval (in brackets). The proportion of the posterior density falling within the region of practical equivalence (±0.1) is reported in the ROPE column. The probability that the effect is of the median’s sign is reported in the PD column.</caption>
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;1: Language use and proficiency assessments for the heritage and L2 bilingual groups. The table reports the mean and standard deviation, as well as posterior estimates of the marginal mean difference (L2 - HS) and the 95% highest denisty credible interval (in brackets). The proportion of the posterior density falling within the region of practical equivalence (±0.1) is reported in the ROPE column. The probability that the effect is of the median’s sign is reported in the PD column.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Metric</th>
-<th style="text-align: right;">HL (n = 42)</th>
+<th style="text-align: right;">HS (n = 42)</th>
 <th style="text-align: right;">L2 (n = 50)</th>
 <th style="text-align: left;">Contrast</th>
 <th style="text-align: right;">Estimate</th>
@@ -180,7 +185,7 @@ div.csl-indent {
 <td style="text-align: left;">Proficiency</td>
 <td style="text-align: right;">0.70 (0.09)</td>
 <td style="text-align: right;">0.71 (0.14)</td>
-<td style="text-align: left;">L2 - HL</td>
+<td style="text-align: left;">L2 - HS</td>
 <td style="text-align: right;">0.02 [−0.03, 0.07]</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0.77</td>
@@ -189,7 +194,7 @@ div.csl-indent {
 <td style="text-align: left;">Use</td>
 <td style="text-align: right;">0.41 (0.15)</td>
 <td style="text-align: right;">0.38 (0.16)</td>
-<td style="text-align: left;">L2 - HL</td>
+<td style="text-align: left;">L2 - HS</td>
 <td style="text-align: right;">−0.02 [−0.09, 0.05]</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0.72</td>
@@ -202,7 +207,7 @@ div.csl-indent {
 </section>
 <section id="statistical-analyses" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="statistical-analyses"><span class="header-section-number">2.2</span> Statistical analyses</h2>
-<p>We fit a series of Bayesian regression analyses to examine to time course data. The primary model is a Generalized Additive Mixed Model <span class="citation" data-cites="soskuthy2017generalised winter2016">(GAMM, <a href="#ref-soskuthy2017generalised" role="doc-biblioref">Sóskuthy, 2017</a>; <a href="#ref-winter2016" role="doc-biblioref">Winter &amp; Wieling, 2016</a>)</span>. GAMMs are useful for scrutinizing non-linear data, such as that typically associated with eye-tracking.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> In subsequent analyses, we summarize the posterior predictive distribution to make inferences about the relationships between speaker groups, lexical stress, language proficiency, and language use. Given the distinct nature of some of these analyses, we provide a brief description of the statistical approach at the beginning of each of the corresponding subsections. For all models, we use regularizing, weakly informative priors <span class="citation" data-cites="Gelman_2017">(<a href="#ref-Gelman_2017" role="doc-biblioref">Gelman et al., 2017</a>)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> In most cases, we established a region of practical equivalence (ROPE) around a point null value using the following formula <span class="citation" data-cites="kruschke2018rejecting">(See <a href="#ref-kruschke2018rejecting" role="doc-biblioref">Kruschke, 2018</a>)</span>:</p>
+<p>We fit a series of Bayesian regression analyses to examine to time course data. The primary model is a Generalized Additive Mixed Model <span class="citation" data-cites="soskuthy2017generalised winter2016">(GAMM, <a href="#ref-soskuthy2017generalised" role="doc-biblioref">Sóskuthy, 2017</a>; <a href="#ref-winter2016" role="doc-biblioref">Winter &amp; Wieling, 2016</a>)</span>. GAMMs are useful for scrutinizing non-linear data, such as that typically associated with eye-tracking.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> In subsequent analyses, we summarize the posterior predictive distribution to make inferences about the relationships between AoA (henceforth speaker <em>group</em>), lexical stress, language proficiency, and language use. Given the distinct nature of some of these analyses, we provide a brief description of the statistical approach at the beginning of each of the corresponding subsections. For all models, we use regularizing, weakly informative priors <span class="citation" data-cites="Gelman_2017">(<a href="#ref-Gelman_2017" role="doc-biblioref">Gelman et al., 2017</a>)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> In most cases, we established a region of practical equivalence (ROPE) around a point null value using the following formula <span class="citation" data-cites="kruschke2018rejecting">(See <a href="#ref-kruschke2018rejecting" role="doc-biblioref">Kruschke, 2018</a>)</span>:</p>
 <p><span class="math display">ROPE = \frac{\mu_1 - \mu_2}{\sqrt{\frac{\sigma_1^2 + \sigma_2^2}{2}}}</span></p>
 <p>We report mean posterior point estimates for parameters of interest, along with the 95% highest density credible interval (HDI), the percent of the region of the HDI contained within the ROPE, and the probability of direction for each effect (PD). For statistical inferences, we focus on estimation rather than decision-making rules, though, generally, a posterior distribution for a parameter β in which 95% of the HDI falls outside the ROPE and a high PD (i.e., values close to 1) are taken as compelling evidence for a given effect. We conducted all analyses using R (version 4.2.1) and fit all models using the probabilistic programming language <code>stan</code> via the R package <code>brms</code> <span class="citation" data-cites="R_brms_a R_brms_b">(<a href="#ref-R_brms_a" role="doc-biblioref">Bürkner, 2017</a>, <a href="#ref-R_brms_b" role="doc-biblioref">2018</a>)</span>.</p>
 </section>
@@ -218,12 +223,12 @@ div.csl-indent {
 <div id="fig-raw-et-data-report" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="../figs/checks-fixes-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Time course of raw target fixation data as a function of stress condition (paroxytone, oxytone) for monolingual, HL, and L2 groups. Transparent ribbons represent 99% bootstrapped confidence intervals.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Time course of raw target fixation data as a function of stress condition (paroxytone, oxytone) for monolingual, HS, and L2 groups. Transparent ribbons represent 99% bootstrapped confidence intervals.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Given the binary nature of the outcome variable (target fixation, elsewhere), the likelihood was assumed to be binomially distributed. The model assessed target fixations as a function of the parametric terms <em>group</em> (monolingual, HL, L2), <em>stress</em> (paroxytone, oxytone), and a non-linear function of time. Both <em>group</em> and <em>stress</em> were set as ordered variables with monolinguals and paroxytones coded as ‘0’. We implemented cubic regression splines with four basis knots as (a) a reference smooth to time, (b) as a difference smooth to time conditioned on stress, and (c) as a random smooth for each participant conditioned on time. Thus, we use the trajectory of the monolinguals’ target fixations to paroxytone words (e.g., CANta) as the baseline and compared it the trajectories of the other groups. The forest plot in <a href="#fig-forest-plot-group-gamm-report">Figure&nbsp;2</a> illustrates the model summary (See supplementary materials for the complete summary in table form).</p>
+<p>Given the binary nature of the outcome variable (target fixation, elsewhere), the likelihood was assumed to be binomially distributed. The model assessed target fixations as a function of the parametric terms <em>group</em> (monolingual, HS, L2), <em>stress</em> (paroxytone, oxytone), and a non-linear function of time. Both <em>group</em> and <em>stress</em> were set as ordered variables with monolinguals and paroxytones coded as ‘0’. We implemented cubic regression splines with four basis knots as (a) a reference smooth to time, (b) as a difference smooth to time conditioned on stress, and (c) as a random smooth for each participant conditioned on time. Thus, we use the trajectory of the monolinguals’ target fixations to paroxytone words (e.g., CANta) as the baseline and compared it the trajectories of the other groups. The forest plot in <a href="#fig-forest-plot-group-gamm-report">Figure&nbsp;2</a> illustrates the model summary (See supplementary materials for the complete summary in table form).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-forest-plot-group-gamm-report" class="quarto-figure quarto-figure-center anchored">
@@ -234,7 +239,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>In order to quantify and assess the between-group differences over time, we used the posterior predictive distribution to calculate posterior pairwise difference smooths. <a href="#fig-group-diff-smooths-plot">Figure&nbsp;3</a> illustrates these pairwise comparisons over the time course in the probability space. Overall, the analysis shows that the monolingual group fixates on targets earlier than the HL and L2 groups in both stress conditions over the time-window we have selected. The HL-L2 comparison suggests that the HL group fixates on targets slightly more and earlier in paxoytone condition, but the opposite is true in the oxytone condition.</p>
+<p>In order to quantify and assess the between-group differences over time, we used the posterior predictive distribution to calculate posterior pairwise difference smooths. <a href="#fig-group-diff-smooths-plot">Figure&nbsp;3</a> illustrates these pairwise comparisons over the time course in the probability space. Overall, the analysis shows that the monolingual group fixates on targets earlier than the HS and L2 groups in both stress conditions over the time-window we have selected. The HS-L2 comparison suggests that the HL group fixates on targets slightly more and earlier in paxoytone condition, but the opposite is true in the oxytone condition.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-group-diff-smooths-plot" class="quarto-figure quarto-figure-center anchored">
@@ -254,19 +259,19 @@ div.csl-indent {
 <div id="fig-group-prediction-plot-report" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="../figs/group-prediction-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4: Proportion of target fixations 200ms after the offset of 1st syllable for monolingual, HL, and L2 groups in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. The vertical dotted line marks chance (50%) surrounded by a ±1% region of practical equivalence (ROPE). The density mass of a posterior distribution that falls below the upper bound of the ROPE is displayed in red and values above this threshold are purple.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: Proportion of target fixations 200ms after the offset of 1st syllable for monolingual, HS, and L2 groups in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. The vertical dotted line marks chance (50%) surrounded by a ±1% region of practical equivalence (ROPE). The density mass of a posterior distribution that falls below the upper bound of the ROPE is displayed in red and values above this threshold are purple.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>All groups fixated on targets above chance 200 ms after the target syllable offset with the exception of the HL group in the oxytone condition (β = 0.48, HDI = [0.45, 0.52], ROPE = 0.97, PD = 0.85). Approximately 97% of the HDI fell below the upper bound of the ROPE and there is an 85% chance that the estimate is below 0.5. Additionally, a small portion of the posterior probability mass of the L2 group in the paroxytone condition fell within the ROPE (β = 0.54, HDI = [0.51, 0.57], ROPE = 0.01, PD = 1), though, given the model, the data and our prior assumptions, the effect is nearly certain to be above 0.5.</p>
-<p>Next, we assessed the rate of target fixations at the same time point (i.e., 200 ms after the offset of the target syllable). While the previous assessment explained <em>if</em> participants fixate on targets before hearing a critical suffix, this analysis sheds light on how fast target fixations occur by calculating the partial derivative (i.e., slope) of the trajectory at this time point. The top panels of <a href="#fig-marginal-slopes-plot-report">Figure&nbsp;5</a> show the marginal slope estimates for each group for paroxtone and oxytone words. The bottom panels of <a href="#fig-marginal-slopes-plot-report">Figure&nbsp;5</a> provide pairwise group comparisons in each condition. The monolingual group had a slower rate of target fixation (i.e., a less steep slope) than the HL group for paroxytones (β = -0.004, HDI = [-0.008, -0.001], ROPE = 0, PD = 0.999) and oxytones (β = -0.006, HDI = [-0.010, -0.004], ROPE = 0, PD = 1). This was also the case when compared with L2 learners (Paroxytones: β = -0.006, HDI = [-0.009, -0.003], ROPE = 0, PD = 1; Oxytones: β = -0.006, HDI = [-0.009, -0.003], ROPE = 0, PD = 1). Upon comparing the HL and L2 groups, we do not find compelling evidence that either group has a faster rate of target fixation. In the paroxytone condition, the L2 group might be slightly faster, but nearly half the HDI fell within the ROPE (β = -0.001, HDI = [-0.003, 0.000], ROPE = 0.514, PD = 0.922). In the oxytone condition the opposite was true, that is, the L2 group may have been slightly slower, but, again, a large portion of the HDI fell within the ROPE (β = 0.001, HDI = [0.000, 0.002], ROPE = 0.697, PD = 0.957). Taken together, we do not believe there is compelling evidence that the rate of target fixation differs between the HL and L2 groups. Additional plots and a table summary are provided in the supplementary materials.</p>
+<p>All groups fixated on targets above chance 200 ms after the target syllable offset with the exception of the HS group in the oxytone condition (β = 0.48, HDI = [0.45, 0.52], ROPE = 0.97, PD = 0.85). Approximately 97% of the HDI fell below the upper bound of the ROPE and there is an 85% chance that the estimate is below 0.5. Additionally, a small portion of the posterior probability mass of the L2 group in the paroxytone condition fell within the ROPE (β = 0.54, HDI = [0.51, 0.57], ROPE = 0.01, PD = 1), though, given the model, the data and our prior assumptions, the effect is nearly certain to be above 0.5.</p>
+<p>Next, we assessed the rate of target fixations at the same time point (i.e., 200 ms after the offset of the target syllable). While the previous assessment explained <em>if</em> participants fixate on targets before hearing a critical suffix, this analysis sheds light on how fast target fixations occur by calculating the partial derivative (i.e., slope) of the trajectory at this time point. The top panels of <a href="#fig-marginal-slopes-plot-report">Figure&nbsp;5</a> show the marginal slope estimates for each group for paroxtone and oxytone words. The bottom panels of <a href="#fig-marginal-slopes-plot-report">Figure&nbsp;5</a> provide pairwise group comparisons in each condition. The monolingual group had a slower rate of target fixation (i.e., a less steep slope) than the HS group for paroxytones (β = -0.004, HDI = [-0.008, -0.001], ROPE = 0, PD = 0.999) and oxytones (β = -0.006, HDI = [-0.010, -0.004], ROPE = 0, PD = 1). This was also the case when compared with L2 learners (Paroxytones: β = -0.006, HDI = [-0.009, -0.003], ROPE = 0, PD = 1; Oxytones: β = -0.006, HDI = [-0.009, -0.003], ROPE = 0, PD = 1). Upon comparing the HS and L2 groups, we do not find compelling evidence that either group has a faster rate of target fixation. In the paroxytone condition, the L2 group might be slightly faster, but nearly half the HDI fell within the ROPE (β = -0.001, HDI = [-0.003, 0.000], ROPE = 0.514, PD = 0.922). In the oxytone condition the opposite was true, that is, the L2 group may have been slightly slower, but, again, a large portion of the HDI fell within the ROPE (β = 0.001, HDI = [0.000, 0.002], ROPE = 0.697, PD = 0.957). Taken together, we do not believe there is compelling evidence that the rate of target fixation differs between the HS and L2 groups. Additional plots and a table summary are provided in the supplementary materials.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-marginal-slopes-plot-report" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="../figs/group-marginal-slopes-table-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5: Marginal slope estimates (top panels) and pairwise difference estimates (bottom panels) for monolingual, HL, and L2 groups 200ms after the target syllable offset in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. Points represent posterior means along with the 66% and 95% HDI. In the bottom panels, the vertical blue rectangle illustrates a ROPE of ±0.001. Posterior mass falling within the ROPE is depicted in red and values outside the ROPE are in purple.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: Marginal slope estimates (top panels) and pairwise difference estimates (bottom panels) for monolingual, HS, and L2 groups 200ms after the target syllable offset in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. Points represent posterior means along with the 66% and 95% HDI. In the bottom panels, the vertical blue rectangle illustrates a ROPE of ±0.001. Posterior mass falling within the ROPE is depicted in red and values outside the ROPE are in purple.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -274,8 +279,8 @@ div.csl-indent {
 </section>
 <section id="sec-prof-use" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="sec-prof-use"><span class="header-section-number">3.3</span> Proficiency and use</h2>
-<p>In order to assess the effects of language proficiency and use, we took a subset of the bilingual data (HL and L2 groups). Specifically, we used the data from the time bin that corresponded with 200 ms after the offset of the initial syllable in the target items. We calculated the proportion of target fixations for each participant, in each condition and submitted these proportions to a zero-inflated beta regression model.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> The outcome was modeled as a function of group (HL, L2), stress (paroxytone, oxytone), use, and proficiency. The group and stress predictors were sum coded (-1, 1) and the continuous predictors were standardized (i.e., converted to z-scores), thus the model intercept provided an estimate of target fixation marginalizing over <em>group</em> and <em>stress</em>, with <em>use</em> and <em>proficiency</em> equal to 0 (i.e., at the unstandardized mean). We included a group-level effect for participants with a varying slope for stress. A full description of the model specification and priors is available in the supplementary materials.</p>
-<p>The overall probability of fixating on a target was approximately 0.53 (Intercept: β = 0.11, HDI = [0.01, 0.22], ROPE = 0.39, PD = 0.99). There was no main effect for group (β = −0.05, HDI = [−0.16, 0.05], ROPE = 0.83, PD = 0.83), nor stress (β = −0.02, HDI = [−0.12, 0.08], ROPE = 0.97, PD = 0.63), though the two predictors did interact (β = 0.17, HDI = [0.06, 0.27], ROPE = 0.08, PD = 1). Holding proficiency and use constant at their mean, the HL group fixated on targets at a higher rate in the paroxytone condition (β = 0.57, HDI = [0.45, 0.69]) than in the oxytone condition (β = 0.48, HDI = [0.38, 0.58]). The opposite was true for the L2 group (Paroxytone: β = 0.54, HDI = [0.42, 0.64]; Oxytone: β = 0.47, HDI = [0.35, 0.61]). The forest plot provided in <a href="#fig-forest-plot-beta-reg-report">Figure&nbsp;6</a> summarizes the model. Additional figures and tables are available in the supplementary materials.</p>
+<p>In order to assess the effects of language proficiency and use, we took a subset of the bilingual data (HS and L2 groups). Specifically, we used the data from the time bin that corresponded with 200 ms after the offset of the initial syllable in the target items. We calculated the proportion of target fixations for each participant, in each condition and submitted these proportions to a zero-inflated beta regression model.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> The outcome was modeled as a function of group (HS, L2), stress (paroxytone, oxytone), use, and proficiency. The group and stress predictors were sum coded (-1, 1) and the continuous predictors were standardized (i.e., converted to z-scores), thus the model intercept provided an estimate of target fixation marginalizing over <em>group</em> and <em>stress</em>, with <em>use</em> and <em>proficiency</em> equal to 0 (i.e., at the unstandardized mean). We included a group-level effect for participants with a varying slope for stress. A full description of the model specification and priors is available in the supplementary materials.</p>
+<p>The overall probability of fixating on a target was approximately 0.53 (Intercept: β = 0.11, HDI = [0.01, 0.22], ROPE = 0.39, PD = 0.99). There was no main effect for group (β = −0.05, HDI = [−0.16, 0.05], ROPE = 0.83, PD = 0.83), nor stress (β = −0.02, HDI = [−0.12, 0.08], ROPE = 0.97, PD = 0.63), though the two predictors did interact (β = 0.17, HDI = [0.06, 0.27], ROPE = 0.08, PD = 1). Holding proficiency and use constant at their mean, the HS group fixated on targets at a higher rate in the paroxytone condition (β = 0.57, HDI = [0.45, 0.69]) than in the oxytone condition (β = 0.48, HDI = [0.38, 0.58]). The opposite was true for the L2 group (Paroxytone: β = 0.54, HDI = [0.42, 0.64]; Oxytone: β = 0.47, HDI = [0.35, 0.61]). The forest plot provided in <a href="#fig-forest-plot-beta-reg-report">Figure&nbsp;6</a> summarizes the model. Additional figures and tables are available in the supplementary materials.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-forest-plot-beta-reg-report" class="quarto-figure quarto-figure-center anchored">
@@ -286,13 +291,13 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>There was also evidence of a group <span class="math inline">\times</span> use interaction (β = −0.13, HDI = [−0.23, −0.02], ROPE = 0.3, PD = 0.99). Although approximately 30% of the HDI fell within the ROPE, given data, the model, and our prior assumptions, we are 99% certain that the interaction effect is negative. <a href="#fig-bi-prof-use-heatmap-report">Figure&nbsp;7</a> provides a heat map that illustrates the relationship between proficiency, use, and stress in the bilingual groups. For the HL group, one observes higher target fixations (lighter colors) in the upper righthand corners of each panel. That is to say, the individuals of the HL group that tended to predict suffixes more at the target syllable offset were those with higher levels of use and proficiency, particularly in the oxytone condition. Target fixation was higher, nearly across the board, in the paroxytone condition. For the L2 group, on the other hand, one observes a higher propensity to predict suffixes (lighter colors) in the lower righthand corners of each panel, in other words, when proficiency is higher, but not necessarily language use. Unlike the HL group, the L2 group seldom predicted in the paroxytone condition (upper right panel).</p>
+<p>There was also evidence of a group <span class="math inline">\times</span> use interaction (β = −0.13, HDI = [−0.23, −0.02], ROPE = 0.3, PD = 0.99). Although approximately 30% of the HDI fell within the ROPE, given data, the model, and our prior assumptions, we are 99% certain that the interaction effect is negative. <a href="#fig-bi-prof-use-heatmap-report">Figure&nbsp;7</a> provides a heat map that illustrates the relationship between proficiency, use, and stress in the bilingual groups. For the HS group, one observes higher target fixations (lighter colors) in the upper righthand corners of each panel. That is to say, the individuals of the HS group that tended to predict suffixes more at the target syllable offset were those with higher levels of use and proficiency, particularly in the oxytone condition. Target fixation was higher, nearly across the board, in the paroxytone condition. For the L2 group, on the other hand, one observes a higher propensity to predict suffixes (lighter colors) in the lower righthand corners of each panel, in other words, when proficiency is higher, but not necessarily language use. Unlike the HS group, the L2 group seldom predicted in the paroxytone condition (upper right panel).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-bi-prof-use-heatmap-report" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="../figs/bi-prof-use-heatmap-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7: Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the marginal effects of normalized proficiency and use scores. The top rows illustrate model estimates for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom rows represent model estimate for the oxytone condition. Moving from left to right, the first column provides estimates for the HL group, the middle column marginalizes over groups, and the rightmost column presents estimates for the L2 group. The vertical and horizontal axis display standardized language use and language proficiency (±2 SD), respectively.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7: Heatmap of target fixations 200ms after target syllable offset. The heatmap illustrates the marginal effects of normalized proficiency and use scores. The top rows illustrate model estimates for the paroxytone condtion, the middle rows marginalize over stress conditions, and the bottom row represents model estimates for the oxytone condition. Moving from left to right, the first column provides estimates for the HS group, the middle column marginalizes over groups, and the rightmost column presents estimates for the L2 group. The vertical and horizontal axis display standardized language use and language proficiency (±2 SD), respectively.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -302,7 +307,80 @@ div.csl-indent {
 </section>
 <section id="references" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> References</h1>
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-bullock2003analogy" class="csl-entry" role="listitem">
+Bullock, B., &amp; Lord, G. (2003). Analogy as a learning tool in second language acquisition. In A. T. Pérez-Leroux &amp; Y. Roberge (Eds.), <em>Romance linguistics: Theory and acquisition</em> (Vol. 244, pp. 281–297). John Benjamins Publishing. <a href="https://doi.org/10.1075/cilt.244.21bul">https://doi.org/10.1075/cilt.244.21bul</a>
+</div>
+<div id="ref-R_brms_a" class="csl-entry" role="listitem">
+Bürkner, P.-C. (2017). <span class="nocase">brms</span>: An <span>R</span> package for <span>Bayesian</span> multilevel models using <span>Stan</span>. <em>Journal of Statistical Software</em>, <em>80</em>(1), 1–28. <a href="https://doi.org/10.18637/jss.v080.i01">https://doi.org/10.18637/jss.v080.i01</a>
+</div>
+<div id="ref-R_brms_b" class="csl-entry" role="listitem">
+Bürkner, P.-C. (2018). <span class="nocase">Advanced Bayesian Multilevel Modeling with the R Package brms</span>. <em><span>The R Journal</span></em>, <em>10</em>(1), 395–411. <a href="https://doi.org/10.32614/RJ-2018-017">https://doi.org/10.32614/RJ-2018-017</a>
+</div>
+<div id="ref-chrabaszcz2014acoustic" class="csl-entry" role="listitem">
+Chrabaszcz, A., Winn, M., Lin, C. Y., &amp; Idsardi, W. J. (2014). Acoustic cues to perception of word stress by english, mandarin, and russian speakers. <em>Journal of Speech, Language, and Hearing Research</em>, <em>57</em>(4), 1468–1479. <a href="https://doi.org/10.1044/2014_JSLHR-L-13-0279">https://doi.org/10.1044/2014_JSLHR-L-13-0279</a>
+</div>
+<div id="ref-cooper2002constraints" class="csl-entry" role="listitem">
+Cooper, N., Cutler, A., &amp; Wales, R. (2002). Constraints of lexical stress on lexical access in english: Evidence from native and non-native listeners. <em>Language and Speech</em>, <em>45</em>(3), 207–228. <a href="https://doi.org/10.1177/002383090204500301">https://doi.org/10.1177/002383090204500301</a>
+</div>
+<div id="ref-cutler2012native" class="csl-entry" role="listitem">
+Cutler, A. (2012). <em>Native listening: Language experience and the recognition of spoken words</em>. MIT Press.
+</div>
+<div id="ref-face2000role" class="csl-entry" role="listitem">
+Face, T. L. (2000). The role of syllable weight in the perception of spanish stress. In H. Campos &amp; E. Herburger (Eds.), <em>Hispanic linguistics at the turn of the millennium</em> (pp. 1–13). Sommerville, MA: Cascadilla Proceedings Project.
+</div>
+<div id="ref-face2005syllable" class="csl-entry" role="listitem">
+Face, T. L. (2005). Syllable weight and the perception of spanish stress placement by second language learners. <em>Journal of Language and Learning</em>, <em>3</em>, 90–103.
+</div>
+<div id="ref-face2006cognitive" class="csl-entry" role="listitem">
+Face, T. L. (2006). <em>Cognitive factors in the perception of spanish stress placement: Implications for a model of speech perception</em>. <em>44</em>(6), 1237–1267. <a href="https://doi.org/10.1515/LING.2006.040">https://doi.org/10.1515/LING.2006.040</a>
+</div>
+<div id="ref-fischer1992saccadic" class="csl-entry" role="listitem">
+Fischer, B. (1992). Saccadic reaction time: Implications for reading, dyslexia, and visual cognition. In K. Rayner (Ed.), <em>Eye movements and visual cognition. Springer series in neuropsychology</em> (pp. 31–45). Springer. <a href="https://doi.org/10.1007/978-1-4612-2852-3_3">https://doi.org/10.1007/978-1-4612-2852-3_3</a>
+</div>
+<div id="ref-Gelman_2017" class="csl-entry" role="listitem">
+Gelman, A., Simpson, D., &amp; Betancourt, M. (2017). The prior can often only be understood in the context of the likelihood. <em>Entropy</em>, <em>19</em>(10), 1–13. <a href="https://doi.org/10.3390/e19100555">https://doi.org/10.3390/e19100555</a>
+</div>
+<div id="ref-gordon2017acoustic" class="csl-entry" role="listitem">
+Gordon, M., &amp; Roettger, T. (2017). Acoustic correlates of word stress: A cross-linguistic survey. <em>Linguistics Vanguard</em>, <em>3</em>(1). <a href="https://doi.org/10.1515/lingvan-2017-0007">https://doi.org/10.1515/lingvan-2017-0007</a>
+</div>
+<div id="ref-holt2006cue" class="csl-entry" role="listitem">
+Holt, L. L., &amp; Lotto, A. J. (2006). Cue weighting in auditory categorization: Implications for first and second language acquisition. <em>The Journal of the Acoustical Society of America</em>, <em>119</em>(5), 3059–3071. <a href="https://doi.org/10.1121/1.2188377">https://doi.org/10.1121/1.2188377</a>
+</div>
+<div id="ref-ingvalson2012can" class="csl-entry" role="listitem">
+Ingvalson, E. M., Holt, L. L., &amp; McClelland, J. L. (2012). Can native japanese listeners learn to differentiate /r-l/ on the basis of F3 onset frequency? <em>Bilingualism: Language and Cognition</em>, <em>15</em>(2), 255–274. <a href="https://doi.org/10.1017/S1366728911000447">https://doi.org/10.1017/S1366728911000447</a>
+</div>
+<div id="ref-iverson2003perceptual" class="csl-entry" role="listitem">
+Iverson, P., Kuhl, P. K., Akahane-Yamada, R., Diesch, E., Kettermann, A., Siebert, C., et al. (2003). A perceptual interference account of acquisition difficulties for non-native phonemes. <em>Cognition</em>, <em>87</em>(1), B47–B57. <a href="https://doi.org/10.1016/s0010-0277(02)00198-1">https://doi.org/10.1016/s0010-0277(02)00198-1</a>
+</div>
+<div id="ref-kruschke2018rejecting" class="csl-entry" role="listitem">
+Kruschke, J. K. (2018). Rejecting or accepting parameter values in <span>B</span>ayesian estimation. <em>Advances in Methods and Practices in Psychological Science</em>, <em>1</em>(2), 270–280.
+</div>
+<div id="ref-lord2007role" class="csl-entry" role="listitem">
+Lord, G. (2007). The role of the lexicon in learning second language stress patterns. <em>Applied Language Learning</em>, <em>17</em>(1-2), 1–14.
+</div>
+<div id="ref-ortega2013english" class="csl-entry" role="listitem">
+Ortega-Llebaria, M., Gu, H., &amp; Fan, J. (2013). English speakers’ perception of spanish lexical stress: Context-driven L2 stress perception. <em>Journal of Phonetics</em>, <em>41</em>(3-4), 186–197. <a href="https://doi.org/10.1016/j.wocn.2013.01.006">https://doi.org/10.1016/j.wocn.2013.01.006</a>
+</div>
+<div id="ref-pike1945intonation" class="csl-entry" role="listitem">
+Pike, K. L. (1945). <em>The intonation of american english</em>.
+</div>
+<div id="ref-saalfeld2012teaching" class="csl-entry" role="listitem">
+Saalfeld, A. K. (2012). Teaching L2 spanish stress. <em>Foreign Language Annals</em>, <em>45</em>(2), 283–303. <a href="https://doi.org/10.1111/j.1944-9720.2012.01191.x">https://doi.org/10.1111/j.1944-9720.2012.01191.x</a>
+</div>
+<div id="ref-soskuthy2017generalised" class="csl-entry" role="listitem">
+Sóskuthy, M. (2017). Generalised additive mixed models for dynamic analysis in linguistics: A practical introduction. <em>arXiv Preprint arXiv:1703.05339</em>.
+</div>
+<div id="ref-soto2001segmental" class="csl-entry" role="listitem">
+Soto-Faraco, S., Sebastián-Gallés, N., &amp; Cutler, A. (2001). Segmental and suprasegmental mismatch in lexical access. <em>Journal of Memory and Language</em>, <em>45</em>, 412–432. <a href="https://doi.org/10.1006/jmla.2000.2783">https://doi.org/10.1006/jmla.2000.2783</a>
+</div>
+<div id="ref-tremblay2018functional" class="csl-entry" role="listitem">
+Tremblay, A., Broersma, M., &amp; Coughlin, C. E. (2018). The functional weight of a prosodic cue in the native language predicts the learning of speech segmentation in a second language. <em>Bilingualism: Language and Cognition</em>, <em>21</em>(3), 640–652. <a href="https://doi.org/10.1017/S136672891700030X">https://doi.org/10.1017/S136672891700030X</a>
+</div>
+<div id="ref-winter2016" class="csl-entry" role="listitem">
+Winter, B., &amp; Wieling, M. (2016). How to analyze linguistic change using mixed models, growth curve analysis and generalized additive modeling. <em>Journal of Language Evolution</em>, <em>1, 1</em>, 7–18. https://doi.org/<a href="https://doi.org/10.1093/jole/lzv003">https://doi.org/10.1093/jole/lzv003</a>
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </section>
 <section id="supplementary-materials" class="level1" data-number="5">
@@ -314,11 +392,14 @@ div.csl-indent {
 </section>
 <section id="sec-gamms-supp" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="sec-gamms-supp"><span class="header-section-number">5.2</span> GAMMs</h2>
-<p><a href="#tbl-group-gamm">Table&nbsp;2</a></p>
+<p>In this section we provide additional information regarding the GAMMs reported in manuscript. For clarity, we divide this section into two subsections, <a href="#sec-all-groups-gamm">Section&nbsp;5.2.1</a> deals with the model including monolinguals, and <a href="#sec-bi-groups-gamm">Section&nbsp;5.2.2</a> details the model examining only the bilingual groups.</p>
+<section id="sec-all-groups-gamm" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="sec-all-groups-gamm"><span class="header-section-number">5.2.1</span> GAMM: Bilinguals and monolingual controls</h3>
+<p><a href="#tbl-group-gamm">Table&nbsp;2</a> provides the model summary of the omnibus GAMM. It portrays the same information provided in <a href="#fig-forest-plot-group-gamm-report">Figure&nbsp;2</a>, but it table format.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-group-gamm" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;2: Group GAMM summary.</caption>
 <thead>
 <tr class="header">
@@ -343,7 +424,7 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">HL</td>
+<td style="text-align: left;">HS</td>
 <td style="text-align: right;">−0.30</td>
 <td style="text-align: right;">[−0.53, −0.11]</td>
 <td style="text-align: right;">1.01</td>
@@ -370,7 +451,7 @@ div.csl-indent {
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">HL:Oxytone</td>
+<td style="text-align: left;">HS:Oxytone</td>
 <td style="text-align: right;">−0.44</td>
 <td style="text-align: right;">[−0.46, −0.42]</td>
 <td style="text-align: right;">1.00</td>
@@ -436,12 +517,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p><a href="#tbl-group-gamm-prediction">Table&nbsp;3</a></p>
+<p><a href="#tbl-group-gamm-prediction">Table&nbsp;3</a> summarizes the probability of fixating on a target before actually hearing the target suffix. These estimates were derived from the omnibus model described above. The visual illustration of these results are provided in <a href="#fig-group-prediction-plot-report">Figure&nbsp;4</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-group-gamm-prediction" class="anchored">
-<table class="table table-sm table-striped">
-<caption>Table&nbsp;3: Group prediction summary.</caption>
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;3: Summary of target fixation estimates 200 ms after the target syllable offset. These estimates are derived from the omnibus GAMM. The ROPE is ±0.01 around a point null of 0.50. The PD refers to the probability that the posterior mean is above or below 0.51.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Group</th>
@@ -470,7 +551,7 @@ div.csl-indent {
 <td style="text-align: right;">1.00</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">HL</td>
+<td style="text-align: left;">HS</td>
 <td style="text-align: left;">Paroxytone</td>
 <td style="text-align: right;">0.57</td>
 <td style="text-align: right;">[0.54, 0.60]</td>
@@ -506,22 +587,21 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p><a href="#fig-marginal-slopes-plot-2">Figure&nbsp;8</a></p>
+<p>In a similar vein, <a href="#fig-marginal-slopes-plot-2">Figure&nbsp;8</a> illustrates the posterior predictive distribution of the the marginal slope estimates from the omnibus GAMM. These estimates represent the partial derivative of the trajectory at 200 ms after the target syllable offset. <a href="#tbl-group-maginal-slopes-pairwise">Table&nbsp;4</a> summarizes the posteriors depicted in <a href="#fig-marginal-slopes-plot-2">Figure&nbsp;8</a>. The bottom row of <a href="#fig-marginal-slopes-plot-2">Figure&nbsp;8</a> plots the marginal slopes in context, i.e., with the trajectory of time course.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-marginal-slopes-plot-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="../figs/marginal-slopes-plot-2-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8: Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage learners, and L2 learners in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. Group marginal slopes pairwise comparisons summary.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;8: Marginal slope estimates 200ms after the offset of 1st syllable for monolinguals, heritage speakers, and L2 learners in paroxytone (<em>CANto</em>) and oxytone (<em>canTO</em>) conditions. The top panels show group estimates and the bottom panels plot 200 draws from the posterior predictive distribution.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#tbl-group-maginal-slopes-pairwise">Table&nbsp;4</a></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-group-maginal-slopes-pairwise" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;4: Marginal slopes pairwise comparisons.</caption>
 <thead>
 <tr class="header">
@@ -536,7 +616,7 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Paroxytone</td>
-<td style="text-align: left;">HL - L2</td>
+<td style="text-align: left;">HS - L2</td>
 <td style="text-align: right;">-0.001</td>
 <td style="text-align: right;">[-0.003, 0.000]</td>
 <td style="text-align: right;">0.514</td>
@@ -544,7 +624,7 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Mono - HL</td>
+<td style="text-align: left;">Mono - HS</td>
 <td style="text-align: right;">-0.004</td>
 <td style="text-align: right;">[-0.008, -0.001]</td>
 <td style="text-align: right;">0.000</td>
@@ -560,7 +640,7 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td style="text-align: left;">Oxytone</td>
-<td style="text-align: left;">HL - L2</td>
+<td style="text-align: left;">HS - L2</td>
 <td style="text-align: right;">0.001</td>
 <td style="text-align: right;">[0.000, 0.002]</td>
 <td style="text-align: right;">0.697</td>
@@ -568,7 +648,7 @@ div.csl-indent {
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Mono - HL</td>
+<td style="text-align: left;">Mono - HS</td>
 <td style="text-align: right;">-0.006</td>
 <td style="text-align: right;">[-0.010, -0.004]</td>
 <td style="text-align: right;">0.000</td>
@@ -587,6 +667,9 @@ div.csl-indent {
 </div>
 </div>
 </div>
+</section>
+<section id="sec-bi-groups-gamm" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="sec-bi-groups-gamm"><span class="header-section-number">5.2.2</span> GAMM: bilingual groups</h3>
 <p><a href="#fig-bi-comparison-plot-report">Figure&nbsp;9</a></p>
 <div class="cell">
 <div class="cell-output-display">
@@ -602,7 +685,7 @@ div.csl-indent {
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-bi-gamm" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;5: Bilingual GAMM summary.</caption>
 <thead>
 <tr class="header">
@@ -742,12 +825,13 @@ div.csl-indent {
 </div>
 <div style="page-break-after: always;"></div>
 </section>
+</section>
 <section id="sec-prof-use-supp" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="sec-prof-use-supp"><span class="header-section-number">5.3</span> Proficiency and use</h2>
-<p>This section provides additional plots and tables related to language use and language proficiency in the HL and L2 groups.</p>
+<p>This section provides additional plots and tables related to language use and language proficiency in the HS and L2 groups.</p>
 <section id="general-descriptives" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="general-descriptives"><span class="header-section-number">5.3.1</span> General descriptives</h3>
-<p><a href="#fig-eda-prof-use-marginal-mean-estimates-report">Figure&nbsp;11</a> illustrates the marginal mean differences (L2 - HL) for each metric. The plot provides visual evidence supporting the notion that the two groups are similar in their proficiency in and use of Spanish. For both metrics, the entirety of the 95% HDI falls within the ROPE (±0.1). <a href="#fig-eda-prof-use-marginal-mean-estimates-report">Figure&nbsp;11</a> complements <a href="#tbl-prof-use-desc">Table&nbsp;1</a> in the manuscript.</p>
+<p><a href="#fig-eda-prof-use-marginal-mean-estimates-report">Figure&nbsp;11</a> illustrates the marginal mean differences (L2 - HS) for each metric. The plot provides visual evidence supporting the notion that the two groups are similar in their proficiency in and use of Spanish. For both metrics, the entirety of the 95% HDI falls within the ROPE (±0.1). <a href="#fig-eda-prof-use-marginal-mean-estimates-report">Figure&nbsp;11</a> complements <a href="#tbl-prof-use-desc">Table&nbsp;1</a> in the manuscript.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-eda-prof-use-marginal-mean-estimates-report" class="quarto-figure quarto-figure-center anchored">
@@ -765,7 +849,7 @@ div.csl-indent {
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-bi-zoid" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;6: Bilingual zero-inflated beta regression summary.</caption>
 <thead>
 <tr class="header">
@@ -949,7 +1033,7 @@ div.csl-indent {
 <div id="fig-bi-beta-reg-stress-group-plot-report" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="../figs/bi-beta-reg-stress-group-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;12: Marginal mean estimates of target fixations for HL and L2 groups as a function of stress. Language proficiency and use are held constant at z = 0. .</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12: Marginal mean estimates of target fixations for HS and L2 groups as a function of stress. Language proficiency and use are held constant at z = 0. .</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -984,221 +1068,146 @@ div.csl-indent {
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/New_York
- date     2022-10-11
- pandoc   2.18 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)</code></pre>
+ date     2023-04-04
+ pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               loadedversion       date
 abind                  1.4-5 2016-07-21
 arrayhelpers           1.1-0 2020-02-04
-assertthat             0.2.1 2019-03-21
 backports              1.4.1 2021-12-13
 base64enc              0.1-3 2015-07-28
-bayesplot              1.9.0 2022-03-10
-bayestestR            0.12.1 2022-05-02
-bit                    4.0.4 2020-08-04
+bayesplot             1.10.0 2022-11-16
+bayestestR            0.13.0 2022-09-18
+bit                    4.0.5 2022-11-15
 bit64                  4.0.5 2020-08-30
 bridgesampling         1.1-2 2021-04-16
-brms                  2.17.0 2022-04-13
-Brobdingnag            1.2-7 2022-02-03
-cachem                 1.0.6 2021-08-19
-callr                  3.7.2 2022-08-22
+brms                  2.19.0 2023-03-14
+Brobdingnag            1.2-9 2022-10-19
+cachem                 1.0.7 2023-02-24
+callr                  3.7.3 2022-11-02
 cellranger             1.1.0 2016-07-27
 checkmate              2.1.0 2022-04-21
-cli                    3.3.0 2022-04-25
+cli                    3.6.1 2023-03-23
 coda                  0.19-4 2020-09-30
-codetools             0.2-18 2020-11-04
-colorspace             2.0-3 2022-02-21
-colourpicker           1.1.1 2021-10-04
-crayon                 1.5.1 2022-03-26
+codetools             0.2-19 2023-02-01
+colorspace             2.1-0 2023-01-23
+colourpicker           1.2.0 2022-10-28
+crayon                 1.5.2 2022-09-29
 crosstalk              1.2.0 2021-11-04
-datawizard             0.5.1 2022-08-17
+datawizard             0.7.0 2023-03-22
 DBI                    1.1.3 2022-06-18
-devtools               2.4.4 2022-07-20
-digest                0.6.29 2021-12-01
-distributional         0.3.0 2022-01-05
-dplyr                  1.0.9 2022-04-28
-DT                      0.24 2022-08-09
+devtools               2.4.5 2022-10-11
+digest                0.6.31 2022-12-11
+distributional         0.3.2 2023-03-22
+dplyr                  1.1.1 2023-03-22
+DT                      0.27 2023-01-17
 dygraphs             1.1.1.6 2018-07-11
 ellipsis               0.3.2 2021-04-29
-emmeans              1.8.1-1 2022-09-08
+emmeans                1.8.5 2023-03-08
 estimability           1.4.1 2022-08-05
-evaluate                0.16 2022-08-09
-fansi                  1.0.3 2022-03-24
+evaluate                0.20 2023-01-17
+fansi                  1.0.4 2023-01-22
 farver                 2.1.1 2022-07-06
-fastmap                1.1.0 2021-01-25
-forcats                0.5.2 2022-08-19
-fs                     1.5.2 2021-12-08
+fastmap                1.1.1 2023-02-24
+forcats                1.0.0 2023-01-29
+fs                     1.6.1 2023-02-06
 generics               0.1.3 2022-07-05
-ggdist                 3.2.0 2022-07-19
-ggplot2                3.3.6 2022-05-03
-ggridges               0.5.3 2021-01-08
+ggdist                 3.2.1 2023-01-18
+ggplot2                3.4.1 2023-02-10
 glue                   1.6.2 2022-02-24
 gridExtra                2.3 2017-09-09
-gtable                 0.3.0 2019-03-25
-gtools                 3.9.3 2022-07-11
+gtable                 0.3.3 2023-03-21
+gtools                 3.9.4 2022-11-27
 here                   1.0.1 2020-12-13
-highr                    0.9 2021-04-16
-hms                    1.1.2 2022-08-19
-htmltools              0.5.3 2022-07-18
-htmlwidgets            1.5.4 2021-09-08
-httpuv                 1.6.5 2022-01-05
-igraph                 1.3.4 2022-07-19
+hms                    1.1.3 2023-03-21
+htmltools              0.5.5 2023-03-23
+htmlwidgets            1.6.2 2023-03-17
+httpuv                 1.6.9 2023-02-14
+igraph                 1.4.1 2023-02-24
 inline                0.3.19 2021-05-31
-insight               0.18.2 2022-08-10
-janitor                2.1.0 2021-01-05
-jsonlite               1.8.0 2022-02-22
-knitr                   1.40 2022-08-24
+insight               0.19.1 2023-03-18
+janitor                2.2.0 2023-02-02
+jsonlite               1.8.4 2022-12-06
+knitr                   1.42 2023-01-25
 later                  1.3.0 2021-08-18
 lattice              0.20-45 2021-09-22
-lifecycle              1.0.1 2021-09-24
+lifecycle              1.0.3 2022-10-07
 loo                    2.5.1 2022-03-24
-lubridate              1.8.0 2021-10-07
+lubridate              1.9.2 2023-02-10
 magrittr               2.0.3 2022-03-30
-markdown                 1.1 2019-08-07
-Matrix                 1.5-0 2022-09-10
-matrixStats           0.62.0 2022-04-19
+markdown                 1.5 2023-01-31
+Matrix                 1.5-3 2022-11-11
+matrixStats           0.63.0 2022-11-18
 memoise                2.0.1 2021-11-26
 mime                    0.12 2021-09-28
 miniUI               0.1.1.1 2018-05-18
 munsell                0.5.0 2018-06-12
 mvtnorm                1.1-3 2021-10-08
-nlme                 3.1-157 2022-03-25
+nlme                 3.1-162 2023-01-31
 patchwork              1.1.2 2022-08-19
-pillar                 1.8.1 2022-08-19
-pkgbuild               1.3.1 2021-12-20
+pillar                 1.9.0 2023-03-22
+pkgbuild               1.4.0 2022-11-27
 pkgconfig              2.0.3 2019-09-22
-pkgload                1.3.0 2022-06-27
-plyr                   1.8.7 2022-03-24
-posterior              1.3.0 2022-08-15
+pkgload                1.3.2 2022-11-16
+plyr                   1.8.8 2022-11-11
+posterior              1.4.1 2023-03-14
 prettyunits            1.1.1 2020-01-24
-processx               3.7.0 2022-07-07
+processx               3.8.0 2022-10-26
 profvis                0.3.7 2020-11-02
 promises             1.2.0.1 2021-02-11
-ps                     1.7.1 2022-06-18
-purrr                  0.3.4 2020-04-17
+ps                     1.7.3 2023-03-21
+purrr                  1.0.1 2023-01-10
 R6                     2.5.1 2021-08-19
-Rcpp                   1.0.9 2022-07-08
-RcppParallel           5.1.5 2022-01-05
-readr                  2.1.2 2022-01-30
-readxl                 1.4.1 2022-08-17
+Rcpp                  1.0.10 2023-01-22
+RcppParallel           5.1.7 2023-02-27
+readr                  2.1.4 2023-02-10
+readxl                 1.4.2 2023-02-09
 remotes                2.4.2 2021-11-30
 reshape2               1.4.4 2020-04-09
-rlang                  1.0.4 2022-07-12
-rmarkdown               2.16 2022-08-24
+rlang                  1.1.0 2023-03-14
+rmarkdown               2.21 2023-03-26
 rprojroot              2.0.3 2022-04-02
-rstan                 2.21.5 2022-04-11
-rstantools             2.2.0 2022-04-08
+rstan                 2.21.8 2023-01-17
+rstantools             2.3.0 2023-03-09
 rstudioapi              0.14 2022-08-22
 scales                 1.2.1 2022-08-20
 sessioninfo            1.2.2 2021-12-06
-shiny                  1.7.2 2022-07-19
+shiny                  1.7.4 2022-12-15
 shinyjs                2.1.0 2021-12-23
 shinystan              2.6.0 2022-03-03
 shinythemes            1.2.0 2021-01-25
 snakecase             0.11.0 2019-05-25
 StanHeaders         2.21.0-7 2020-12-17
-stringi                1.7.8 2022-07-11
-stringr                1.4.1 2022-08-20
+stringi               1.7.12 2023-01-11
+stringr                1.5.0 2022-12-02
 svUnit                 1.0.6 2021-04-19
 tensorA               0.36.2 2020-11-19
 threejs                0.3.3 2020-01-21
-tibble                 3.1.8 2022-07-22
-tidybayes              3.0.2 2022-01-05
-tidyr                  1.2.0 2022-02-01
-tidyselect             1.1.2 2022-02-21
+tibble                 3.2.1 2023-03-20
+tidybayes              3.0.4 2023-03-14
+tidyr                  1.3.0 2023-01-24
+tidyselect             1.2.0 2022-10-10
+timechange             0.2.0 2023-01-11
 tzdb                   0.3.0 2022-03-28
 urlchecker             1.0.1 2021-11-30
 usethis                2.1.6 2022-05-25
-utf8                   1.2.2 2021-07-24
-vctrs                  0.4.1 2022-04-13
-vroom                  1.5.7 2021-11-30
+utf8                   1.2.3 2023-01-31
+vctrs                  0.6.1 2023-03-22
+vroom                  1.6.1 2023-01-22
 withr                  2.5.0 2022-03-03
-xfun                    0.32 2022-08-10
+xfun                    0.38 2023-03-24
 xtable                 1.8-4 2019-04-21
-xts                   0.12.1 2020-09-09
-yaml                   2.3.5 2022-02-21
-zoo                   1.8-10 2022-04-15</code></pre>
+xts                   0.13.0 2023-02-20
+yaml                   2.3.7 2023-01-23
+zoo                   1.8-11 2022-09-17</code></pre>
 </div>
 </div>
 </section>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-bullock2003analogy" class="csl-entry" role="doc-biblioentry">
-Bullock, B., &amp; Lord, G. (2003). Analogy as a learning tool in second language acquisition. In A. T. Pérez-Leroux &amp; Y. Roberge (Eds.), <em>Romance linguistics: Theory and acquisition</em> (Vol. 244, pp. 281–297). John Benjamins Publishing. <a href="https://doi.org/10.1075/cilt.244.21bul">https://doi.org/10.1075/cilt.244.21bul</a>
-</div>
-<div id="ref-R_brms_a" class="csl-entry" role="doc-biblioentry">
-Bürkner, P.-C. (2017). <span class="nocase">brms</span>: An <span>R</span> package for <span>Bayesian</span> multilevel models using <span>Stan</span>. <em>Journal of Statistical Software</em>, <em>80</em>(1), 1–28. <a href="https://doi.org/10.18637/jss.v080.i01">https://doi.org/10.18637/jss.v080.i01</a>
-</div>
-<div id="ref-R_brms_b" class="csl-entry" role="doc-biblioentry">
-Bürkner, P.-C. (2018). <span class="nocase">Advanced Bayesian Multilevel Modeling with the R Package brms</span>. <em><span>The R Journal</span></em>, <em>10</em>(1), 395–411. <a href="https://doi.org/10.32614/RJ-2018-017">https://doi.org/10.32614/RJ-2018-017</a>
-</div>
-<div id="ref-chrabaszcz2014acoustic" class="csl-entry" role="doc-biblioentry">
-Chrabaszcz, A., Winn, M., Lin, C. Y., &amp; Idsardi, W. J. (2014). Acoustic cues to perception of word stress by english, mandarin, and russian speakers. <em>Journal of Speech, Language, and Hearing Research</em>, <em>57</em>(4), 1468–1479. <a href="https://doi.org/10.1044/2014_JSLHR-L-13-0279">https://doi.org/10.1044/2014_JSLHR-L-13-0279</a>
-</div>
-<div id="ref-cooper2002constraints" class="csl-entry" role="doc-biblioentry">
-Cooper, N., Cutler, A., &amp; Wales, R. (2002). Constraints of lexical stress on lexical access in english: Evidence from native and non-native listeners. <em>Language and Speech</em>, <em>45</em>(3), 207–228. <a href="https://doi.org/10.1177/002383090204500301">https://doi.org/10.1177/002383090204500301</a>
-</div>
-<div id="ref-cutler2012native" class="csl-entry" role="doc-biblioentry">
-Cutler, A. (2012). <em>Native listening: Language experience and the recognition of spoken words</em>. MIT Press.
-</div>
-<div id="ref-face2000role" class="csl-entry" role="doc-biblioentry">
-Face, T. L. (2000). The role of syllable weight in the perception of spanish stress. In H. Campos &amp; E. Herburger (Eds.), <em>Hispanic linguistics at the turn of the millennium</em> (pp. 1–13). Sommerville, MA: Cascadilla Proceedings Project.
-</div>
-<div id="ref-face2005syllable" class="csl-entry" role="doc-biblioentry">
-Face, T. L. (2005). Syllable weight and the perception of spanish stress placement by second language learners. <em>Journal of Language and Learning</em>, <em>3</em>, 90–103.
-</div>
-<div id="ref-face2006cognitive" class="csl-entry" role="doc-biblioentry">
-Face, T. L. (2006). <em>Cognitive factors in the perception of spanish stress placement: Implications for a model of speech perception</em>. <em>44</em>(6), 1237–1267. <a href="https://doi.org/10.1515/LING.2006.040">https://doi.org/10.1515/LING.2006.040</a>
-</div>
-<div id="ref-fischer1992saccadic" class="csl-entry" role="doc-biblioentry">
-Fischer, B. (1992). Saccadic reaction time: Implications for reading, dyslexia, and visual cognition. In K. Rayner (Ed.), <em>Eye movements and visual cognition. Springer series in neuropsychology</em> (pp. 31–45). Springer. <a href="https://doi.org/10.1007/978-1-4612-2852-3_3">https://doi.org/10.1007/978-1-4612-2852-3_3</a>
-</div>
-<div id="ref-Gelman_2017" class="csl-entry" role="doc-biblioentry">
-Gelman, A., Simpson, D., &amp; Betancourt, M. (2017). The prior can often only be understood in the context of the likelihood. <em>Entropy</em>, <em>19</em>(10), 1–13. <a href="https://doi.org/10.3390/e19100555">https://doi.org/10.3390/e19100555</a>
-</div>
-<div id="ref-gordon2017acoustic" class="csl-entry" role="doc-biblioentry">
-Gordon, M., &amp; Roettger, T. (2017). Acoustic correlates of word stress: A cross-linguistic survey. <em>Linguistics Vanguard</em>, <em>3</em>(1). <a href="https://doi.org/10.1515/lingvan-2017-0007">https://doi.org/10.1515/lingvan-2017-0007</a>
-</div>
-<div id="ref-holt2006cue" class="csl-entry" role="doc-biblioentry">
-Holt, L. L., &amp; Lotto, A. J. (2006). Cue weighting in auditory categorization: Implications for first and second language acquisition. <em>The Journal of the Acoustical Society of America</em>, <em>119</em>(5), 3059–3071. <a href="https://doi.org/10.1121/1.2188377">https://doi.org/10.1121/1.2188377</a>
-</div>
-<div id="ref-ingvalson2012can" class="csl-entry" role="doc-biblioentry">
-Ingvalson, E. M., Holt, L. L., &amp; McClelland, J. L. (2012). Can native japanese listeners learn to differentiate /r-l/ on the basis of F3 onset frequency? <em>Bilingualism: Language and Cognition</em>, <em>15</em>(2), 255–274. <a href="https://doi.org/10.1017/S1366728911000447">https://doi.org/10.1017/S1366728911000447</a>
-</div>
-<div id="ref-iverson2003perceptual" class="csl-entry" role="doc-biblioentry">
-Iverson, P., Kuhl, P. K., Akahane-Yamada, R., Diesch, E., Kettermann, A., Siebert, C., et al. (2003). A perceptual interference account of acquisition difficulties for non-native phonemes. <em>Cognition</em>, <em>87</em>(1), B47–B57. <a href="https://doi.org/10.1016/s0010-0277(02)00198-1">https://doi.org/10.1016/s0010-0277(02)00198-1</a>
-</div>
-<div id="ref-kruschke2018rejecting" class="csl-entry" role="doc-biblioentry">
-Kruschke, J. K. (2018). Rejecting or accepting parameter values in <span>B</span>ayesian estimation. <em>Advances in Methods and Practices in Psychological Science</em>, <em>1</em>(2), 270–280.
-</div>
-<div id="ref-lord2007role" class="csl-entry" role="doc-biblioentry">
-Lord, G. (2007). The role of the lexicon in learning second language stress patterns. <em>Applied Language Learning</em>, <em>17</em>(1-2), 1–14.
-</div>
-<div id="ref-ortega2013english" class="csl-entry" role="doc-biblioentry">
-Ortega-Llebaria, M., Gu, H., &amp; Fan, J. (2013). English speakers’ perception of spanish lexical stress: Context-driven L2 stress perception. <em>Journal of Phonetics</em>, <em>41</em>(3-4), 186–197. <a href="https://doi.org/10.1016/j.wocn.2013.01.006">https://doi.org/10.1016/j.wocn.2013.01.006</a>
-</div>
-<div id="ref-pike1945intonation" class="csl-entry" role="doc-biblioentry">
-Pike, K. L. (1945). <em>The intonation of american english</em>.
-</div>
-<div id="ref-saalfeld2012teaching" class="csl-entry" role="doc-biblioentry">
-Saalfeld, A. K. (2012). Teaching L2 spanish stress. <em>Foreign Language Annals</em>, <em>45</em>(2), 283–303. <a href="https://doi.org/10.1111/j.1944-9720.2012.01191.x">https://doi.org/10.1111/j.1944-9720.2012.01191.x</a>
-</div>
-<div id="ref-soskuthy2017generalised" class="csl-entry" role="doc-biblioentry">
-Sóskuthy, M. (2017). Generalised additive mixed models for dynamic analysis in linguistics: A practical introduction. <em>arXiv Preprint arXiv:1703.05339</em>.
-</div>
-<div id="ref-soto2001segmental" class="csl-entry" role="doc-biblioentry">
-Soto-Faraco, S., Sebastián-Gallés, N., &amp; Cutler, A. (2001). Segmental and suprasegmental mismatch in lexical access. <em>Journal of Memory and Language</em>, <em>45</em>, 412–432. <a href="https://doi.org/10.1006/jmla.2000.2783">https://doi.org/10.1006/jmla.2000.2783</a>
-</div>
-<div id="ref-tremblay2018functional" class="csl-entry" role="doc-biblioentry">
-Tremblay, A., Broersma, M., &amp; Coughlin, C. E. (2018). The functional weight of a prosodic cue in the native language predicts the learning of speech segmentation in a second language. <em>Bilingualism: Language and Cognition</em>, <em>21</em>(3), 640–652. <a href="https://doi.org/10.1017/S136672891700030X">https://doi.org/10.1017/S136672891700030X</a>
-</div>
-<div id="ref-winter2016" class="csl-entry" role="doc-biblioentry">
-Winter, B., &amp; Wieling, M. (2016). How to analyze linguistic change using mixed models, growth curve analysis and generalized additive modeling. <em>Journal of Language Evolution</em>, <em>1, 1</em>, 7–18. https://doi.org/<a href="https://doi.org/10.1093/jole/lzv003">https://doi.org/10.1093/jole/lzv003</a>
-</div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>In both cases, the response variable, <em>use</em> or <em>proficiency</em> score, was a proportion. Thus, we used the beta distribution for the model likelihood with a logit linking function. The models included regularizing, weakly informative priors. See <a href="#sec-prof-use-supp">Section&nbsp;5.3</a> of the supplementary materials for full details.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -1341,7 +1350,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1349,9 +1360,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1363,7 +1388,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1399,24 +1441,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

@@ -128,7 +128,8 @@ stress_50 %>%
 # Plot check
 stress_50 %>% 
   filter(time_zero > -6 & time_zero < 11) %>% 
-  mutate(stress = fct_relevel(stress, "Paroxytone")) %>% 
+  mutate(stress = fct_relevel(stress, "Paroxytone"), 
+         group = str_replace_all(group, "HL", "HS")) %>% 
   ggplot(., aes(x = time_zero, y = target_prop)) + 
     facet_grid(. ~ stress) + 
     geom_hline(yintercept = 0.5, lty = 3) + 
