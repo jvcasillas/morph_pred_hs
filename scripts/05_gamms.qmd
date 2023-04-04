@@ -349,6 +349,9 @@ gamm_log_group_stress_draws <- gamm_log_group_stress %>%
   gather_emmeans_draws()
 
 gamm_log_group_stress_plot <- gamm_log_group_stress_draws %>% 
+  ungroup() %>% 
+  mutate(group = if_else(group == "HL", "HS", .$group)) %>% 
+  mutate(group = fct_relevel(group, "Monolingual", "HS")) %>% 
   ggplot() + 
     aes(x = time_zero, y = .value / 50, color = group) + 
     facet_grid(. ~ stress) + 
@@ -376,15 +379,15 @@ gamm_log_group_stress_plot
 # Calculate difference smooths
 gamm_log_group_stress_draws_diffs <- gamm_log_group_stress_draws %>% 
   pivot_wider(names_from = group, values_from = .value) %>% 
-  mutate(`Monolingual - HL` = Monolingual - HL, 
+  mutate(`Monolingual - HS` = Monolingual - HL, 
     `Monolingual - L2` = Monolingual - L2, 
-    `HL - L2` = HL - L2) %>% 
-  pivot_longer(cols = `Monolingual - HL`:`HL - L2`, names_to = "comp", 
+    `HS - L2` = HL - L2) %>% 
+  pivot_longer(cols = `Monolingual - HS`:`HS - L2`, names_to = "comp", 
     values_to = "val")
 
 # Plot smooths
 gamm_log_group_stress_draws_diffs %>% 
-  mutate(comp = fct_relevel(comp, "Monolingual - HL", "Monolingual - L2")) %>% 
+  mutate(comp = fct_relevel(comp, "Monolingual - HS", "Monolingual - L2")) %>% 
   ggplot() + 
     facet_grid(comp ~ stress) + 
     aes(x = time_zero, y = val / 50) + 
@@ -413,6 +416,9 @@ gamm_log_group_stress_dat <- gamm_log_group_stress %>%
   mutate(prop = plogis(.value))
 
 gamm_log_group_stress_dat %>% 
+  ungroup() %>% 
+  mutate(group = if_else(group == "HL", "HS", .$group)) %>% 
+  mutate(group = fct_relevel(group, "Monolingual", "HS")) %>% 
   ggplot() + 
     aes(x = prop, y = group, fill = stat(x > 0.51)) + 
     facet_grid(. ~ stress) + 
@@ -452,7 +458,8 @@ marginal_slopes_p1 <- gamm_log_group_stress %>%
   gather_emmeans_draws() %>% 
   ungroup() %>% 
   mutate(group = str_replace_all(group, "Monolingual", "Mono"), 
-         group = fct_relevel(group, "L2", "HL")) %>% 
+         group = str_replace_all(group, "HL", "HS"), 
+         group = fct_relevel(group, "L2", "HS")) %>% 
   ggplot() + 
     aes(x = .value / 50, y = group, fill = group) + 
     facet_grid(. ~ stress) + 
@@ -491,7 +498,8 @@ lines <- bind_rows(
      #median_hdi() %>% 
      transmute(stress, group, .draw, .value, term = "slope")) %>% 
   pivot_wider(names_from = term, values_from = .value) %>% 
-  mutate(x = 4, intercept = find_intercept(x1 = 4, y1 = y, slope = slope))
+  mutate(x = 4, intercept = find_intercept(x1 = 4, y1 = y, slope = slope)) %>% 
+  mutate(group = str_replace_all(group, "HL", "HS")) 
 
 marginal_slopes_p1b <- gamm_log_group_stress %>% 
   emtrends(
@@ -501,6 +509,9 @@ marginal_slopes_p1b <- gamm_log_group_stress %>%
     delta.var = 0.001, 
     epred = T) %>% 
   gather_emmeans_draws() %>% 
+  ungroup() %>% 
+  mutate(group = str_replace_all(group, "HL", "HS")) %>% 
+  mutate(group = fct_relevel(group, "Monolingual", "HS")) %>% 
   ggplot() + 
     aes(y = .value / 50, x = group, fill = group) + 
     facet_grid(. ~ stress) + 
@@ -541,6 +552,8 @@ gamm_log_bi_stress_draws <- gamm_log_bi_stress %>%
   gather_emmeans_draws()
 
 gamm_bi_p1 <- gamm_log_bi_stress_draws %>% 
+  ungroup() %>% 
+  mutate(group = str_replace_all(group, "HL", "HS")) %>% 
   ggplot() + 
     aes(x = time_zero, y = .value / 50, color = stress) + 
     facet_grid(. ~ group) + 
@@ -567,6 +580,8 @@ gamm_log_bi_stress_draws_diffs <- gamm_log_bi_stress_draws %>%
 
 # Plot smooths
 gamm_bi_p2 <- gamm_log_bi_stress_draws_diffs %>% 
+  ungroup() %>% 
+  mutate(group = str_replace_all(group, "HL", "HS")) %>% 
   ggplot() + 
     aes(x = time_zero, y = diff / 50) + 
     facet_grid(. ~ group) + 
@@ -604,10 +619,10 @@ group_gamm_tib_prep <- bind_rows(
 ) %>% 
   mutate(across(-c("Effect", "Term"), specify_decimal, k = 2)) %>% 
   mutate(Term = case_when(
-      Term == "groupHL" ~ "HL", 
+      Term == "groupHL" ~ "HS", 
       Term == "groupL2" ~ "L2", 
       Term == "stressOxytone" ~ "Oxytone", 
-      Term == "groupHL:stressOxytone" ~ "HL:Oxytone", 
+      Term == "groupHL:stressOxytone" ~ "HS:Oxytone", 
       Term == "groupL2:stressOxytone" ~ "L2:Oxytone", 
       Term == "stime_zero_1" ~ "Time", 
       Term == "stime_zero:stressOxytone_1" ~ "Time:Oxytone", 
@@ -648,10 +663,10 @@ group_gamm_tab_dat <- as_draws_df(gamm_log_group_stress) %>%
       "Non-parametric\nPopulation", "Grouping")) %>% 
   mutate(name = case_when(
       name == "b_Intercept" ~ "Intercept", 
-      name == "b_groupHL" ~ "HL", 
+      name == "b_groupHL" ~ "HS", 
       name == "b_groupL2" ~ "L2", 
       name == "b_stressOxytone" ~ "Oxytone", 
-      name == "b_groupHL:stressOxytone" ~ "HL:Oxytone", 
+      name == "b_groupHL:stressOxytone" ~ "HS:Oxytone", 
       name == "b_groupL2:stressOxytone" ~ "L2:Oxytone", 
       name == "bs_stime_zero_1" ~ "Time", 
       name == "bs_stime_zero:stressOxytone_1" ~ "Time:Oxytone", 
@@ -661,7 +676,7 @@ group_gamm_tab_dat <- as_draws_df(gamm_log_group_stress) %>%
     )
   ) %>% 
   mutate(name = fct_relevel(name, "σ\nTime:Oxytone", "σ\nTime", "σ\nID", 
-    "Time:Oxytone", "Time", "L2:Oxytone", "HL:Oxytone", "Oxytone", "L2", "HL", 
+    "Time:Oxytone", "Time", "L2:Oxytone", "HS:Oxytone", "Oxytone", "L2", "HS", 
     "Intercept"))
 
 # Summarize posterior for printing estimates in plot
@@ -691,6 +706,9 @@ group_gamm_tab_dat %>%
 ```{r}
 #| label: group-prediction-table
 group_prediction_tib <- gamm_log_group_stress_dat %>% 
+  ungroup() %>% 
+  mutate(group = str_replace_all(group, "HL", "HS"), 
+         group = fct_relevel(group, "Monolingual", "HS")) %>% 
   group_by(stress, group) %>% 
   summarize(.groups = "drop", 
     hdi = mean_qi(prop), 
@@ -723,7 +741,7 @@ group_marginal_slopes_post <- lines %>%
   mutate(draw = seq_along(group)) %>% 
   pivot_wider(names_from = "group", values_from = "slope") %>% 
   transmute(stress, 
-    mono_hl = Monolingual - HL, mono_l2 = Monolingual - L2, hl_l2 = HL - L2) %>% 
+    mono_hs = Monolingual - HS, mono_l2 = Monolingual - L2, hs_l2 = HS - L2) %>% 
   pivot_longer(cols = -stress, names_to = "comp", values_to = "diff") %>% 
   mutate(comp = str_replace_all(comp, "_", " - "), 
          comp = str_to_upper(comp), 
@@ -839,6 +857,7 @@ bi_gamm_tab_dat <- as_draws_df(gamm_log_bi_stress) %>%
       name == "b_prof_z" ~ "Proficiency", 
       name == "b_use_z" ~ "Use", 
       name == "b_groupL2:stressOxytone" ~ "L2:Oxytone", 
+      name == "b_prof_z:use_z" ~ "Proficiency:Use", 
       name == "bs_stime_zero_1" ~ "Time", 
       name == "bs_stime_zero:stressOxytone_1" ~ "Time:Oxytone", 
       name == "sd_id__Intercept" ~ "σ\nID", 
@@ -847,8 +866,8 @@ bi_gamm_tab_dat <- as_draws_df(gamm_log_bi_stress) %>%
     )
   ) %>% 
   mutate(name = fct_relevel(name, "σ\nTime:Oxytone", "σ\nTime", "σ\nID", 
-    "Time:Oxytone", "Time", "L2:Oxytone", "Use", "Proficiency", "Oxytone", 
-    "L2", "Intercept"))
+    "Time:Oxytone", "Time", "L2:Oxytone", "Proficiency:Use", "Use", 
+    "Proficiency", "Oxytone", "L2", "Intercept"))
 
 # Summarize posterior for printing estimates in plot
 bi_gamm_summary <- group_by(bi_gamm_tab_dat, name, type) %>% 

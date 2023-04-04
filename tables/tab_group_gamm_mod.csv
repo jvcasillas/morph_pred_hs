@@ -1,9 +1,9 @@
 Effect,Term,Estimate,HDI,Rhat,Bulk ESS,Tail ESS
 Population,Intercept,0.60,"[0.44, 0.76]",1.00,797.53,1436.65
-Population,HL,−0.30,"[−0.53, −0.11]",1.01,744.97,1223.82
+Population,HS,−0.30,"[−0.53, −0.11]",1.01,744.97,1223.82
 Population,L2,−0.43,"[−0.64, −0.23]",1.00,708.42,761.10
 Population,Oxytone,0.06,"[0.05, 0.08]",1.00,3429.99,3735.29
-Population,HL:Oxytone,−0.44,"[−0.46, −0.42]",1.00,3469.26,3630.77
+Population,HS:Oxytone,−0.44,"[−0.46, −0.42]",1.00,3469.26,3630.77
 Population,L2:Oxytone,0.00,"[−0.02, 0.02]",1.00,3114.31,3926.50
 Population,Time,−0.26,"[−0.26, −0.26]",1.00,3581.16,3934.31
 Population,Time:Oxytone,−0.01,"[−0.01, −0.01]",1.00,3865.39,3348.79

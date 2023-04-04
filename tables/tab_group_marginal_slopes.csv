@@ -1,7 +1,7 @@
 Stress,Comparison,Estimate,HDI,ROPE,PD,parameter
-Paroxytone,HL - L2,-0.001,"[-0.003, 0.000]",0.514,0.922,Paroxytone_HL - L2
-Paroxytone,Mono - HL,-0.004,"[-0.008, -0.001]",0.000,0.999,Paroxytone_Mono - HL
+Paroxytone,HS - L2,-0.001,"[-0.003, 0.000]",0.514,0.922,Paroxytone_HS - L2
+Paroxytone,Mono - HS,-0.004,"[-0.008, -0.001]",0.000,0.999,Paroxytone_Mono - HS
 Paroxytone,Mono - L2,-0.006,"[-0.009, -0.003]",0.000,1.000,Paroxytone_Mono - L2
-Oxytone,HL - L2,0.001,"[0.000, 0.002]",0.697,0.957,Oxytone_HL - L2
-Oxytone,Mono - HL,-0.006,"[-0.010, -0.004]",0.000,1.000,Oxytone_Mono - HL
+Oxytone,HS - L2,0.001,"[0.000, 0.002]",0.697,0.957,Oxytone_HS - L2
+Oxytone,Mono - HS,-0.006,"[-0.010, -0.004]",0.000,1.000,Oxytone_Mono - HS
 Oxytone,Mono - L2,-0.006,"[-0.009, -0.003]",0.000,1.000,Oxytone_Mono - L2

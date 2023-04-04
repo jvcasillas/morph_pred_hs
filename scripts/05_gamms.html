@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.120">
+<meta name="generator" content="quarto-1.3.299">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joseph V. Casillas">
-<meta name="dcterms.date" content="2022-10-10">
+<meta name="dcterms.date" content="2023-04-03">
 
 <title>Morphological predictability - HS: 1.2</title>
 <style>
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -112,29 +83,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"><span class="toc-section-number">1</span>  Setup</a>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"><span class="header-section-number">1</span> Setup</a>
   <ul class="collapse">
-  <li><a href="#load-libraries-helpers-and-data" id="toc-load-libraries-helpers-and-data" class="nav-link" data-scroll-target="#load-libraries-helpers-and-data"><span class="toc-section-number">1.1</span>  Load libraries, helpers, and data</a></li>
-  <li><a href="#practice-model" id="toc-practice-model" class="nav-link" data-scroll-target="#practice-model"><span class="toc-section-number">1.2</span>  Practice model</a></li>
-  <li><a href="#test-plots-of-time-course-and-marginal-predicted-estimates" id="toc-test-plots-of-time-course-and-marginal-predicted-estimates" class="nav-link" data-scroll-target="#test-plots-of-time-course-and-marginal-predicted-estimates"><span class="toc-section-number">1.3</span>  Test plots of time course and marginal predicted estimates</a></li>
+  <li><a href="#load-libraries-helpers-and-data" id="toc-load-libraries-helpers-and-data" class="nav-link" data-scroll-target="#load-libraries-helpers-and-data"><span class="header-section-number">1.1</span> Load libraries, helpers, and data</a></li>
+  <li><a href="#practice-model" id="toc-practice-model" class="nav-link" data-scroll-target="#practice-model"><span class="header-section-number">1.2</span> Practice model</a></li>
+  <li><a href="#test-plots-of-time-course-and-marginal-predicted-estimates" id="toc-test-plots-of-time-course-and-marginal-predicted-estimates" class="nav-link" data-scroll-target="#test-plots-of-time-course-and-marginal-predicted-estimates"><span class="header-section-number">1.3</span> Test plots of time course and marginal predicted estimates</a></li>
   </ul></li>
-  <li><a href="#omnibus-stress-model" id="toc-omnibus-stress-model" class="nav-link" data-scroll-target="#omnibus-stress-model"><span class="toc-section-number">2</span>  Omnibus stress model</a>
+  <li><a href="#omnibus-stress-model" id="toc-omnibus-stress-model" class="nav-link" data-scroll-target="#omnibus-stress-model"><span class="header-section-number">2</span> Omnibus stress model</a>
   <ul class="collapse">
-  <li><a href="#logistic-gamm" id="toc-logistic-gamm" class="nav-link" data-scroll-target="#logistic-gamm"><span class="toc-section-number">2.0.1</span>  Logistic GAMM</a></li>
+  <li><a href="#logistic-gamm" id="toc-logistic-gamm" class="nav-link" data-scroll-target="#logistic-gamm"><span class="header-section-number">2.0.1</span> Logistic GAMM</a></li>
   </ul></li>
-  <li><a href="#bilingual-model" id="toc-bilingual-model" class="nav-link" data-scroll-target="#bilingual-model"><span class="toc-section-number">3</span>  Bilingual model</a></li>
-  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots"><span class="toc-section-number">4</span>  Plots</a>
+  <li><a href="#bilingual-model" id="toc-bilingual-model" class="nav-link" data-scroll-target="#bilingual-model"><span class="header-section-number">3</span> Bilingual model</a></li>
+  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots"><span class="header-section-number">4</span> Plots</a>
   <ul class="collapse">
-  <li><a href="#all-data" id="toc-all-data" class="nav-link" data-scroll-target="#all-data"><span class="toc-section-number">4.1</span>  All data</a></li>
-  <li><a href="#bilingual-model-1" id="toc-bilingual-model-1" class="nav-link" data-scroll-target="#bilingual-model-1"><span class="toc-section-number">4.2</span>  Bilingual model</a></li>
+  <li><a href="#all-data" id="toc-all-data" class="nav-link" data-scroll-target="#all-data"><span class="header-section-number">4.1</span> All data</a></li>
+  <li><a href="#bilingual-model-1" id="toc-bilingual-model-1" class="nav-link" data-scroll-target="#bilingual-model-1"><span class="header-section-number">4.2</span> Bilingual model</a></li>
   </ul></li>
-  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="toc-section-number">5</span>  Tables</a>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">5</span> Tables</a>
   <ul class="collapse">
-  <li><a href="#group-model" id="toc-group-model" class="nav-link" data-scroll-target="#group-model"><span class="toc-section-number">5.1</span>  Group model</a></li>
-  <li><a href="#bilingual-model-2" id="toc-bilingual-model-2" class="nav-link" data-scroll-target="#bilingual-model-2"><span class="toc-section-number">5.2</span>  Bilingual model</a></li>
+  <li><a href="#group-model" id="toc-group-model" class="nav-link" data-scroll-target="#group-model"><span class="header-section-number">5.1</span> Group model</a></li>
+  <li><a href="#bilingual-model-2" id="toc-bilingual-model-2" class="nav-link" data-scroll-target="#bilingual-model-2"><span class="header-section-number">5.2</span> Bilingual model</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="05_gamms.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -158,9 +129,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Last updated:</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 10, 2022</p>
+      <p class="date">April 3, 2023</p>
     </div>
   </div>
+  
     
   </div>
   
@@ -211,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"pandoc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">prior</th>
@@ -389,7 +361,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"pandoc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">prior</th>
@@ -542,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"pandoc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">prior</th>
@@ -697,7 +669,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 data-number="4"><span class="header-section-number">4</span> Plots</h1>
 <section id="all-data" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="all-data"><span class="header-section-number">4.1</span> All data</h2>
-<div class="cell" data-hash="05_gamms_cache/html/group-comparison-plot_85bb45107fcfbea418ce93a82982fe21">
+<div class="cell" data-hash="05_gamms_cache/html/group-comparison-plot_c62cffe944818a0d18f76345a38cb252">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full model</span></span>
@@ -708,22 +680,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather_emmeans_draws</span>()</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>gamm_log_group_stress_plot <span class="ot">&lt;-</span> gamm_log_group_stress_draws <span class="sc">%&gt;%</span> </span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> time_zero, <span class="at">y =</span> .value <span class="sc">/</span> <span class="dv">50</span>, <span class="at">color =</span> group) <span class="sc">+</span> </span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> stress) <span class="sc">+</span> </span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">4</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_lineribbon</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> median, <span class="at">geom =</span> <span class="st">"line"</span>) <span class="sc">+</span> </span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Greys"</span>) <span class="sc">+</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors) <span class="sc">+</span> </span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.8</span>, <span class="fl">12.8</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.28</span>, <span class="fl">1.02</span>), </span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> F) <span class="sc">+</span> </span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">200</span>, <span class="dv">600</span>, <span class="dv">200</span>)) <span class="sc">+</span> </span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"P(Target fixation)"</span>, <span class="at">x =</span> <span class="st">"Time course"</span>) <span class="sc">+</span> </span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.12</span>, <span class="fl">0.86</span>), </span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>))</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>gamm_log_group_stress_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(group <span class="sc">==</span> <span class="st">"HL"</span>, <span class="st">"HS"</span>, .<span class="sc">$</span>group)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">fct_relevel</span>(group, <span class="st">"Monolingual"</span>, <span class="st">"HS"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> time_zero, <span class="at">y =</span> .value <span class="sc">/</span> <span class="dv">50</span>, <span class="at">color =</span> group) <span class="sc">+</span> </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> stress) <span class="sc">+</span> </span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">4</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_lineribbon</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> median, <span class="at">geom =</span> <span class="st">"line"</span>) <span class="sc">+</span> </span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Greys"</span>) <span class="sc">+</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors) <span class="sc">+</span> </span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.8</span>, <span class="fl">12.8</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.28</span>, <span class="fl">1.02</span>), </span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> F) <span class="sc">+</span> </span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">200</span>, <span class="dv">600</span>, <span class="dv">200</span>)) <span class="sc">+</span> </span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"P(Target fixation)"</span>, <span class="at">x =</span> <span class="st">"Time course"</span>) <span class="sc">+</span> </span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.12</span>, <span class="fl">0.86</span>), </span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>))</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>gamm_log_group_stress_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -734,21 +709,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div class="cell" data-hash="05_gamms_cache/html/group-diff-smooths-plot_e88e65061975b3772051fa35aa10b331">
+<div class="cell" data-hash="05_gamms_cache/html/group-diff-smooths-plot_8a6b1868ba30adcc08446a83b74a2872">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate difference smooths</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>gamm_log_group_stress_draws_diffs <span class="ot">&lt;-</span> gamm_log_group_stress_draws <span class="sc">%&gt;%</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> group, <span class="at">values_from =</span> .value) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Monolingual - HL</span><span class="st">`</span> <span class="ot">=</span> Monolingual <span class="sc">-</span> HL, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Monolingual - HS</span><span class="st">`</span> <span class="ot">=</span> Monolingual <span class="sc">-</span> HL, </span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Monolingual - L2</span><span class="st">`</span> <span class="ot">=</span> Monolingual <span class="sc">-</span> L2, </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">HL - L2</span><span class="st">`</span> <span class="ot">=</span> HL <span class="sc">-</span> L2) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="st">`</span><span class="at">Monolingual - HL</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">HL - L2</span><span class="st">`</span>, <span class="at">names_to =</span> <span class="st">"comp"</span>, </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">HS - L2</span><span class="st">`</span> <span class="ot">=</span> HL <span class="sc">-</span> L2) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="st">`</span><span class="at">Monolingual - HS</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">HS - L2</span><span class="st">`</span>, <span class="at">names_to =</span> <span class="st">"comp"</span>, </span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"val"</span>)</span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot smooths</span></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>gamm_log_group_stress_draws_diffs <span class="sc">%&gt;%</span> </span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comp =</span> <span class="fu">fct_relevel</span>(comp, <span class="st">"Monolingual - HL"</span>, <span class="st">"Monolingual - L2"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comp =</span> <span class="fu">fct_relevel</span>(comp, <span class="st">"Monolingual - HS"</span>, <span class="st">"Monolingual - L2"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(comp <span class="sc">~</span> stress) <span class="sc">+</span> </span>
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> time_zero, <span class="at">y =</span> val <span class="sc">/</span> <span class="dv">50</span>) <span class="sc">+</span> </span>
@@ -771,7 +746,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div class="cell" data-hash="05_gamms_cache/html/group-prediction-plot_d78011999a08a079a241f033ac89676c">
+<div class="cell" data-hash="05_gamms_cache/html/group-prediction-plot_f7dfc8082543bc22dc57fad860034d45">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>gamm_log_group_stress_dat <span class="ot">&lt;-</span> gamm_log_group_stress <span class="sc">%&gt;%</span> </span>
@@ -782,19 +757,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="fu">plogis</span>(.value))</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>gamm_log_group_stress_dat <span class="sc">%&gt;%</span> </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> prop, <span class="at">y =</span> group, <span class="at">fill =</span> <span class="fu">stat</span>(x <span class="sc">&gt;</span> <span class="fl">0.51</span>)) <span class="sc">+</span> </span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> stress) <span class="sc">+</span> </span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_rect</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.49</span>, <span class="fl">0.51</span>), <span class="at">y =</span> <span class="cn">NULL</span>), </span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">xmin =</span> <span class="fu">min</span>(x), <span class="at">xmax =</span> <span class="fu">max</span>(x), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>),</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_slab</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_pointinterval</span>(<span class="at">pch =</span> <span class="dv">21</span>, <span class="at">point_fill =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>], <span class="at">labels =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>], <span class="at">labels =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="st">"P(Target fixation)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">if_else</span>(group <span class="sc">==</span> <span class="st">"HL"</span>, <span class="st">"HS"</span>, .<span class="sc">$</span>group)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">fct_relevel</span>(group, <span class="st">"Monolingual"</span>, <span class="st">"HS"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> prop, <span class="at">y =</span> group, <span class="at">fill =</span> <span class="fu">stat</span>(x <span class="sc">&gt;</span> <span class="fl">0.51</span>)) <span class="sc">+</span> </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> stress) <span class="sc">+</span> </span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_rect</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.49</span>, <span class="fl">0.51</span>), <span class="at">y =</span> <span class="cn">NULL</span>), </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">xmin =</span> <span class="fu">min</span>(x), <span class="at">xmax =</span> <span class="fu">max</span>(x), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>),</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_slab</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_pointinterval</span>(<span class="at">pch =</span> <span class="dv">21</span>, <span class="at">point_fill =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>], <span class="at">labels =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>], <span class="at">labels =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="st">"P(Target fixation)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -805,7 +783,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div class="cell" data-hash="05_gamms_cache/html/marginal-slopes-plot_f86138990845068df7c02fc66288850b">
+<div class="cell" data-hash="05_gamms_cache/html/marginal-slopes-plot_e37dadf2ab2951f15782554dce907895">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get marginal slope when time_zero = 4 as an estimate of rate of </span></span>
@@ -825,16 +803,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather_emmeans_draws</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">str_replace_all</span>(group, <span class="st">"Monolingual"</span>, <span class="st">"Mono"</span>), </span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">fct_relevel</span>(group, <span class="st">"L2"</span>, <span class="st">"HL"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> .value <span class="sc">/</span> <span class="dv">50</span>, <span class="at">y =</span> group, <span class="at">fill =</span> group) <span class="sc">+</span> </span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> stress) <span class="sc">+</span> </span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_slab</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_pointinterval</span>(<span class="at">pch =</span> <span class="dv">21</span>, <span class="at">point_fill =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors, <span class="at">labels =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="st">"Marginal slope estimate"</span>) </span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>marginal_slopes_p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">str_replace_all</span>(group, <span class="st">"HL"</span>, <span class="st">"HS"</span>), </span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">fct_relevel</span>(group, <span class="st">"L2"</span>, <span class="st">"HS"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> .value <span class="sc">/</span> <span class="dv">50</span>, <span class="at">y =</span> group, <span class="at">fill =</span> group) <span class="sc">+</span> </span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> stress) <span class="sc">+</span> </span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_slab</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_pointinterval</span>(<span class="at">pch =</span> <span class="dv">21</span>, <span class="at">point_fill =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors, <span class="at">labels =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="st">"Marginal slope estimate"</span>) </span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>marginal_slopes_p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -845,7 +824,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div class="cell" data-hash="05_gamms_cache/html/marginal-slopes-plot-2_a3676cdc9c91c3fbe047307026947abf">
+<div class="cell" data-hash="05_gamms_cache/html/marginal-slopes-plot-2_e19c21f40d23716da68c860ebc63c12d">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lines <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
@@ -869,31 +848,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>     <span class="co">#median_hdi() %&gt;% </span></span>
 <span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>     <span class="fu">transmute</span>(stress, group, .draw, .value, <span class="at">term =</span> <span class="st">"slope"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> term, <span class="at">values_from =</span> .value) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">intercept =</span> <span class="fu">find_intercept</span>(<span class="at">x1 =</span> <span class="dv">4</span>, <span class="at">y1 =</span> y, <span class="at">slope =</span> slope))</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>marginal_slopes_p1b <span class="ot">&lt;-</span> gamm_log_group_stress <span class="sc">%&gt;%</span> </span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">emtrends</span>(</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">spec =</span> <span class="sc">~</span> time_zero <span class="sc">+</span> stress <span class="sc">+</span> group, </span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">var =</span> <span class="st">"time_zero"</span>, </span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">at =</span> <span class="fu">list</span>(<span class="at">time_zero =</span> <span class="dv">4</span>), </span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">delta.var =</span> <span class="fl">0.001</span>, </span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">epred =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather_emmeans_draws</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> .value <span class="sc">/</span> <span class="dv">50</span>, <span class="at">x =</span> group, <span class="at">fill =</span> group) <span class="sc">+</span> </span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> stress) <span class="sc">+</span> </span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_slab</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_pointinterval</span>(<span class="at">pch =</span> <span class="dv">21</span>, <span class="at">point_fill =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors, <span class="at">labels =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Marginal slope estimate"</span>) </span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>marginal_slopes_p2 <span class="ot">&lt;-</span> gamm_log_group_stress_plot <span class="sc">+</span> </span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">data =</span> <span class="fu">sample_n</span>(lines, <span class="dv">200</span>), <span class="at">alpha =</span> <span class="fl">0.03</span>, <span class="at">size =</span> <span class="fl">0.25</span>, </span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">intercept =</span> intercept, <span class="at">slope =</span> slope, <span class="at">color =</span> group)) <span class="sc">+</span> </span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">strip.text.x =</span> <span class="fu">element_blank</span>())</span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>marginal_slopes_p1b <span class="sc">/</span> marginal_slopes_p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">intercept =</span> <span class="fu">find_intercept</span>(<span class="at">x1 =</span> <span class="dv">4</span>, <span class="at">y1 =</span> y, <span class="at">slope =</span> slope)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">str_replace_all</span>(group, <span class="st">"HL"</span>, <span class="st">"HS"</span>)) </span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>marginal_slopes_p1b <span class="ot">&lt;-</span> gamm_log_group_stress <span class="sc">%&gt;%</span> </span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">emtrends</span>(</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">spec =</span> <span class="sc">~</span> time_zero <span class="sc">+</span> stress <span class="sc">+</span> group, </span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">var =</span> <span class="st">"time_zero"</span>, </span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">at =</span> <span class="fu">list</span>(<span class="at">time_zero =</span> <span class="dv">4</span>), </span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">delta.var =</span> <span class="fl">0.001</span>, </span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">epred =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather_emmeans_draws</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">str_replace_all</span>(group, <span class="st">"HL"</span>, <span class="st">"HS"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">fct_relevel</span>(group, <span class="st">"Monolingual"</span>, <span class="st">"HS"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> .value <span class="sc">/</span> <span class="dv">50</span>, <span class="at">x =</span> group, <span class="at">fill =</span> group) <span class="sc">+</span> </span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> stress) <span class="sc">+</span> </span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_slab</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_pointinterval</span>(<span class="at">pch =</span> <span class="dv">21</span>, <span class="at">point_fill =</span> <span class="st">"white"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">values =</span> my_colors, <span class="at">labels =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>)) <span class="sc">+</span> </span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Marginal slope estimate"</span>) </span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>marginal_slopes_p2 <span class="ot">&lt;-</span> gamm_log_group_stress_plot <span class="sc">+</span> </span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">data =</span> <span class="fu">sample_n</span>(lines, <span class="dv">200</span>), <span class="at">alpha =</span> <span class="fl">0.03</span>, <span class="at">size =</span> <span class="fl">0.25</span>, </span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">intercept =</span> intercept, <span class="at">slope =</span> slope, <span class="at">color =</span> group)) <span class="sc">+</span> </span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">strip.text.x =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>marginal_slopes_p1b <span class="sc">/</span> marginal_slopes_p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -907,7 +890,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="bilingual-model-1" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="bilingual-model-1"><span class="header-section-number">4.2</span> Bilingual model</h2>
-<div class="cell" data-hash="05_gamms_cache/html/bi-comparison-plot_f298a5986bdc815bd964b3edc0565201">
+<div class="cell" data-hash="05_gamms_cache/html/bi-comparison-plot_a69b63b893c91b8592dbb27c0751f789">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gamm_log_bi_stress_draws <span class="ot">&lt;-</span> gamm_log_bi_stress <span class="sc">%&gt;%</span> </span>
@@ -922,46 +905,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather_emmeans_draws</span>()</span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>gamm_bi_p1 <span class="ot">&lt;-</span> gamm_log_bi_stress_draws <span class="sc">%&gt;%</span> </span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> time_zero, <span class="at">y =</span> .value <span class="sc">/</span> <span class="dv">50</span>, <span class="at">color =</span> stress) <span class="sc">+</span> </span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> group) <span class="sc">+</span> </span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">4</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_lineribbon</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"line"</span>) <span class="sc">+</span> </span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Greys"</span>) <span class="sc">+</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_brewer</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">palette =</span> <span class="st">"Dark2"</span>, </span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Paroxytone</span><span class="sc">\n</span><span class="st">(CANta)"</span>, <span class="st">"Oxytone</span><span class="sc">\n</span><span class="st">(canTO)"</span>)) <span class="sc">+</span>  </span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.8</span>, <span class="fl">12.8</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.28</span>, <span class="fl">1.02</span>), </span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> F) <span class="sc">+</span> </span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">4</span>)) <span class="sc">+</span> </span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"P(Target fixation)"</span>, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.12</span>, <span class="fl">0.86</span>), </span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">1.7</span>, <span class="st">'lines'</span>), </span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>), </span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate difference smooths</span></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>gamm_log_bi_stress_draws_diffs <span class="ot">&lt;-</span> gamm_log_bi_stress_draws <span class="sc">%&gt;%</span> </span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> stress, <span class="at">values_from =</span> .value) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> Paroxytone <span class="sc">-</span> Oxytone) </span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot smooths</span></span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>gamm_bi_p2 <span class="ot">&lt;-</span> gamm_log_bi_stress_draws_diffs <span class="sc">%&gt;%</span> </span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> time_zero, <span class="at">y =</span> diff <span class="sc">/</span> <span class="dv">50</span>) <span class="sc">+</span> </span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> group) <span class="sc">+</span> </span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">4</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_lineribbon</span>(<span class="at">color =</span> <span class="st">"#11111100"</span>, <span class="at">show.legend =</span> F, </span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">.width =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.35</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>)) <span class="sc">+</span></span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>(<span class="at">aesthetics =</span> <span class="st">"fill"</span>, <span class="at">option =</span> <span class="st">"C"</span>) <span class="sc">+</span></span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.8</span>, <span class="fl">12.8</span>), <span class="at">expand =</span> F) <span class="sc">+</span></span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">200</span>, <span class="dv">600</span>, <span class="dv">200</span>)) <span class="sc">+</span> </span>
-<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Difference smooths</span><span class="sc">\n</span><span class="st">Paroxytone - Oxytone"</span>, <span class="at">x =</span> <span class="st">"Time course"</span>) <span class="sc">+</span> </span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">strip.background =</span> <span class="fu">element_blank</span>(), <span class="at">strip.text =</span> <span class="fu">element_blank</span>())</span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>gamm_bi_p1 <span class="sc">/</span> gamm_bi_p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">str_replace_all</span>(group, <span class="st">"HL"</span>, <span class="st">"HS"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> time_zero, <span class="at">y =</span> .value <span class="sc">/</span> <span class="dv">50</span>, <span class="at">color =</span> stress) <span class="sc">+</span> </span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> group) <span class="sc">+</span> </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">4</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_lineribbon</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span> </span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"line"</span>) <span class="sc">+</span> </span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Greys"</span>) <span class="sc">+</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_brewer</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">palette =</span> <span class="st">"Dark2"</span>, </span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Paroxytone</span><span class="sc">\n</span><span class="st">(CANta)"</span>, <span class="st">"Oxytone</span><span class="sc">\n</span><span class="st">(canTO)"</span>)) <span class="sc">+</span>  </span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.8</span>, <span class="fl">12.8</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.28</span>, <span class="fl">1.02</span>), </span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> F) <span class="sc">+</span> </span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">4</span>)) <span class="sc">+</span> </span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"P(Target fixation)"</span>, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.12</span>, <span class="fl">0.86</span>), </span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">1.7</span>, <span class="st">'lines'</span>), </span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>), </span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate difference smooths</span></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>gamm_log_bi_stress_draws_diffs <span class="ot">&lt;-</span> gamm_log_bi_stress_draws <span class="sc">%&gt;%</span> </span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> stress, <span class="at">values_from =</span> .value) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> Paroxytone <span class="sc">-</span> Oxytone) </span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot smooths</span></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>gamm_bi_p2 <span class="ot">&lt;-</span> gamm_log_bi_stress_draws_diffs <span class="sc">%&gt;%</span> </span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">str_replace_all</span>(group, <span class="st">"HL"</span>, <span class="st">"HS"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> time_zero, <span class="at">y =</span> diff <span class="sc">/</span> <span class="dv">50</span>) <span class="sc">+</span> </span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> group) <span class="sc">+</span> </span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">4</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_lineribbon</span>(<span class="at">color =</span> <span class="st">"#11111100"</span>, <span class="at">show.legend =</span> F, </span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">.width =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.35</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>)) <span class="sc">+</span></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>(<span class="at">aesthetics =</span> <span class="st">"fill"</span>, <span class="at">option =</span> <span class="st">"C"</span>) <span class="sc">+</span></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.8</span>, <span class="fl">12.8</span>), <span class="at">expand =</span> F) <span class="sc">+</span></span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">200</span>, <span class="dv">600</span>, <span class="dv">200</span>)) <span class="sc">+</span> </span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Difference smooths</span><span class="sc">\n</span><span class="st">Paroxytone - Oxytone"</span>, <span class="at">x =</span> <span class="st">"Time course"</span>) <span class="sc">+</span> </span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">strip.background =</span> <span class="fu">element_blank</span>(), <span class="at">strip.text =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>gamm_bi_p1 <span class="sc">/</span> gamm_bi_p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -994,10 +981,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">"Effect"</span>, <span class="st">"Term"</span>), specify_decimal, <span class="at">k =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Term =</span> <span class="fu">case_when</span>(</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"groupHL"</span> <span class="sc">~</span> <span class="st">"HL"</span>, </span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"groupHL"</span> <span class="sc">~</span> <span class="st">"HS"</span>, </span>
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"groupL2"</span> <span class="sc">~</span> <span class="st">"L2"</span>, </span>
 <span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"stressOxytone"</span> <span class="sc">~</span> <span class="st">"Oxytone"</span>, </span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"groupHL:stressOxytone"</span> <span class="sc">~</span> <span class="st">"HL:Oxytone"</span>, </span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"groupHL:stressOxytone"</span> <span class="sc">~</span> <span class="st">"HS:Oxytone"</span>, </span>
 <span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"groupL2:stressOxytone"</span> <span class="sc">~</span> <span class="st">"L2:Oxytone"</span>, </span>
 <span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"stime_zero_1"</span> <span class="sc">~</span> <span class="st">"Time"</span>, </span>
 <span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>      Term <span class="sc">==</span> <span class="st">"stime_zero:stressOxytone_1"</span> <span class="sc">~</span> <span class="st">"Time:Oxytone"</span>, </span>
@@ -1021,7 +1008,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Group GAMM summary."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Group GAMM summary.</caption>
 <thead>
 <tr class="header">
@@ -1046,7 +1033,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="even">
 <td style="text-align: left;">Population</td>
-<td style="text-align: left;">HL</td>
+<td style="text-align: left;">HS</td>
 <td style="text-align: right;">−0.30</td>
 <td style="text-align: right;">[−0.53, −0.11]</td>
 <td style="text-align: right;">1.01</td>
@@ -1073,7 +1060,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Population</td>
-<td style="text-align: left;">HL:Oxytone</td>
+<td style="text-align: left;">HS:Oxytone</td>
 <td style="text-align: right;">−0.44</td>
 <td style="text-align: right;">[−0.46, −0.42]</td>
 <td style="text-align: right;">1.00</td>
@@ -1154,10 +1141,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Non-parametric</span><span class="sc">\n</span><span class="st">Population"</span>, <span class="st">"Grouping"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">case_when</span>(</span>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_Intercept"</span> <span class="sc">~</span> <span class="st">"Intercept"</span>, </span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_groupHL"</span> <span class="sc">~</span> <span class="st">"HL"</span>, </span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_groupHL"</span> <span class="sc">~</span> <span class="st">"HS"</span>, </span>
 <span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_groupL2"</span> <span class="sc">~</span> <span class="st">"L2"</span>, </span>
 <span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_stressOxytone"</span> <span class="sc">~</span> <span class="st">"Oxytone"</span>, </span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_groupHL:stressOxytone"</span> <span class="sc">~</span> <span class="st">"HL:Oxytone"</span>, </span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_groupHL:stressOxytone"</span> <span class="sc">~</span> <span class="st">"HS:Oxytone"</span>, </span>
 <span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_groupL2:stressOxytone"</span> <span class="sc">~</span> <span class="st">"L2:Oxytone"</span>, </span>
 <span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"bs_stime_zero_1"</span> <span class="sc">~</span> <span class="st">"Time"</span>, </span>
 <span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"bs_stime_zero:stressOxytone_1"</span> <span class="sc">~</span> <span class="st">"Time:Oxytone"</span>, </span>
@@ -1167,7 +1154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
 <span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">fct_relevel</span>(name, <span class="st">"σ</span><span class="sc">\n</span><span class="st">Time:Oxytone"</span>, <span class="st">"σ</span><span class="sc">\n</span><span class="st">Time"</span>, <span class="st">"σ</span><span class="sc">\n</span><span class="st">ID"</span>, </span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Time:Oxytone"</span>, <span class="st">"Time"</span>, <span class="st">"L2:Oxytone"</span>, <span class="st">"HL:Oxytone"</span>, <span class="st">"Oxytone"</span>, <span class="st">"L2"</span>, <span class="st">"HL"</span>, </span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Time:Oxytone"</span>, <span class="st">"Time"</span>, <span class="st">"L2:Oxytone"</span>, <span class="st">"HS:Oxytone"</span>, <span class="st">"Oxytone"</span>, <span class="st">"L2"</span>, <span class="st">"HS"</span>, </span>
 <span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Intercept"</span>))</span>
 <span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize posterior for printing estimates in plot</span></span>
@@ -1201,28 +1188,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>group_prediction_tib <span class="ot">&lt;-</span> gamm_log_group_stress_dat <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(stress, group) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">.groups =</span> <span class="st">"drop"</span>, </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">hdi =</span> <span class="fu">mean_qi</span>(prop), </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">rope =</span> <span class="fu">rope</span>(prop, <span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.51</span>)), </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">PD =</span> <span class="fu">pd</span>(prop, <span class="at">null =</span> <span class="fl">0.5</span>)[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">Group =</span> group, <span class="at">Stress =</span> stress, <span class="at">Estimate =</span> hdi<span class="sc">$</span>y, </span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">lower =</span> hdi<span class="sc">$</span>ymin, <span class="at">upper =</span> hdi<span class="sc">$</span>ymax, <span class="at">ROPE =</span> rope<span class="sc">$</span>ROPE_Percentage, PD) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.numeric, specify_decimal, <span class="at">k =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(Group, Stress, Estimate, </span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">HDI =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"[{lower}, {upper}]"</span>), ROPE, PD, </span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">parameter =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{Group}_{Stress}"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Group) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="fu">here</span>(<span class="st">"tables"</span>, <span class="st">"tab_group_prediction.csv"</span>))</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>group_prediction_tib <span class="sc">%&gt;%</span> </span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>parameter) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"pandoc"</span>, </span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"l"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>), </span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Group prediction summary."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">str_replace_all</span>(group, <span class="st">"HL"</span>, <span class="st">"HS"</span>), </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">fct_relevel</span>(group, <span class="st">"Monolingual"</span>, <span class="st">"HS"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(stress, group) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">.groups =</span> <span class="st">"drop"</span>, </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">hdi =</span> <span class="fu">mean_qi</span>(prop), </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">rope =</span> <span class="fu">rope</span>(prop, <span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.51</span>)), </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">PD =</span> <span class="fu">pd</span>(prop, <span class="at">null =</span> <span class="fl">0.5</span>)[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">Group =</span> group, <span class="at">Stress =</span> stress, <span class="at">Estimate =</span> hdi<span class="sc">$</span>y, </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">lower =</span> hdi<span class="sc">$</span>ymin, <span class="at">upper =</span> hdi<span class="sc">$</span>ymax, <span class="at">ROPE =</span> rope<span class="sc">$</span>ROPE_Percentage, PD) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.numeric, specify_decimal, <span class="at">k =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(Group, Stress, Estimate, </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">HDI =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"[{lower}, {upper}]"</span>), ROPE, PD, </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">parameter =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{Group}_{Stress}"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Group) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="fu">here</span>(<span class="st">"tables"</span>, <span class="st">"tab_group_prediction.csv"</span>))</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>group_prediction_tib <span class="sc">%&gt;%</span> </span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>parameter) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"pandoc"</span>, </span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"l"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>), </span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Group prediction summary."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Group prediction summary.</caption>
 <thead>
 <tr class="header">
@@ -1252,7 +1242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">1.00</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">HL</td>
+<td style="text-align: left;">HS</td>
 <td style="text-align: left;">Paroxytone</td>
 <td style="text-align: right;">0.57</td>
 <td style="text-align: right;">[0.54, 0.60]</td>
@@ -1260,7 +1250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">1.00</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">HL</td>
+<td style="text-align: left;">HS</td>
 <td style="text-align: left;">Oxytone</td>
 <td style="text-align: right;">0.48</td>
 <td style="text-align: right;">[0.45, 0.52]</td>
@@ -1297,7 +1287,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">draw =</span> <span class="fu">seq_along</span>(group)) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"group"</span>, <span class="at">values_from =</span> <span class="st">"slope"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(stress, </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mono_hl =</span> Monolingual <span class="sc">-</span> HL, <span class="at">mono_l2 =</span> Monolingual <span class="sc">-</span> L2, <span class="at">hl_l2 =</span> HL <span class="sc">-</span> L2) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mono_hs =</span> Monolingual <span class="sc">-</span> HS, <span class="at">mono_l2 =</span> Monolingual <span class="sc">-</span> L2, <span class="at">hs_l2 =</span> HS <span class="sc">-</span> L2) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>stress, <span class="at">names_to =</span> <span class="st">"comp"</span>, <span class="at">values_to =</span> <span class="st">"diff"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comp =</span> <span class="fu">str_replace_all</span>(comp, <span class="st">"_"</span>, <span class="st">" - "</span>), </span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">comp =</span> <span class="fu">str_to_upper</span>(comp), </span>
@@ -1347,7 +1337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Group marginal slopes pairwise comparisons summary."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Group marginal slopes pairwise comparisons summary.</caption>
 <thead>
 <tr class="header">
@@ -1362,7 +1352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Paroxytone</td>
-<td style="text-align: left;">HL - L2</td>
+<td style="text-align: left;">HS - L2</td>
 <td style="text-align: right;">-0.001</td>
 <td style="text-align: right;">[-0.003, 0.000]</td>
 <td style="text-align: right;">0.514</td>
@@ -1370,7 +1360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="even">
 <td style="text-align: left;">Paroxytone</td>
-<td style="text-align: left;">Mono - HL</td>
+<td style="text-align: left;">Mono - HS</td>
 <td style="text-align: right;">-0.004</td>
 <td style="text-align: right;">[-0.008, -0.001]</td>
 <td style="text-align: right;">0.000</td>
@@ -1386,7 +1376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="even">
 <td style="text-align: left;">Oxytone</td>
-<td style="text-align: left;">HL - L2</td>
+<td style="text-align: left;">HS - L2</td>
 <td style="text-align: right;">0.001</td>
 <td style="text-align: right;">[0.000, 0.002]</td>
 <td style="text-align: right;">0.697</td>
@@ -1394,7 +1384,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Oxytone</td>
-<td style="text-align: left;">Mono - HL</td>
+<td style="text-align: left;">Mono - HS</td>
 <td style="text-align: right;">-0.006</td>
 <td style="text-align: right;">[-0.010, -0.004]</td>
 <td style="text-align: right;">0.000</td>
@@ -1458,7 +1448,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Bilingual GAMM summary."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Bilingual GAMM summary.</caption>
 <thead>
 <tr class="header">
@@ -1605,39 +1595,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_prof_z"</span> <span class="sc">~</span> <span class="st">"Proficiency"</span>, </span>
 <span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_use_z"</span> <span class="sc">~</span> <span class="st">"Use"</span>, </span>
 <span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_groupL2:stressOxytone"</span> <span class="sc">~</span> <span class="st">"L2:Oxytone"</span>, </span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"bs_stime_zero_1"</span> <span class="sc">~</span> <span class="st">"Time"</span>, </span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"bs_stime_zero:stressOxytone_1"</span> <span class="sc">~</span> <span class="st">"Time:Oxytone"</span>, </span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"sd_id__Intercept"</span> <span class="sc">~</span> <span class="st">"σ</span><span class="sc">\n</span><span class="st">ID"</span>, </span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"sds_stime_zero_1"</span> <span class="sc">~</span> <span class="st">"σ</span><span class="sc">\n</span><span class="st">Time"</span>, </span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"sds_stime_zerostressOxytone_1"</span> <span class="sc">~</span> <span class="st">"σ</span><span class="sc">\n</span><span class="st">Time:Oxytone"</span>, </span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">fct_relevel</span>(name, <span class="st">"σ</span><span class="sc">\n</span><span class="st">Time:Oxytone"</span>, <span class="st">"σ</span><span class="sc">\n</span><span class="st">Time"</span>, <span class="st">"σ</span><span class="sc">\n</span><span class="st">ID"</span>, </span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Time:Oxytone"</span>, <span class="st">"Time"</span>, <span class="st">"L2:Oxytone"</span>, <span class="st">"Use"</span>, <span class="st">"Proficiency"</span>, <span class="st">"Oxytone"</span>, </span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"L2"</span>, <span class="st">"Intercept"</span>))</span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize posterior for printing estimates in plot</span></span>
-<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>bi_gamm_summary <span class="ot">&lt;-</span> <span class="fu">group_by</span>(bi_gamm_tab_dat, name, type) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_qi</span>(value, <span class="at">.width =</span> <span class="fl">0.95</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.numeric, specify_decimal, <span class="at">k =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{value} [{.lower}, {.upper}]"</span>), </span>
-<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>         <span class="at">label =</span> <span class="fu">str_replace_all</span>(label, <span class="st">"-"</span>, <span class="st">"\U2212"</span>)) </span>
-<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Forest plot</span></span>
-<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>bi_gamm_tab_dat <span class="sc">%&gt;%</span> </span>
-<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> name)) <span class="sc">+</span> </span>
-<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(type <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">space =</span> <span class="st">"free"</span>) <span class="sc">+</span> </span>
-<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_pointinterval</span>(<span class="at">point_fill =</span> <span class="st">"white"</span>,  <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data =</span> bi_gamm_summary, </span>
-<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">family =</span> <span class="st">"Times"</span>, <span class="at">size =</span> <span class="fl">3.25</span>, </span>
-<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">group =</span> type, <span class="at">label =</span> label, <span class="at">x =</span> <span class="sc">-</span><span class="fl">0.62</span>)) <span class="sc">+</span></span>
-<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>, <span class="dv">4</span>)) <span class="sc">+</span> </span>
-<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)) <span class="sc">+</span> </span>
-<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="st">"Estimate"</span>) <span class="sc">+</span> </span>
-<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.margin =</span> <span class="fu">unit</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">units =</span> <span class="st">"mm"</span>), </span>
-<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.placement =</span> <span class="st">"outside"</span>, <span class="at">strip.background =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">1</span>), <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"b_prof_z:use_z"</span> <span class="sc">~</span> <span class="st">"Proficiency:Use"</span>, </span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"bs_stime_zero_1"</span> <span class="sc">~</span> <span class="st">"Time"</span>, </span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"bs_stime_zero:stressOxytone_1"</span> <span class="sc">~</span> <span class="st">"Time:Oxytone"</span>, </span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"sd_id__Intercept"</span> <span class="sc">~</span> <span class="st">"σ</span><span class="sc">\n</span><span class="st">ID"</span>, </span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"sds_stime_zero_1"</span> <span class="sc">~</span> <span class="st">"σ</span><span class="sc">\n</span><span class="st">Time"</span>, </span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"sds_stime_zerostressOxytone_1"</span> <span class="sc">~</span> <span class="st">"σ</span><span class="sc">\n</span><span class="st">Time:Oxytone"</span>, </span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">fct_relevel</span>(name, <span class="st">"σ</span><span class="sc">\n</span><span class="st">Time:Oxytone"</span>, <span class="st">"σ</span><span class="sc">\n</span><span class="st">Time"</span>, <span class="st">"σ</span><span class="sc">\n</span><span class="st">ID"</span>, </span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Time:Oxytone"</span>, <span class="st">"Time"</span>, <span class="st">"L2:Oxytone"</span>, <span class="st">"Proficiency:Use"</span>, <span class="st">"Use"</span>, </span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Proficiency"</span>, <span class="st">"Oxytone"</span>, <span class="st">"L2"</span>, <span class="st">"Intercept"</span>))</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize posterior for printing estimates in plot</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>bi_gamm_summary <span class="ot">&lt;-</span> <span class="fu">group_by</span>(bi_gamm_tab_dat, name, type) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_qi</span>(value, <span class="at">.width =</span> <span class="fl">0.95</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.numeric, specify_decimal, <span class="at">k =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{value} [{.lower}, {.upper}]"</span>), </span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>         <span class="at">label =</span> <span class="fu">str_replace_all</span>(label, <span class="st">"-"</span>, <span class="st">"\U2212"</span>)) </span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Forest plot</span></span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>bi_gamm_tab_dat <span class="sc">%&gt;%</span> </span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> name)) <span class="sc">+</span> </span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(type <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">space =</span> <span class="st">"free"</span>) <span class="sc">+</span> </span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_pointinterval</span>(<span class="at">point_fill =</span> <span class="st">"white"</span>,  <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">data =</span> bi_gamm_summary, </span>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">family =</span> <span class="st">"Times"</span>, <span class="at">size =</span> <span class="fl">3.25</span>, </span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">group =</span> type, <span class="at">label =</span> label, <span class="at">x =</span> <span class="sc">-</span><span class="fl">0.62</span>)) <span class="sc">+</span></span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>, <span class="dv">4</span>)) <span class="sc">+</span> </span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)) <span class="sc">+</span> </span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="st">"Estimate"</span>) <span class="sc">+</span> </span>
+<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.margin =</span> <span class="fu">unit</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">units =</span> <span class="st">"mm"</span>), </span>
+<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.placement =</span> <span class="st">"outside"</span>, <span class="at">strip.background =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb23-52"><a href="#cb23-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">1</span>), <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="../figs/forest-plot-bi-gamm-1.png" class="img-fluid" width="672"></p>
@@ -1780,7 +1771,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1788,9 +1781,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1802,7 +1809,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1838,24 +1862,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

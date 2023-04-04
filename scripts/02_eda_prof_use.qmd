@@ -241,17 +241,19 @@ bind_rows(prof_contrast, use_contrast) %>%
     coord_cartesian(xlim = c(-0.3, 0.3)) + 
     geom_text(data = use_prof_desc, aes(x = x, y = y, label = out), 
       hjust = 0, size = 3) +
-    labs(y = NULL, x = "Marginal mean difference\n(L2 - HL)") + 
+    labs(y = NULL, x = "Marginal mean difference\n(L2 - HS)") + 
     theme(axis.text.y = element_text(angle = 90, hjust = 0.5))
 ```
 
 ```{r}
 #| label: eda-prof-use-final-descriptives
 n_groups <- prof_use_final %>% 
+  mutate(group = str_replace_all(group, "hl", "HS")) %>% 
   group_by(group) %>% 
   summarize(n = n_distinct(id))
 
 tab_prof_use_desc <- prof_use_final %>% 
+  mutate(group = str_replace_all(group, "hl", "HS")) %>% 
   group_by(group) %>% 
   summarize(across(c("prof_p", "use_p"), 
     list(mean = mean, sd = sd))) %>% 
@@ -274,6 +276,7 @@ tab_prof_use_desc %>%
     caption = "Average use and proficiency for L2 and heritage learners.")
 
 tab_use_prof_desc_mod <- use_prof_desc %>% 
+  mutate(contrast = str_replace_all(contrast, "hl", "hs")) %>% 
   select(metric:out) %>% 
   separate(out, into = c("Estimate", "ROPE"), sep = "\n") %>% 
   separate(ROPE, into = c("ROPE", "PD"), sep = ",") %>% 

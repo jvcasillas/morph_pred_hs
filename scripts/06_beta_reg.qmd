@@ -37,7 +37,8 @@ bi_4_prop <- stress_50 %>%
   summarize(avg = mean(target_prop), se = std_err(target_prop), 
     test_max = avg + se, .groups = "drop") %>% 
   mutate(group_sum = if_else(group == "HL", -1, 1), 
-    stress_sum = if_else(stress == "Paroxytone", -1, 1))
+    stress_sum = if_else(stress == "Paroxytone", -1, 1)) %>% 
+  mutate(group = str_replace_all(group, "HL", "HS"))
 ```
 
 
@@ -145,6 +146,7 @@ bi_zoid_marignal_prep %>%
 }
 
 bi_zoid_marignal_prep %>% 
+  mutate(group = str_replace_all(group, "HL", "HS")) %>% 
   ggplot() + 
   aes(x = .epred, y = group, fill = stress) + 
   geom_point(data = filter(bi_4_prop, stress == "Paroxytone"), aes(x = avg), 
@@ -179,7 +181,7 @@ beta_reg_use_parox <- bi_4_prop %>%
     re_formula = NULL, 
     sample_new_levels = "uncertainty", 
     ndraws = 200) %>% 
-  mutate(group = if_else(group_sum == -1, "HL", "L2")) %>% 
+  mutate(group = if_else(group_sum == -1, "HS", "L2")) %>% 
   ggplot() + 
     aes(x = use_z, y = .epred, color = group) + 
     geom_path(aes(group = interaction(group, .draw)), alpha = 0.05) + 
@@ -199,7 +201,7 @@ beta_reg_prof_parox <- bi_4_prop %>%
     re_formula = NULL, 
     sample_new_levels = "uncertainty", 
     ndraws = 200) %>% 
-  mutate(group = if_else(group_sum == -1, "HL", "L2"), 
+  mutate(group = if_else(group_sum == -1, "HS", "L2"), 
     stress = "Paroxytone") %>% 
   ggplot() + 
     aes(x = prof_z, y = .epred, color = group) + 
@@ -222,7 +224,7 @@ beta_reg_use_avg <- bi_4_prop %>%
     re_formula = NULL, 
     sample_new_levels = "uncertainty", 
     ndraws = 200) %>% 
-  mutate(group = if_else(group_sum == -1, "HL", "L2")) %>% 
+  mutate(group = if_else(group_sum == -1, "HS", "L2")) %>% 
   ggplot() + 
     aes(x = use_z, y = .epred, color = group) + 
     geom_path(aes(group = interaction(group, .draw)), alpha = 0.05, 
@@ -242,7 +244,7 @@ beta_reg_prof_avg <- bi_4_prop %>%
     re_formula = NULL, 
     sample_new_levels = "uncertainty", 
     ndraws = 200) %>% 
-  mutate(group = if_else(group_sum == -1, "HL", "L2"), 
+  mutate(group = if_else(group_sum == -1, "HS", "L2"), 
     stress = "Avg. stress") %>% 
   ggplot() + 
     aes(x = prof_z, y = .epred, color = group) + 
@@ -266,7 +268,7 @@ beta_reg_use_ox <- bi_4_prop %>%
     re_formula = NULL, 
     sample_new_levels = "uncertainty", 
     ndraws = 200) %>% 
-  mutate(group = if_else(group_sum == -1, "HL", "L2")) %>% 
+  mutate(group = if_else(group_sum == -1, "HS", "L2")) %>% 
   ggplot() + 
     aes(x = use_z, y = .epred, color = group) + 
     geom_path(aes(group = interaction(group, .draw)), alpha = 0.05, 
@@ -285,7 +287,7 @@ beta_reg_prof_ox <- bi_4_prop %>%
     re_formula = NULL, 
     sample_new_levels = "uncertainty", 
     ndraws = 200) %>% 
-  mutate(group = if_else(group_sum == -1, "HL", "L2"), 
+  mutate(group = if_else(group_sum == -1, "HS", "L2"), 
     stress = "Oxytone") %>% 
   ggplot() + 
     aes(x = prof_z, y = .epred, color = group) + 
@@ -335,7 +337,7 @@ bi_heat_map <-
 bi_heat_map %>% 
   mutate(
     group = case_when(
-      group_sum == -1 ~ "HL", 
+      group_sum == -1 ~ "HS", 
       group_sum == 0 ~ "Avg. group", 
       TRUE ~ "L2"), 
     stress = case_when(
@@ -346,7 +348,7 @@ bi_heat_map %>%
     stress = as.factor(stress), 
     stress = fct_relevel(stress, "Paroxytone", "Avg. stress"), 
     group = as.factor(group), 
-    group = fct_relevel(group, "HL", "Avg. group")) %>% 
+    group = fct_relevel(group, "HS", "Avg. group")) %>% 
   ggplot() + 
     aes(x = prof_z, y = use_z, fill = .epred) + 
     facet_grid(stress ~ group) + 

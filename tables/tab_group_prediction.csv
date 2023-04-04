@@ -1,7 +1,7 @@
 Group,Stress,Estimate,HDI,ROPE,PD,parameter
 Monolingual,Paroxytone,0.64,"[0.61, 0.68]",0.00,1.00,Monolingual_Paroxytone
 Monolingual,Oxytone,0.66,"[0.63, 0.70]",0.00,1.00,Monolingual_Oxytone
-HL,Paroxytone,0.57,"[0.54, 0.60]",0.00,1.00,HL_Paroxytone
-HL,Oxytone,0.48,"[0.45, 0.52]",0.97,0.85,HL_Oxytone
+HS,Paroxytone,0.57,"[0.54, 0.60]",0.00,1.00,HS_Paroxytone
+HS,Oxytone,0.48,"[0.45, 0.52]",0.97,0.85,HS_Oxytone
 L2,Paroxytone,0.54,"[0.51, 0.57]",0.01,1.00,L2_Paroxytone
 L2,Oxytone,0.56,"[0.53, 0.59]",0.00,1.00,L2_Oxytone
